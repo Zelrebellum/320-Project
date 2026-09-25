@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject settingsPanel;
+    public GameObject optionsPanel;
     public GameObject creditsPanel;
 
     /// <summary>
@@ -15,19 +15,19 @@ public class MainMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Press Setting open the setting panel
+    /// Press Setting open the Options panel
     /// </summary>
-    public void OpenSettings()
+    public void OpenOptions()
     {
-        settingsPanel.SetActive(true);
+        optionsPanel.SetActive(true);
     }
 
     /// <summary>
-    /// Close the setting panel
+    /// Close the Options panel
     /// </summary>
-    public void CloseSettings()
+    public void CloseOptions()
     {
-        settingsPanel.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     /// <summary>
