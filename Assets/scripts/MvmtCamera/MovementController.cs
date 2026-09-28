@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
-using UnityEngine.Rendering;
-using TMPro;
 
 public class MovementController : MonoBehaviour
 {
@@ -20,12 +17,30 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
+    [SerializeField, Range(0,10)]
+    private float acceleration;
+
+    [SerializeField]
+    private float currentSpeed = 0;
+
+    [SerializeField]
+    public bool airborne = false;
+
+    private RaycastHit hitInfo;
     // Update is called once per frame
     void Update()
     {
-
+        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
         if (moveDirection != Vector2.zero)
         {
+            if (currentSpeed < speed)
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed = speed;
+            }
             // Determine the velocity based on player direction & speed
             // axis by axis
 
@@ -34,13 +49,22 @@ public class MovementController : MonoBehaviour
 
             // fwd/back
             velocity += transform.forward * moveDirection.y;
-
-            transform.position += velocity.normalized * speed * Time.deltaTime;
         }
         else
         {
-            velocity = Vector3.zero;
+            if (currentSpeed > 0)
+            {
+                currentSpeed -= (acceleration * 2) * Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed = 0;
+                velocity = Vector3.zero;
+            }
+            
         }
+
+        transform.position += velocity.normalized * currentSpeed * Time.deltaTime;
 
     }
 
@@ -58,15 +82,13 @@ public class MovementController : MonoBehaviour
         {
             return;
         }
-        RaycastHit hitInfo;
+
         bool hit = Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
-        if (!hit)
+        if (airborne)
         {
             return;
         }
-        Debug.Log($"Jumped");
         rBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-
     }
 
   
