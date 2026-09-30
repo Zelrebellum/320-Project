@@ -289,6 +289,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f9e5fcb5-8150-4012-81dd-027d7400e846
     m_ActionName: 'Player/Reset Camera[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1286511531}
+        m_TargetAssemblyTypeName: dash, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9014589d-d9d9-49bd-9ab5-b48f02324b35
+    m_ActionName: 'Player/dash[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -927,6 +943,7 @@ GameObject:
   - component: {fileID: 1286511521}
   - component: {fileID: 1286511528}
   - component: {fileID: 1286511529}
+  - component: {fileID: 1286511531}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -964,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
   speed: 5
+  topSpeed: 20
   moveDirection: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   rBody: {fileID: 1286511523}
@@ -1150,6 +1168,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   yOffset: 1
+--- !u!114 &1286511531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286511520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5645049e330bdab2a9f79aec67bae0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::dash
+  increaseSpeed: 10
+  dashing: 0
+  dashTime: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -48,9 +48,10 @@ public class wallRun : MonoBehaviour
         {
             wallrunning = false;
             return;
+
         }
 
-        Vector3 rotation = transform.rotation.eulerAngles;
+        // use hitInfo.normal to do what u need
 
 
 

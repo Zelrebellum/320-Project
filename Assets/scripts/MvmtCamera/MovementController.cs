@@ -3,8 +3,13 @@ using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
+    // measures how fast the player can go right now
     [SerializeField]
     public float speed;
+
+    // measures how fast the player can ever go
+    [SerializeField]
+    private float topSpeed;
 
     private float airborneSpeed;
     // public for debug purposes
@@ -21,6 +26,7 @@ public class MovementController : MonoBehaviour
     [SerializeField, Range(0,10)]
     private float acceleration;
 
+    // measures how fast the player is currently going
     [SerializeField]
     private float currentSpeed = 0;
 
@@ -40,11 +46,17 @@ public class MovementController : MonoBehaviour
         airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
         if (moveDirection != Vector2.zero)
         {
-            
+            // are we slower than the speed we can currently go? if we are, go faster
             if (currentSpeed < speed)
             {
                 currentSpeed += acceleration * Time.deltaTime;
             }
+            // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
+            else if (currentSpeed < topSpeed && currentSpeed > speed + 0.2f)
+            {
+                currentSpeed -= acceleration * 1.5f * Time.deltaTime;
+            }
+            // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
             else
             {
                 currentSpeed = speed;

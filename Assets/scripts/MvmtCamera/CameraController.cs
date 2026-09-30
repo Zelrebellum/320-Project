@@ -80,6 +80,7 @@ public class CameraController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.position = new Vector3(0f, 0f, 0f);
         }
     }
 
