@@ -6,6 +6,7 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     public float speed;
 
+    private float airborneSpeed;
     // public for debug purposes
     public Vector2 moveDirection = Vector2.zero;
     public Vector3 velocity = Vector3.zero;
@@ -27,12 +28,19 @@ public class MovementController : MonoBehaviour
     public bool airborne = false;
 
     private RaycastHit hitInfo;
+
+
+    void Start()
+    {
+        airborneSpeed /= speed;
+    }
     // Update is called once per frame
     void Update()
     {
         airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
         if (moveDirection != Vector2.zero)
         {
+            
             if (currentSpeed < speed)
             {
                 currentSpeed += acceleration * Time.deltaTime;
@@ -64,6 +72,8 @@ public class MovementController : MonoBehaviour
             
         }
 
+        
+
         transform.position += velocity.normalized * currentSpeed * Time.deltaTime;
 
     }
@@ -83,13 +93,18 @@ public class MovementController : MonoBehaviour
             return;
         }
 
-        bool hit = Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
         if (airborne)
         {
             return;
         }
+
         rBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rBody.useGravity = true;
     }
 
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
   
 }

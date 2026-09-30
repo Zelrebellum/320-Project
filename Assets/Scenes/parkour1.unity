@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 536765198}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.236, y: 0.497, z: 0.37}
+  m_LocalPosition: {x: 0, y: 0.402, z: 0.144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -923,8 +923,10 @@ GameObject:
   - component: {fileID: 1286511524}
   - component: {fileID: 1286511523}
   - component: {fileID: 1286511522}
+  - component: {fileID: 1286511530}
   - component: {fileID: 1286511521}
   - component: {fileID: 1286511528}
+  - component: {fileID: 1286511529}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -997,7 +999,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1286511524
 CapsuleCollider:
@@ -1088,7 +1090,7 @@ Transform:
   m_GameObject: {fileID: 1286511520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1111,8 +1113,43 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scaleWallLimit: {x: 1.5, y: 1.5, z: 1.5}
-  scaleDistance: {x: 2, y: 2}
-  climbSpeed: 10
+  scaleDistance: {x: 2, y: 2, z: 0.5}
+  climbSpeed: 20
+--- !u!114 &1286511529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286511520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7fd7b9447d5e94ea2876b0e93f5b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::wallRun
+  wallJumpLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallJumpDistance: 1.3
+  wallrunning: 0
+  increaseSpeed: 0
+  speedMinimum: 0
+--- !u!114 &1286511530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286511520}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c9e636bd775bb083f4045e6191c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundSnapping
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  yOffset: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
