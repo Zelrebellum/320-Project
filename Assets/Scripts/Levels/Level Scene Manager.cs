@@ -14,12 +14,13 @@ public class LevelSceneManager : MonoBehaviour
     /// <summary>
     /// Triggered when the player has dropped (touched) the hole. 
     /// Will progress the player to the next level. 
+    /// TODO
+    /// TEST THIS WITH THE PLAYER
     /// </summary>
     /// <param name="collision">Enter collision of the player to this</param>
     public void OnCollisionEnter(Collision collision)
     {
         // TODO
-        //Check that it is the player 
         //Optimize Scene transitions
         SceneManager.LoadScene(nextLevel);
     }

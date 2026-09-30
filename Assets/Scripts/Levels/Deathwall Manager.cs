@@ -2,37 +2,53 @@ using UnityEngine;
 
 public class DeathwallManager : MonoBehaviour
 {
+    /// <summary>
+    /// Manager houses the player information
+    /// </summary>
     [SerializeField] GameObject manager;
     [SerializeField] Transform startPos;
-    private Vector3 startPosTrue;
     [SerializeField] Transform endPos;
     [SerializeField, Range(0.0f, 1.0f)] float intensity;
-    [SerializeField] bool isRepeating;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] bool isLooping;
+
+    /// <summary>
+    /// Becausing start position can be tied to the deathwalls position, we keep a separate reference
+    /// </summary>
+    private Vector3 startPosPure;
+
     void Start()
     {
         this.transform.position = startPos.position;
-        startPosTrue = startPos.position;
+        startPosPure = startPos.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement();
+        Movement();
     }
 
-    private void movement()
+    /// <summary>
+    /// Moves the wall in it's forward direction (assuming z axis)
+    /// </summary>
+    private void Movement()
     {
         if(this.gameObject.transform.position.z < endPos.position.z)
         {
             this.gameObject.transform.position += (this.gameObject.transform.forward*intensity);
         }
-        else if (isRepeating)
+        else if (isLooping)
         {
-            this.gameObject.transform.position = startPosTrue;
+            this.gameObject.transform.position = startPosPure;
         }
     }
 
+    /// <summary>
+    /// Respawns the player when collided with the death wall
+    /// TODO
+    /// NEEDS TO BE TESTED WITH PLAYER OBJECT
+    /// </summary>
+    /// <param name="collision">The collided object</param>
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == manager.GetComponent<PlayerManager>().player)
