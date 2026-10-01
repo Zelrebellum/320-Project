@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("UITest");
     }
 
     /// <summary>
