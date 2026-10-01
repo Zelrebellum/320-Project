@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
-    [SerializeField, Range(0,10)]
+    [SerializeField, Range(0,20)]
     private float acceleration;
 
     // measures how fast the player is currently going
@@ -61,6 +61,7 @@ public class MovementController : MonoBehaviour
             {
                 currentSpeed = speed;
             }
+            
             // Determine the velocity based on player direction & speed
             // axis by axis
 

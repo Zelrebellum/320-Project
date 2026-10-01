@@ -24,7 +24,12 @@ public class climbScript : MonoBehaviour
     private bool climbing = false;
     private RaycastHit hitInfo;
 
-    private Vector3 prevDistance;
+    //private Vector3 prevDistance;
+
+    [SerializeField, Range(1, 0)]
+    private float scaleTime;
+
+    private float waitTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,17 +47,17 @@ public class climbScript : MonoBehaviour
         {
             Vector3 position = transform.position;
 
-            float bottom = (transform.position.y - transform.localScale.y);
+            float bottom = (transform.position.y);
             float top = transform.position.y + transform.localScale.y;
 
-            Vector3 distanceToLedge = hitInfo.transform.position - transform.position;
+            /*Vector3 distanceToLedge = hitInfo.transform.position - transform.position;
 
             distanceToLedge = new Vector3(
                 Mathf.Abs(distanceToLedge.x), 
                 Mathf.Abs(distanceToLedge.y), 
                 Mathf.Abs(distanceToLedge.z));
 
-            Vector3 trend = distanceToLedge - prevDistance;
+            Vector3 trend = distanceToLedge - prevDistance;*/
 
 
             if (bottom < hitInfo.transform.position.y + hitInfo.transform.localScale.y)
@@ -62,11 +67,19 @@ public class climbScript : MonoBehaviour
             }
             else
             {
+                rBody.AddForce(transform.forward * 2, ForceMode.Impulse);
+                waitTime = scaleTime;
                 climbing = false;
             }
 
 
-            prevDistance = distanceToLedge;
+            //prevDistance = distanceToLedge;
+            return;
+        }
+
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
             return;
         }
 

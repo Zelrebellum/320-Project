@@ -78,10 +78,13 @@ public class CameraController : MonoBehaviour
     {
         if (context.performed)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            transform.position = new Vector3(0f, 0f, 0f);
+            CameraReset();
         }
+    }
+
+    private void CameraReset()
+    {
+        CameraReset();
     }
 
     public void OnFocus()
