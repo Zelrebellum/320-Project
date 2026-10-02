@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +12,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
     [SerializeField] private float jumpForce = 6f;
+
+    [SerializeField] private float topSpeed;
+    [SerializeField] public float speed;
+    [SerializeField,Range(0,30)] private float acceleration;
+    [SerializeField] private float currentSpeed = 0;
+    [SerializeField] public bool airborne = false;
     
-    [SerializeField] private bool isSprinting = true;
+    [SerializeField] private bool isSprinting = false;
+
+    [SerializeField] private LayerMask groundLayer;
+
+    private RaycastHit hitInfo;
     private bool isGrounded = true;
     
     private Vector3 defaultCameraPosition;
@@ -25,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     
     public Vector2 moveDirection = Vector2.zero;
 
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,37 +46,25 @@ public class PlayerMovement : MonoBehaviour
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
+        speed = walkSpeed;
     }
 
     private void FixedUpdate()
     {
-        float currentSpeed;
-        
-        //moves player if moveDirection vector is updated
-        if (moveDirection != Vector2.zero)
+        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
+
+        Acceleration();
+
+        if (isSprinting)
         {
-            if (isSprinting)
-            {
-                currentSpeed = sprintSpeed;
-            }
-            else
-            {
-                currentSpeed = walkSpeed;
-            }
-            
-            Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
-            velocity *= currentSpeed * Time.fixedDeltaTime;
-
-            Vector3 newPosition = rb.position + velocity;
-
-            rb.MovePosition(newPosition);
+            speed = sprintSpeed;
         }
-    }
-    
-    private void Jump()
-    {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        isGrounded = false;
+        
+        Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
+        velocity *= currentSpeed * Time.fixedDeltaTime;
+
+        Vector3 newPosition = rb.position + velocity;
+        rb.MovePosition(newPosition);
     }
     
     private void Crouch()
@@ -102,6 +103,40 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
     }
+    private void Acceleration()
+    {
+        if (moveDirection != Vector2.zero)
+        {
+        // are we slower than the speed we can currently go? if we are, go faster
+            if (currentSpeed < speed)
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+            }
+            // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
+            else if (currentSpeed < topSpeed && currentSpeed > speed + 0.2f)
+            {
+                currentSpeed -= acceleration * 1.5f * Time.deltaTime;
+            }
+            // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
+            else
+            {
+                currentSpeed = speed;
+            }
+        }
+        else
+        {
+            if (currentSpeed > 0)
+            {
+                currentSpeed -= (acceleration * 2) * Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed = 0;
+            }
+            
+        }
+        
+    }
     
     //event function
     public void OnMove(InputAction.CallbackContext context)
@@ -111,10 +146,13 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (!context.canceled
+        || airborne)
         {
-            Jump();
+            return;
         }
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
     
     public void OnCrouch(InputAction.CallbackContext context)
@@ -134,4 +172,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
+  
 }

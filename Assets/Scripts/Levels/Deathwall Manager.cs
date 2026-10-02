@@ -54,6 +54,7 @@ public class DeathwallManager : MonoBehaviour
         if (collision.gameObject == manager.GetComponent<PlayerManager>().player)
         {
             manager.GetComponent<PlayerManager>().Respawn();
+            transform.position = startPosPure;
         }
     }
 }

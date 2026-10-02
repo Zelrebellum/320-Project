@@ -15,12 +15,12 @@ public class dash : MonoBehaviour
     private float waitTimer = 0;
     
     private float coolDown;
-    private MovementController movement;
+    private PlayerMovement movement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        movement = gameObject.GetComponent<MovementController>();
+        movement = gameObject.GetComponent<PlayerMovement>();
         startSpeed = movement.speed;
     }
 
@@ -56,7 +56,8 @@ public class dash : MonoBehaviour
         }
 
         dashing = true;
-        movement.speed += increaseSpeed;
+        startSpeed = movement.speed;
+        movement.speed = increaseSpeed;
         coolDown = dashTime;
 
     }
