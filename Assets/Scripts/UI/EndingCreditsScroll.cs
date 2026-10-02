@@ -47,7 +47,7 @@ public class EndingCreditsScroll : MonoBehaviour
     }
 
     /// <summary>
-    /// Back after 2 second
+    /// Back to main menu after 2 second
     /// </summary>
     /// <returns></returns>
     IEnumerator ReturnToMainMenu()
