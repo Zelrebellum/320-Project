@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     [SerializeField] Transform spawn;
 
-    private Vector2 spawnPosition;
+    private Vector3 spawnPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

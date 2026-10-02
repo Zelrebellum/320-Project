@@ -9,7 +9,7 @@ public class LevelSceneManager : MonoBehaviour
     /// <summary>
     /// The scene for the next level the player advances to
     /// </summary>
-    [SerializeField] string nextLevel;
+    [SerializeField] private string nextLevel;
 
     /// <summary>
     /// Triggered when the player has dropped (touched) the hole. 

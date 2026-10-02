@@ -18,7 +18,7 @@ public class climbScript : MonoBehaviour
     [SerializeField, Range(0, 20)]
     private float climbSpeed;
 
-    private MovementController movement;
+    private PlayerMovement movement;
 
     private Rigidbody rBody;
     private bool climbing = false;
@@ -35,7 +35,7 @@ public class climbScript : MonoBehaviour
     void Start()
     {
         // get the movement controller on our current object. useful so we dont have to keep checking if we're airborne multiple times.
-        movement = gameObject.GetComponent<MovementController>();
+        movement = gameObject.GetComponent<PlayerMovement>();
         rBody = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -47,7 +47,7 @@ public class climbScript : MonoBehaviour
         {
             Vector3 position = transform.position;
 
-            float bottom = (transform.position.y);
+            float bottom = (transform.position.y - transform.localScale.y);
             float top = transform.position.y + transform.localScale.y;
 
             /*Vector3 distanceToLedge = hitInfo.transform.position - transform.position;
