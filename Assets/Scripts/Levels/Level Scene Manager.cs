@@ -22,6 +22,7 @@ public class LevelSceneManager : MonoBehaviour
     {
         // TODO
         //Optimize Scene transitions
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene(nextLevel);
     }
 }
