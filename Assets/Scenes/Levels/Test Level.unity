@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e0313333491d47bb17aff76f25a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSceneManager
-  nextLevel: 
+  nextLevel: EndingCredits
 --- !u!65 &383049727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   manager: {fileID: 399451543}
   startPos: {fileID: 1289638885}
   endPos: {fileID: 1331284283}
-  intensity: 0.05
+  intensity: 0.075
   isLooping: 0
 --- !u!4 &1289638885 stripped
 Transform:
