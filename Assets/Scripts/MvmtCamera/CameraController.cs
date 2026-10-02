@@ -86,10 +86,17 @@ public class CameraController : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        transform.position = Vector3.zero;
     }
 
     public void OnFocus()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ChangeSensitivity(float sensitivity)
+    {
+        sensitivity *= 10;
+        lookSensitivity = new Vector2(sensitivity, sensitivity);
     }
 }

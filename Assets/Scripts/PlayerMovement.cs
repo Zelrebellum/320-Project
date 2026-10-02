@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
         speed = walkSpeed;
+        Application.targetFrameRate = 60;
     }
 
     private void FixedUpdate()
@@ -146,8 +147,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!context.canceled
-        || airborne)
+        if (airborne)
         {
             return;
         }
