@@ -61,13 +61,13 @@ public class CameraController : MonoBehaviour
                 // If we're past the max angle looking down and looking down or behind us
                 if (newLook.eulerAngles.x > maxLookUpDownAngle && newLook.eulerAngles.x <= 180f)
                 {
-                    newLook = Quaternion.Euler(maxLookUpDownAngle, newLook.eulerAngles.y, newLook.eulerAngles.z);
+                    newLook = Quaternion.Euler(maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
                 }
 
                 // otherwise, if we're past the max angle looking up AND looking up
                 if (newLook.eulerAngles.x < 360 - maxLookUpDownAngle && newLook.eulerAngles.x >= 180f)
                 {
-                    newLook = Quaternion.Euler(360 - maxLookUpDownAngle, newLook.eulerAngles.y, newLook.eulerAngles.z);
+                    newLook = Quaternion.Euler(360 - maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
                 }
             }
             playerCam.transform.rotation = newLook;
@@ -96,7 +96,12 @@ public class CameraController : MonoBehaviour
 
     public void ChangeSensitivity(float sensitivity)
     {
-        sensitivity *= 10;
+        sensitivity *= 20;
+
+        if (sensitivity < 5)
+        {
+            sensitivity = 5;
+        }
         lookSensitivity = new Vector2(sensitivity, sensitivity);
     }
 }

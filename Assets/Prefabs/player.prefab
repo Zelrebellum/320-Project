@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632353901539845077}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7fd7b9447d5e94ea2876b0e93f5b80, type: 3}
   m_Name: 
@@ -247,6 +247,7 @@ MonoBehaviour:
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 3
+  wallRunTime: 3
 --- !u!114 &1908503597326903813
 MonoBehaviour:
   m_ObjectHideFlags: 0

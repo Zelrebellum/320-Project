@@ -20,6 +20,12 @@ public class wallRun : MonoBehaviour
     [SerializeField]
     private float speedMinimum;
 
+    [SerializeField]
+    private float wallRunTime;
+    
+    [SerializeField]
+    private float timer;
+
     private MovementController movement;
 
     private Rigidbody rBody;
@@ -45,7 +51,7 @@ public class wallRun : MonoBehaviour
             return;
         }
 
-        rBody.useGravity = false;
+        timer -= Time.deltaTime;
 
         if (movement.GetCurrentSpeed() < speedMinimum)
         {
@@ -53,10 +59,18 @@ public class wallRun : MonoBehaviour
             return;
         }
 
+        if (timer < 0)
+        {
+            timer = 0;
+            wallrunning = false;
+            return;
+        }
+
+        rBody.useGravity = false;
         // use hitInfo.normal to do what u nee
-        Quaternion trans = Quaternion.AngleAxis(currentAngle, Vector3.up);
+        Quaternion trans = Quaternion.AngleAxis(currentAngle, hitInfo.normal);
         
-        transform.rotation = Quaternion.Lerp(transform.rotation, trans, 2 * Time.deltaTime);
+        transform.rotation = trans;
 
     }
 
@@ -96,7 +110,9 @@ public class wallRun : MonoBehaviour
         }
 
         wallrunning = true;
+        rBody.useGravity = false;
         currentAngle = -45;
+        timer = wallRunTime;
 
     }
 
