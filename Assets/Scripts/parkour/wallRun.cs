@@ -5,38 +5,30 @@ using UnityEngine.InputSystem;
 public class wallRun : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField]
-    private LayerMask wallJumpLayer;
+    [SerializeField] private LayerMask wallJumpLayer;
 
-    [SerializeField]
-    private float wallJumpDistance = 1.3f;
+    [SerializeField] private float wallJumpDistance = 1.3f;
 
-    [SerializeField]
-    private bool wallrunning;
+    [SerializeField] private bool wallrunning;
 
-    [SerializeField]
-    private float increaseSpeed;
+    [SerializeField] private float increaseSpeed;
 
-    [SerializeField]
-    private float speedMinimum;
+    [SerializeField] private float speedMinimum;
 
-    [SerializeField]
-    private float wallRunTime;
+    [SerializeField] private float wallRunTime;
     
-    [SerializeField]
-    private float timer;
-
-    private MovementController movement;
-
+    [SerializeField] private float timer;
+    private PlayerMovement movement;
     private Rigidbody rBody;
-
     private RaycastHit hitInfo;
-
     private float currentAngle = 0;
+
+    private bool leftWall = false;
+    private bool rightWall = false;
 
     void Start()
     {
-        movement = gameObject.GetComponent<MovementController>();
+        movement = gameObject.GetComponent<PlayerMovement>();
         rBody = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -51,24 +43,25 @@ public class wallRun : MonoBehaviour
             return;
         }
 
+        if (timer < 0 || movement.GetCurrentSpeed() < speedMinimum)
+        {
+            timer = wallRunTime;
+            wallrunning = false;
+            Quaternion transf = Quaternion.Euler(
+            new Vector3(0f,
+                        transform.rotation.eulerAngles.y,
+                        0f));
+            transform.rotation = transf;
+            return;
+        }
         timer -= Time.deltaTime;
-
-        if (movement.GetCurrentSpeed() < speedMinimum)
-        {
-            wallrunning = false;
-            return;
-        }
-
-        if (timer < 0)
-        {
-            timer = 0;
-            wallrunning = false;
-            return;
-        }
-
+        movement.airborne = false;
         rBody.useGravity = false;
         // use hitInfo.normal to do what u nee
-        Quaternion trans = Quaternion.AngleAxis(currentAngle, hitInfo.normal);
+        Quaternion trans = Quaternion.Euler(
+            new Vector3(transform.rotation.eulerAngles.x,
+                        transform.rotation.eulerAngles.y,
+                        currentAngle));
         
         transform.rotation = trans;
 
@@ -94,24 +87,24 @@ public class wallRun : MonoBehaviour
         Vector3 left = Quaternion.AngleAxis(-45.0f, Vector3.up) * transform.forward;
         Vector3 right = Quaternion.AngleAxis(45.0f, Vector3.up) * transform.forward;
 
-        bool hit = Physics.Raycast(transform.position, left, out hitInfo, wallJumpDistance, wallJumpLayer);
+        leftWall = Physics.Raycast(transform.position, left, out hitInfo, wallJumpDistance, wallJumpLayer);
+        rightWall = Physics.Raycast(transform.position, right, out hitInfo, wallJumpDistance, wallJumpLayer);
 
-        if (hit)
+        if (leftWall)
         {
-            wallrunning = true;
-            return;
+            currentAngle = -15f;
         }
-        
-        hit = Physics.Raycast(transform.position, right, out hitInfo, wallJumpDistance, wallJumpLayer);
-
-        if (!hit)
+        else if (rightWall)
+        {
+            currentAngle = 15f;
+        }
+        else
         {
             return;
         }
 
         wallrunning = true;
         rBody.useGravity = false;
-        currentAngle = -45;
         timer = wallRunTime;
 
     }
