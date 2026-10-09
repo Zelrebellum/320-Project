@@ -147,7 +147,9 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (airborne)
+
+        if (!context.performed ||
+            airborne)
         {
             return;
         }

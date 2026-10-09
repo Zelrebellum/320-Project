@@ -92,7 +92,7 @@ public class climbScript : MonoBehaviour
         Vector3 topPosition = transform.position;
         topPosition.y += transform.localScale.y;
 
-        bool hit = Physics.Raycast(topPosition, transform.forward, out hitInfo, scaleDistance.x, groundLayer);
+        bool hit = Physics.Raycast(topPosition, transform.forward * 1.3f, out hitInfo, scaleDistance.x, groundLayer);
 
         // is there something on the ground layer close enough to us in the local forward position?
         if (!hit)

@@ -180,7 +180,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2250898964316632270}
   walkSpeed: 5
   sprintSpeed: 8
-  jumpForce: 6
+  jumpForce: 3
   topSpeed: 50
   speed: 5
   acceleration: 20
@@ -208,7 +208,7 @@ MonoBehaviour:
   upDownInversion: 0
   limitUpDownRange: 1
   lookSensitivity: {x: 5, y: 5}
-  maxLookUpDownAngle: 35
+  maxLookUpDownAngle: 45
 --- !u!114 &5176416108548706402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
     m_Bits: 64
   scaleWallLimit: {x: 1.5, y: 1.5, z: 1.5}
   scaleDistance: {x: 2, y: 2, z: 0.5}
-  climbSpeed: 20
+  climbSpeed: 16
   scaleTime: 0.5
 --- !u!114 &939205909518187893
 MonoBehaviour:
@@ -246,8 +246,9 @@ MonoBehaviour:
   wallJumpDistance: 1.3
   wallrunning: 0
   increaseSpeed: 5
-  speedMinimum: 3
+  speedMinimum: 1
   wallRunTime: 3
+  timer: 0
 --- !u!114 &1908503597326903813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 3724390532522663585}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.575, z: 0.185}
+  m_LocalPosition: {x: 0, y: 0.575, z: 0.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -329,8 +330,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 50
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

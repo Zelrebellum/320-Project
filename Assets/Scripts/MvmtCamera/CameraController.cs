@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    Camera playerCam;
+    private Camera playerCam;
+
+    public Camera Camera
+    {
+        get => playerCam;
+    }
 
     [SerializeField]
     bool upDownInversion = true;
@@ -18,10 +23,52 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float maxLookUpDownAngle = 25;
 
+    private float startFOV;
+
+    public float StartFOV
+    {
+        get => startFOV;
+    }
+
+    private float currentFOV;
+
+    private float targetFOV;
+
+    private float fovAcceleration;
+
+
+    private bool changingFOV = false;
+    
+    public bool FOVStatus
+    {
+        get => changingFOV;
+    }
+    private bool decreaseFOV = false;
+
     private void Awake()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        startFOV = playerCam.fieldOfView;
+        currentFOV = startFOV;
+    }
+
+    public void Update()
+    {
+        playerCam.fieldOfView = currentFOV;
+        if (!changingFOV)
+        {
+            return;
+        }
+
+        if ((!decreaseFOV && currentFOV > targetFOV)
+        || (decreaseFOV && currentFOV < targetFOV))
+        {
+            changingFOV = false;
+            currentFOV = targetFOV;
+            return;
+        }
+        currentFOV += fovAcceleration * Time.deltaTime * (decreaseFOV ? -1f : 1f);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -103,5 +150,30 @@ public class CameraController : MonoBehaviour
             sensitivity = 5;
         }
         lookSensitivity = new Vector2(sensitivity, sensitivity);
+    }
+
+    /// <summary>
+    /// Enables FOV change over time
+    /// </summary>
+    /// <param name="target">The final FOV</param>
+    /// <param name="acceleration">How quick the FOV should go</param>
+    public void EnableFOV(float target, float acceleration)
+    {
+        changingFOV = true;
+        targetFOV = target;
+        if (targetFOV < currentFOV)
+        {
+            decreaseFOV = true;
+        }
+        else
+        {
+            decreaseFOV = false;
+        }
+        fovAcceleration = acceleration;
+    }
+
+    public float GetStartFOV()
+    {
+        return startFOV;
     }
 }
