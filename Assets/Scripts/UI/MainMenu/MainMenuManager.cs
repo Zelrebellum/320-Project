@@ -6,6 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject optionsPanel;
     public GameObject creditsPanel;
+    public GameObject mainMenuContent;
 
     // Black panel used for the fade transition
     public CanvasGroup fadePanel;
@@ -48,15 +49,17 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void OpenOptions()
     {
+        mainMenuContent.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
     /// <summary>
-    /// Close the Options panel
+    /// Close the Credits panel
     /// </summary>
     public void CloseOptions()
     {
         optionsPanel.SetActive(false);
+        mainMenuContent.SetActive(true);
     }
 
     /// <summary>
