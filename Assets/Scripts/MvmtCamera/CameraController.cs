@@ -55,6 +55,7 @@ public class CameraController : MonoBehaviour
 
     public void Update()
     {
+        playerCam.transform.localRotation = Quaternion.Euler(playerCam.transform.localRotation.eulerAngles.x, 0f, 0f );
         playerCam.fieldOfView = currentFOV;
         if (!changingFOV)
         {
@@ -172,8 +173,4 @@ public class CameraController : MonoBehaviour
         fovAcceleration = acceleration;
     }
 
-    public float GetStartFOV()
-    {
-        return startFOV;
-    }
 }

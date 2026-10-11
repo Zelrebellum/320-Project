@@ -4,17 +4,16 @@ using UnityEngine.InputSystem;
 
 public class dash : MonoBehaviour
 {
-    [SerializeField]
-    private float increaseSpeed;
+    [SerializeField] private float increaseSpeed;
     private float startSpeed;
-    [SerializeField]
-    private bool dashing = false;
+    [SerializeField] private bool dashing = false;
 
-    [SerializeField, Range(0.5f, 10.0f)]
-    private float dashTime;
+    [SerializeField, Range(0.5f, 10.0f)] private float dashTime;
     private float waitTimer = 0;
-    [SerializeField]
-    private float dashFOV;
+    [SerializeField] private float dashFOV;
+
+    [SerializeField] private float FOVfade;
+
     private float coolDown;
     private PlayerMovement movement;
 
@@ -39,7 +38,7 @@ public class dash : MonoBehaviour
         
         if (dashing && coolDown < dashTime - 0.7f)
         {
-            camControl.EnableFOV(camControl.GetStartFOV(), 10f);
+            camControl.EnableFOV(camControl.StartFOV, FOVfade);
         }
         if (coolDown < 0f)
         {
@@ -59,7 +58,7 @@ public class dash : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
-        if (!context.canceled
+        if (!context.performed
          || dashing 
          || coolDown > 0.0f)
         {

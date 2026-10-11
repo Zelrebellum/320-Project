@@ -84,7 +84,7 @@ public class climbScript : MonoBehaviour
         }
 
         // if we're not airborne, go to next update
-        if (!movement.airborne)
+        if (!movement.Airborne)
         {
             return;
         }

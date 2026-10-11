@@ -11,6 +11,11 @@ public class wallRun : MonoBehaviour
 
     [SerializeField] private bool wallrunning;
 
+    public bool Wallrunning
+    {
+        get => wallrunning;
+    }
+
     [SerializeField] private float increaseSpeed;
 
     [SerializeField] private float speedMinimum;
@@ -20,16 +25,28 @@ public class wallRun : MonoBehaviour
     [SerializeField] private float timer;
     private PlayerMovement movement;
     private Rigidbody rBody;
+
+    private CameraController camControl;
     private RaycastHit hitInfo;
     private float currentAngle = 0;
 
     private bool leftWall = false;
     private bool rightWall = false;
 
+    [SerializeField]
+    private bool onWall = true;
+
+    [SerializeField] private int wallRunFOV;
+    [SerializeField] private float FOVfade;
+
+    [SerializeField]
+    private float initialHeight = 0;
+
     void Start()
     {
         movement = gameObject.GetComponent<PlayerMovement>();
         rBody = gameObject.GetComponent<Rigidbody>();
+        camControl = gameObject.GetComponentInParent<CameraController>();
     }
 
     // Update is called once per frame
@@ -43,27 +60,36 @@ public class wallRun : MonoBehaviour
             return;
         }
 
-        if (timer < 0 || movement.GetCurrentSpeed() < speedMinimum)
+        if (
+            timer < 0 || 
+            movement.GetCurrentSpeed() < speedMinimum || 
+            !onWall )
         {
-            timer = wallRunTime;
-            wallrunning = false;
-            Quaternion transf = Quaternion.Euler(
-            new Vector3(0f,
-                        transform.rotation.eulerAngles.y,
-                        0f));
-            transform.rotation = transf;
+            StopWallrun();
             return;
         }
+
         timer -= Time.deltaTime;
-        movement.airborne = false;
         rBody.useGravity = false;
         // use hitInfo.normal to do what u nee
-        Quaternion trans = Quaternion.Euler(
+        Quaternion rotation = Quaternion.Euler(
             new Vector3(transform.rotation.eulerAngles.x,
                         transform.rotation.eulerAngles.y,
                         currentAngle));
         
-        transform.rotation = trans;
+        transform.rotation = rotation;
+
+        movement.speed = increaseSpeed;
+        onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 3.0f, wallJumpLayer);
+
+        if (transform.position.y < initialHeight + 3.5f)
+        {
+            return;
+        }
+
+        Vector3 position = transform.position;
+        position.y = initialHeight + 3.5f;
+        transform.position = position;
 
     }
 
@@ -79,13 +105,15 @@ public class wallRun : MonoBehaviour
 
     public void WallJump(InputAction.CallbackContext context)
     {
-        if (!context.canceled || wallrunning)
+        if (!context.performed 
+        || wallrunning 
+        || movement.Airborne)
         {
             return;
         } 
 
-        Vector3 left = Quaternion.AngleAxis(-45.0f, Vector3.up) * transform.forward;
-        Vector3 right = Quaternion.AngleAxis(45.0f, Vector3.up) * transform.forward;
+        Vector3 left = Quaternion.AngleAxis(-75.0f, Vector3.up) * transform.forward * 1.5f;
+        Vector3 right = Quaternion.AngleAxis(75.0f, Vector3.up) * transform.forward * 1.5f;
 
         leftWall = Physics.Raycast(transform.position, left, out hitInfo, wallJumpDistance, wallJumpLayer);
         rightWall = Physics.Raycast(transform.position, right, out hitInfo, wallJumpDistance, wallJumpLayer);
@@ -102,23 +130,36 @@ public class wallRun : MonoBehaviour
         {
             return;
         }
-
+        initialHeight = transform.position.y;
         wallrunning = true;
         rBody.useGravity = false;
         timer = wallRunTime;
+        camControl.EnableFOV(wallRunFOV, 75f);
+    }
 
+    public void StopWallrun()
+    {
+        timer = wallRunTime;
+        wallrunning = false;
+        Quaternion rotation = Quaternion.Euler(
+        new Vector3(0f,
+                    transform.rotation.eulerAngles.y,
+                    0f));
+        transform.rotation = rotation;
+        onWall = true;
+        camControl.EnableFOV(camControl.StartFOV, FOVfade);
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        Vector3 left = Quaternion.AngleAxis(-45.0f, Vector3.up) * transform.forward;
+        Vector3 left = Quaternion.AngleAxis(-75.0f, Vector3.up) * transform.forward * 1.5f;
 
         Gizmos.DrawRay(transform.position, left);
         
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(45.0f, Vector3.up) * transform.forward);
+        Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(75.0f, Vector3.up) * transform.forward * 1.5f);
 
     }
 
