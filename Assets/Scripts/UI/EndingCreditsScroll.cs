@@ -18,6 +18,7 @@ public class EndingCreditsScroll : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         // Make sure the game is not still paused
         Time.timeScale = 1f;
 

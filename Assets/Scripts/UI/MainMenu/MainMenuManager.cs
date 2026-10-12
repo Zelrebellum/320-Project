@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject optionsPanel;
-    public GameObject creditsPanel;
     public GameObject mainMenuContent;
 
     // Black panel used for the fade transition
@@ -63,19 +62,12 @@ public class MainMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Press Credits open the Credits panel
+    /// Open the ending credits scene
     /// </summary>
     public void OpenCredits()
     {
-        creditsPanel.SetActive(true);
-    }
-
-    /// <summary>
-    /// Close the Credits panel
-    /// </summary>
-    public void CloseCredits()
-    {
-        creditsPanel.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("EndingCredits");
     }
 
     /// <summary>
