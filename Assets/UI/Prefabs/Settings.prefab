@@ -4044,7 +4044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12596397f37dbc498d2562a5a9e7568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 7990490551211881738}
 --- !u!114 &-6392214978267276332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4057,7 +4057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c7fd3c46e8eb648a247a68146a36b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SensitivitySettings
-  sensitivitySlider: {fileID: 0}
+  sensitivitySlider: {fileID: 826324335706278945}
 --- !u!114 &8435462722884028716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,4 +4070,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3858975774b67e4f99490716daeed6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrouchSettings
-  crouchDropdown: {fileID: 0}
+  crouchDropdown: {fileID: 7318718966510821800}

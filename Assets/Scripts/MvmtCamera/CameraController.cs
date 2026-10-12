@@ -90,6 +90,14 @@ public class CameraController : MonoBehaviour
 
     public void OnFocus()
     {
+        if (PauseMenuManager.IsPaused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
