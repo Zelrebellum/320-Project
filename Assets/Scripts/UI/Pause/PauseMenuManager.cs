@@ -23,6 +23,10 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (BlinkTransition.IsPlaying)
+        {
+            return;
+        }
         if (Keyboard.current != null &&
             Keyboard.current.escapeKey.wasPressedThisFrame)
         {

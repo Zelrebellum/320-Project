@@ -26,6 +26,10 @@ public class CameraController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
+        {
+            return;
+        }
         if (Application.isFocused)
         {
             OnFocus();
