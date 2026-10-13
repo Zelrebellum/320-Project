@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    Camera playerCam;
+    private Camera playerCam;
+
+    public Camera Camera
+    {
+        get => playerCam;
+    }
 
     [SerializeField]
     bool upDownInversion = true;
@@ -18,10 +23,53 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float maxLookUpDownAngle = 25;
 
+    private float startFOV;
+
+    public float StartFOV
+    {
+        get => startFOV;
+    }
+
+    private float currentFOV;
+
+    private float targetFOV;
+
+    private float fovAcceleration;
+
+
+    private bool changingFOV = false;
+    
+    public bool FOVStatus
+    {
+        get => changingFOV;
+    }
+    private bool decreaseFOV = false;
+
     private void Awake()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        startFOV = playerCam.fieldOfView;
+        currentFOV = startFOV;
+    }
+
+    public void Update()
+    {
+        playerCam.transform.localRotation = Quaternion.Euler(playerCam.transform.localRotation.eulerAngles.x, 0f, 0f );
+        playerCam.fieldOfView = currentFOV;
+        if (!changingFOV)
+        {
+            return;
+        }
+
+        if ((!decreaseFOV && currentFOV > targetFOV)
+        || (decreaseFOV && currentFOV < targetFOV))
+        {
+            changingFOV = false;
+            currentFOV = targetFOV;
+            return;
+        }
+        currentFOV += fovAcceleration * Time.deltaTime * (decreaseFOV ? -1f : 1f);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -65,13 +113,13 @@ public class CameraController : MonoBehaviour
                 // If we're past the max angle looking down and looking down or behind us
                 if (newLook.eulerAngles.x > maxLookUpDownAngle && newLook.eulerAngles.x <= 180f)
                 {
-                    newLook = Quaternion.Euler(maxLookUpDownAngle, newLook.eulerAngles.y, newLook.eulerAngles.z);
+                    newLook = Quaternion.Euler(maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
                 }
 
                 // otherwise, if we're past the max angle looking up AND looking up
                 if (newLook.eulerAngles.x < 360 - maxLookUpDownAngle && newLook.eulerAngles.x >= 180f)
                 {
-                    newLook = Quaternion.Euler(360 - maxLookUpDownAngle, newLook.eulerAngles.y, newLook.eulerAngles.z);
+                    newLook = Quaternion.Euler(360 - maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
                 }
             }
             playerCam.transform.rotation = newLook;
@@ -90,6 +138,7 @@ public class CameraController : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        transform.position = Vector3.zero;
     }
 
     public void OnFocus()
@@ -104,4 +153,36 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public void ChangeSensitivity(float sensitivity)
+    {
+        sensitivity *= 20;
+
+        if (sensitivity < 5)
+        {
+            sensitivity = 5;
+        }
+        lookSensitivity = new Vector2(sensitivity, sensitivity);
+    }
+
+    /// <summary>
+    /// Enables FOV change over time
+    /// </summary>
+    /// <param name="target">The final FOV</param>
+    /// <param name="acceleration">How quick the FOV should go</param>
+    public void EnableFOV(float target, float acceleration)
+    {
+        changingFOV = true;
+        targetFOV = target;
+        if (targetFOV < currentFOV)
+        {
+            decreaseFOV = true;
+        }
+        else
+        {
+            decreaseFOV = false;
+        }
+        fovAcceleration = acceleration;
+    }
+
 }

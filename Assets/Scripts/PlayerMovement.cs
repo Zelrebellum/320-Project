@@ -17,7 +17,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speed;
     [SerializeField,Range(0,30)] private float acceleration;
     [SerializeField] private float currentSpeed = 0;
-    [SerializeField] public bool airborne = false;
+    [SerializeField] private bool airborne = false;
+
+    public bool Airborne
+    {
+        get => airborne;
+    }
     
     [SerializeField] private bool isSprinting = false;
 
@@ -36,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     
     public Vector2 moveDirection = Vector2.zero;
 
-
+    private wallRun wall;
 
     private void Awake()
     {
@@ -47,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
         speed = walkSpeed;
+        Application.targetFrameRate = 60;
+        wall = gameObject.GetComponent<wallRun>();
     }
 
     private void FixedUpdate()
@@ -142,17 +149,31 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
+
+        if (wall.Wallrunning)
+        {
+            moveDirection.x = 0f;
+        }
+
+        moveDirection.Normalize();
     }
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!context.canceled
-        || airborne)
+
+        if (!context.performed || 
+            (airborne &&
+            !wall.Wallrunning))
         {
             return;
         }
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        if (wall.Wallrunning)
+        {
+            wall.StopWallrun();
+        }
     }
     
     public void OnCrouch(InputAction.CallbackContext context)

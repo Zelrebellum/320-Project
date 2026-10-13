@@ -38,7 +38,7 @@ public class MovementController : MonoBehaviour
 
     void Start()
     {
-        airborneSpeed /= speed;
+        Application.targetFrameRate = 60;
     }
     // Update is called once per frame
     void Update()
