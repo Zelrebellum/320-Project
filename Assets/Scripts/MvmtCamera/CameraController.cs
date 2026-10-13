@@ -26,6 +26,10 @@ public class CameraController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
+        {
+            return;
+        }
         if (Application.isFocused)
         {
             OnFocus();
@@ -90,6 +94,14 @@ public class CameraController : MonoBehaviour
 
     public void OnFocus()
     {
+        if (PauseMenuManager.IsPaused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
