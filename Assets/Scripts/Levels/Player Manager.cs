@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -25,5 +26,14 @@ public class PlayerManager : MonoBehaviour
     public void Respawn()
     {
         player.transform.position = spawnPosition;
+    }
+
+    public void OnReset(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        transform.position = spawnPosition;
     }
 }

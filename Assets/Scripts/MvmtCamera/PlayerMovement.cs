@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,18 +43,32 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDirection = Vector2.zero;
 
     private wallRun wall;
+    [SerializeField] private Canvas uiCanvas;
 
-    private void Awake()
+    [SerializeField] private float fadeIconTime;
+
+    private GameObject postureIcon;
+    private GameObject crouchIcon;
+    float fadeTimer;
+
+    public UIComponents UI
+    {
+        get => uiCanvas.GetComponent<UIComponents>();
+    }
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
+        wall = gameObject.GetComponent<wallRun>();
         
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
         speed = walkSpeed;
         Application.targetFrameRate = 60;
-        wall = gameObject.GetComponent<wallRun>();
+        postureIcon = UI.PostureIcon;
+        crouchIcon = UI.CrouchIcon;
     }
 
     private void FixedUpdate()
@@ -72,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 newPosition = rb.position + velocity;
         rb.MovePosition(newPosition);
+
+        FadeIcon();
     }
     
     private void Crouch()
@@ -91,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.localPosition = cameraPosition;
 
         isCrouching = true;
+        crouchIcon.SetActive(true);
     }
     
     private void Stand()
@@ -101,15 +119,15 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.localPosition = defaultCameraPosition;
 
         isCrouching = false;
+        fadeTimer = fadeIconTime;
+        crouchIcon.SetActive(false);
+        postureIcon.SetActive(true);
+        Vector4 color = postureIcon.GetComponent<Image>().color;
+        color.w = 1.0f;
+        postureIcon.GetComponent<Image>().color = color;
     }
     
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
+
     private void Acceleration()
     {
         if (moveDirection != Vector2.zero)
@@ -143,6 +161,22 @@ public class PlayerMovement : MonoBehaviour
             
         }
         
+    }
+
+    private void FadeIcon()
+    {
+        if (isCrouching || fadeTimer <= 0)
+        {
+            postureIcon.SetActive(false);
+            return;
+        }
+
+        fadeTimer -= Time.fixedDeltaTime;
+        
+        Vector4 color = postureIcon.GetComponent<Image>().color;
+        color.w = (fadeTimer) / fadeIconTime;
+        postureIcon.GetComponent<Image>().color = color;
+
     }
     
     //event function
@@ -178,19 +212,18 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
         {
-            Debug.Log("Crouch pressed!");
+            return;
+        }
 
-            if (isCrouching)
-            {
-                Stand();
-            }
-            else
-            {
-                Crouch();
-                isCrouching = true;
-            }
+        if (isCrouching)
+        {
+            Stand();
+        }
+        else
+        {
+            Crouch();
         }
     }
 

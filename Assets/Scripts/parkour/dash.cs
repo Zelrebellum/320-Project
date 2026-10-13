@@ -14,7 +14,14 @@ public class dash : MonoBehaviour
 
     [SerializeField] private float FOVfade;
 
+    private RectTransform hudCooldown;
+
     private float coolDown;
+
+    public float CoolDown
+    {
+        get => coolDown;
+    }
     private PlayerMovement movement;
 
     private Rigidbody rBody;
@@ -28,6 +35,7 @@ public class dash : MonoBehaviour
         startSpeed = movement.speed;
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
+        hudCooldown = movement.UI.HudCooldown.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -35,15 +43,25 @@ public class dash : MonoBehaviour
     {
 
         coolDown -= Time.deltaTime;
+
+        if (!dashing)
+        {
+            return;
+        }
         
-        if (dashing && coolDown < dashTime - 0.7f)
+        if (coolDown < dashTime - 0.7f)
         {
             camControl.EnableFOV(camControl.StartFOV, FOVfade);
         }
+        Vector3 scale = hudCooldown.localScale;
+        scale.x =  (dashTime - coolDown) / dashTime;
+    
         if (coolDown < 0f)
         {
+            scale.x = 1;
             dashing = false;
         }
+        hudCooldown.localScale = scale;
         /*if (waitTimer >= dashTime)
         {
             dashing = false;

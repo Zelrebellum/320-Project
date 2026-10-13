@@ -192,6 +192,8 @@ MonoBehaviour:
     m_Bits: 64
   crouchingHeight: 1.5
   moveDirection: {x: 0, y: 0}
+  uiCanvas: {fileID: 0}
+  fadeIconTime: 1.1
 --- !u!114 &1124682501939721075
 MonoBehaviour:
   m_ObjectHideFlags: 0

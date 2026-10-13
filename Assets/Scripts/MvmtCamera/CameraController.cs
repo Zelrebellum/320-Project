@@ -74,13 +74,14 @@ public class CameraController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
-        {
-            return;
-        }
         if (Application.isFocused)
         {
             OnFocus();
+        }
+
+        if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
+        {
+            return;
         }
         // read the mouse displacement from the center of the screen
         Vector2 lookInput = context.ReadValue<Vector2>();
@@ -138,7 +139,6 @@ public class CameraController : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        transform.position = Vector3.zero;
     }
 
     public void OnFocus()
