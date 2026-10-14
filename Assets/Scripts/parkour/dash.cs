@@ -16,12 +16,14 @@ public class dash : MonoBehaviour
     
     private float coolDown;
     private PlayerMovement movement;
+    private PlayerSlowdown slowdown;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         movement = gameObject.GetComponent<PlayerMovement>();
-        startSpeed = movement.speed;
+        slowdown = gameObject.GetComponent<PlayerSlowdown>();
+        startSpeed = movement.targetSpeed;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class dash : MonoBehaviour
         if (waitTimer >= dashTime)
         {
             dashing = false;
-            movement.speed = startSpeed;
+            movement.targetSpeed = startSpeed;
             waitTimer = 0;
         }
 
@@ -48,6 +50,7 @@ public class dash : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
+
         if (context.canceled
          || dashing 
          || coolDown > 0.0f)
@@ -55,9 +58,11 @@ public class dash : MonoBehaviour
             return;
         }
 
+        Debug.Log("DASHED!");
+        slowdown.ReduceSlowdown(20);
         dashing = true;
-        startSpeed = movement.speed;
-        movement.speed = increaseSpeed;
+        startSpeed = movement.targetSpeed;
+        movement.targetSpeed = increaseSpeed;
         coolDown = dashTime;
 
     }

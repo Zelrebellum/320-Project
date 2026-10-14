@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class PlayerSlowdown : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 80.0f)]
+    [SerializeField, Range(0.0f, 99.0f)]
     private float slowdownMeter = 0;
     
     [SerializeField]
     private float maxSlowdown = 100.0f;
-    private float accumulationRate = 3.0f;
-    private float recoveryRate = 5.0f;
+    [SerializeField]
+    private float accumulationRate = 12.5f;
+    [SerializeField]
+    private float recoveryRate = 10.0f;
+    [SerializeField]
     private float recoveryDelay = 3.0f;
+    [SerializeField]
     private float maxSpeedPenalty = 0.8f;
     
     private float recoveryTimer = 0.0f;
@@ -17,18 +21,27 @@ public class PlayerSlowdown : MonoBehaviour
     private bool inSwamp = false;
 
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateSlowdown();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered Swamp");
+        if(other.CompareTag("Swamp")){
+           EnterSwamp(); 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Swamp")){
+            ExitSwamp();
+        }   
+    }
+    
     void EnterSwamp()
     {
         inSwamp = true;
@@ -60,6 +73,7 @@ public class PlayerSlowdown : MonoBehaviour
         }
         if (inSwamp)
         {
+            Debug.Log("SWAMPY");
             slowdownMeter += accumulationRate * Time.deltaTime;
             recoveryTimer = 0;
         }
@@ -87,7 +101,7 @@ public class PlayerSlowdown : MonoBehaviour
     public float GetSpeedMultiplier()
     {
         float slowdownPerc = slowdownMeter / maxSlowdown;
-        float multiplier = 1 - (slowdownPerc * (1 - maxSpeedPenalty));
+        float multiplier = 1 - (slowdownPerc * maxSpeedPenalty);
         return multiplier;
     }
 }

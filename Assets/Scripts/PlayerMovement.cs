@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 6f;
 
     [SerializeField] private float topSpeed;
-    [SerializeField] public float speed;
+    [SerializeField] public float targetSpeed;
     [SerializeField,Range(0,30)] private float acceleration;
     [SerializeField] private float currentSpeed = 0;
     [SerializeField] public bool airborne = false;
@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     
     public Vector2 moveDirection = Vector2.zero;
 
+    [SerializeField] private PlayerSlowdown slowdownScript;
+
 
 
     private void Awake()
@@ -46,20 +48,26 @@ public class PlayerMovement : MonoBehaviour
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
-        speed = walkSpeed;
+        targetSpeed = walkSpeed;
+
+        slowdownScript = GetComponent<PlayerSlowdown>();
     }
 
     private void FixedUpdate()
     {
         airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
 
-        Acceleration();
-
         if (isSprinting)
         {
-            speed = sprintSpeed;
+            targetSpeed = sprintSpeed * slowdownScript.GetSpeedMultiplier();
         }
-        
+        else 
+        { 
+            targetSpeed = walkSpeed;
+        }
+
+        Acceleration();
+
         Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
         velocity *= currentSpeed * Time.fixedDeltaTime;
 
@@ -108,19 +116,19 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirection != Vector2.zero)
         {
         // are we slower than the speed we can currently go? if we are, go faster
-            if (currentSpeed < speed)
+            if (currentSpeed < targetSpeed)
             {
                 currentSpeed += acceleration * Time.deltaTime;
             }
             // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
-            else if (currentSpeed < topSpeed && currentSpeed > speed + 0.2f)
+            else if (currentSpeed < topSpeed && currentSpeed > targetSpeed + 0.2f)
             {
                 currentSpeed -= acceleration * 1.5f * Time.deltaTime;
             }
             // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
             else
             {
-                currentSpeed = speed;
+                currentSpeed = targetSpeed;
             }
         }
         else
