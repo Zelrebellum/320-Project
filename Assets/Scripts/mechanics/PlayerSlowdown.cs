@@ -1,0 +1,125 @@
+using UnityEngine;
+
+public class PlayerSlowdown : MonoBehaviour
+{
+    [SerializeField, Range(0.0f, 99.0f)]
+    private float slowdownMeter = 0;
+    
+    [SerializeField]
+    private float maxSlowdown = 100.0f;
+    [SerializeField]
+    private float accumulationRate = 12.5f;
+    [SerializeField]
+    private float recoveryRate = 10.0f;
+    [SerializeField]
+    private float recoveryDelay = 3.0f;
+    [SerializeField]
+    private float maxSpeedPenalty = 0.8f;
+    
+    private float recoveryTimer = 0.0f;
+
+    private bool inSwamp = false;
+    [SerializeField] PlayerManager playerManager;
+    
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateSlowdown();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered Swamp");
+        if(other.CompareTag("Swamp")){
+           EnterSwamp(); 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Swamp")){
+            ExitSwamp();
+        }   
+    }
+    
+    void EnterSwamp()
+    {
+        inSwamp = true;
+        recoveryTimer = 0;
+    }
+
+    void ExitSwamp()
+    {
+        inSwamp = false;
+    }
+
+    //reduces slowdown meter automatically by given amount
+    public void ReduceSlowdown(float amount)
+    {
+        //if isDead
+        if (playerManager.IsDead)
+        {
+            return;
+        }
+        slowdownMeter -= amount;
+        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+    }
+
+    //updates current slowdown meter based on player status
+    void UpdateSlowdown()
+    {
+        //if isDead
+        if (playerManager.IsDead)
+        {
+            return;
+        }
+        //while in swamp the slowdown meter builds over time
+        if (inSwamp)
+        {
+            Debug.Log("SWAMPY");
+            slowdownMeter += accumulationRate * Time.deltaTime;
+            recoveryTimer = 0;
+        }
+        else
+        {
+            //while out of swamp, recovery timer starts if it hasn't already
+            if(recoveryTimer < recoveryDelay)
+            {
+                recoveryTimer += Time.deltaTime; 
+            }
+            //once delay is finished, slow will start decaying over time
+            else
+            {
+                slowdownMeter -= recoveryRate * Time.deltaTime;
+            }
+        }
+
+        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+
+        //if slowdown exceeds max value, player will die
+        if(slowdownMeter >= maxSlowdown)
+        {
+            playerManager.Die();
+        }
+    }
+
+    //resets slowdown values to default
+    public void ResetSlowdown()
+    {
+       slowdownMeter = 0;
+       recoveryTimer = 0;
+       inSwamp = false; 
+    }
+
+    public float GetSpeedMultiplier()
+    {
+        float slowdownPerc = slowdownMeter / maxSlowdown;
+        float multiplier = 1 - (slowdownPerc * maxSpeedPenalty);
+        return multiplier;
+    }
+
+    public float GetSlowdownPercentage()
+    {
+        return slowdownMeter/maxSlowdown;
+    }
+}
