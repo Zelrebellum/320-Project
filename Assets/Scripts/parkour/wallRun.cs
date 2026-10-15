@@ -78,7 +78,7 @@ public class wallRun : MonoBehaviour
         transform.rotation = rotation;
 
         movement.targetSpeed = increaseSpeed;
-        onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 3.0f, wallJumpLayer);
+        onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 5.0f, wallJumpLayer);
 
         if (transform.position.y < initialHeight + 3.5f)
         {
