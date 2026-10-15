@@ -19,8 +19,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     [SerializeField] private SlowdownOverlay slowdownOverlay;
-
     [SerializeField] private BlinkTransition blinkTransition;
+
     Rigidbody playerRigidbody;
     /// <summary>
     /// Reference of the level spawn position 
@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
     
     void Start()
     {
+        //gets relevant script references and spawns player at spawn point
         movement = player.GetComponent<PlayerMovement>();
         slowdown = player.GetComponent<PlayerSlowdown>();
         dash = player.GetComponent<dash>();
@@ -42,7 +43,8 @@ public class PlayerManager : MonoBehaviour
         spawnPosition = new Vector3(spawn.position.x, spawn.position.y, spawn.position.z);
         player.transform.position = spawnPosition;
     }
-
+    
+    //used to start death sequence by other scripts
     public void Die()
     {
         if (isDead)
@@ -54,23 +56,28 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(DeathSequence());
     }
 
+    //a death sequence that plays, briefly disabling player input and lingering UI elements
     private IEnumerator DeathSequence()
     {
+        //disables player movement
         movement.enabled = false;
         playerInput.DeactivateInput();
 
+        //ensures overlay is set to max darkness and stops it from self-updating
         slowdownOverlay.UpdateOverlay(1);
         slowdownOverlay.isActive = false;
 
         yield return new WaitForSecondsRealtime(1f);
 
 
+        //play blink transition and respawn player
         blinkTransition.PlayBlink();
 
         Respawn();
 
         slowdownOverlay.UpdateOverlay(0);
 
+        //player regains controls after blink transition is complete
         yield return new WaitUntil(() => !BlinkTransition.IsPlaying);
 
         slowdownOverlay.isActive = true;
@@ -82,7 +89,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets the Player to the spawn location
+    /// Resets the Player to the spawn location and to default state
     /// </summary>
     public void Respawn()
     {

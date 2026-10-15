@@ -53,6 +53,7 @@ public class PlayerSlowdown : MonoBehaviour
         inSwamp = false;
     }
 
+    //reduces slowdown meter automatically by given amount
     public void ReduceSlowdown(float amount)
     {
         //if isDead
@@ -64,6 +65,7 @@ public class PlayerSlowdown : MonoBehaviour
         slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
     }
 
+    //updates current slowdown meter based on player status
     void UpdateSlowdown()
     {
         //if isDead
@@ -71,6 +73,7 @@ public class PlayerSlowdown : MonoBehaviour
         {
             return;
         }
+        //while in swamp the slowdown meter builds over time
         if (inSwamp)
         {
             Debug.Log("SWAMPY");
@@ -79,10 +82,12 @@ public class PlayerSlowdown : MonoBehaviour
         }
         else
         {
+            //while out of swamp, recovery timer starts if it hasn't already
             if(recoveryTimer < recoveryDelay)
             {
                 recoveryTimer += Time.deltaTime; 
             }
+            //once delay is finished, slow will start decaying over time
             else
             {
                 slowdownMeter -= recoveryRate * Time.deltaTime;
@@ -91,12 +96,14 @@ public class PlayerSlowdown : MonoBehaviour
 
         slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
 
+        //if slowdown exceeds max value, player will die
         if(slowdownMeter >= maxSlowdown)
         {
             playerManager.Die();
         }
     }
 
+    //resets slowdown values to default
     public void ResetSlowdown()
     {
        slowdownMeter = 0;

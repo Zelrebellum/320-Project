@@ -30,6 +30,7 @@ public class SlowdownOverlay : MonoBehaviour
         UpdateOverlay(slowdown.GetSlowdownPercentage());
     }
 
+    //updates overlay depending on the current slowdown value
     public void UpdateOverlay(float slowdown)
     {
         float progress;
@@ -37,6 +38,7 @@ public class SlowdownOverlay : MonoBehaviour
         float darknessAlpha;
         float handsScale;
 
+        //0-25% slowdown, hands slowly start appearing at edges of screen
         if(slowdown <= 0.25)
         {
             progress = slowdown/0.25f;
@@ -44,6 +46,7 @@ public class SlowdownOverlay : MonoBehaviour
             handsScale = startingScale;
             darknessAlpha = 0;
         }
+        //25-75% hands slowly grow onto screen, taking up more space
         else if (slowdown <= 0.75)
         {
             progress = (slowdown - 0.25f) / 0.5f;
@@ -51,6 +54,7 @@ public class SlowdownOverlay : MonoBehaviour
             handsScale = Mathf.Lerp(startingScale, endScale, progress);
             darknessAlpha = 0;
         }
+        //75-100% screen starts to darken until player is dead
         else
         {
             progress = (slowdown - 0.75f) / 0.25f;
