@@ -50,7 +50,7 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
@@ -115,6 +115,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "Settings",
+                    "type": "Button",
+                    "id": "bf902f74-6357-4459-b4f7-b94089aee857",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -132,7 +142,7 @@
                 {
                     "name": "WASD",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
-                    "path": "Dpad",
+                    "path": "Dpad(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -494,6 +504,17 @@
                 },
                 {
                     "name": "",
+                    "id": "68e74803-125b-437e-9a51-bd111dee1dd2",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9991a836-2e7e-4efd-a653-39cdacca5dbf",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -511,6 +532,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dfe3a95-0064-43cb-8744-5daa0f9bca82",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Settings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
