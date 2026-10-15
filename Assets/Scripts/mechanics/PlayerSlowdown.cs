@@ -19,7 +19,7 @@ public class PlayerSlowdown : MonoBehaviour
     private float recoveryTimer = 0.0f;
 
     private bool inSwamp = false;
-
+    [SerializeField] PlayerManager playerManager;
     
     // Update is called once per frame
     void Update()
@@ -56,7 +56,7 @@ public class PlayerSlowdown : MonoBehaviour
     public void ReduceSlowdown(float amount)
     {
         //if isDead
-        if (false)
+        if (playerManager.IsDead)
         {
             return;
         }
@@ -67,7 +67,7 @@ public class PlayerSlowdown : MonoBehaviour
     void UpdateSlowdown()
     {
         //if isDead
-        if (false)
+        if (playerManager.IsDead)
         {
             return;
         }
@@ -93,7 +93,7 @@ public class PlayerSlowdown : MonoBehaviour
 
         if(slowdownMeter >= maxSlowdown)
         {
-            //Die()
+            playerManager.Die();
         }
     }
 

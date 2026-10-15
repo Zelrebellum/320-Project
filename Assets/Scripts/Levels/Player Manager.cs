@@ -14,9 +14,14 @@ public class PlayerManager : MonoBehaviour
     private PlayerInput playerInput;
     private bool isDead = false;
 
-    // public bool IsDead {
+    public bool IsDead {
+        get { return isDead; }
+    }
 
-    // }
+    [SerializeField] private SlowdownOverlay slowdownOverlay;
+
+    [SerializeField] private BlinkTransition blinkTransition;
+    Rigidbody playerRigidbody;
     /// <summary>
     /// Reference of the level spawn position 
     /// </summary>
@@ -32,30 +37,48 @@ public class PlayerManager : MonoBehaviour
         slowdown = player.GetComponent<PlayerSlowdown>();
         dash = player.GetComponent<dash>();
         playerInput = gameObject.GetComponent<PlayerInput>();
+
+        playerRigidbody = player.GetComponent<Rigidbody>();
         spawnPosition = new Vector3(spawn.position.x, spawn.position.y, spawn.position.z);
         player.transform.position = spawnPosition;
     }
 
-    void Die()
+    public void Die()
     {
         if (isDead)
         {
             return;
         }
         isDead = true;
+
+        StartCoroutine(DeathSequence());
     }
 
     private IEnumerator DeathSequence()
     {
         movement.enabled = false;
         playerInput.DeactivateInput();
-        //slowdownOverlay.IsActive = false
+
+        slowdownOverlay.UpdateOverlay(1);
+        slowdownOverlay.isActive = false;
+
+        yield return new WaitForSecondsRealtime(1f);
+
+
+        blinkTransition.PlayBlink();
+
         Respawn();
-        //ResetOverlay()
+
+        slowdownOverlay.UpdateOverlay(0);
 
         yield return new WaitUntil(() => !BlinkTransition.IsPlaying);
-        playerInput.ActivateInput();
+
+        slowdownOverlay.isActive = true;
+
         movement.enabled = true;
+        playerInput.ActivateInput();
+
+        isDead = false;
     }
 
     /// <summary>
@@ -63,6 +86,12 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public void Respawn()
     {
-        player.transform.position = spawnPosition;
+        movement.ResetMovement();
+        dash.ResetDash();
+
+        playerRigidbody.position = spawn.position;
+        playerRigidbody.rotation = spawn.rotation;
+
+        slowdown.ResetSlowdown();
     }
 }

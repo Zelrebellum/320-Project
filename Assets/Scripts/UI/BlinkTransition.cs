@@ -18,31 +18,32 @@ public class BlinkTransition : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        IsPlaying = true;
+        IsPlaying = false;
         SetEyeOpening(0f);
     }
 
     /// <summary>
     /// Play the animation when the level starts
     /// </summary>
-    private IEnumerator Start()
+    private void Start()
     {
-        Canvas.ForceUpdateCanvases();
+        PlayBlink();
+        //Canvas.ForceUpdateCanvases();
 
-        RectTransform panel = GetComponent<RectTransform>();
-        moveDistance = panel.rect.height / 2f + 2f;
+        //RectTransform panel = GetComponent<RectTransform>();
+        //moveDistance = panel.rect.height / 2f + 2f;
 
-        yield return new WaitForSecondsRealtime(0.2f);
-        yield return MoveEyelids(0f, 1f, firstOpenDuration);
+        //yield return new WaitForSecondsRealtime(0.2f);
+        //yield return MoveEyelids(0f, 1f, firstOpenDuration);
 
-        yield return new WaitForSecondsRealtime(0.15f);
-        yield return MoveEyelids(1f, 0f, closeDuration);
+        //yield return new WaitForSecondsRealtime(0.15f);
+        //yield return MoveEyelids(1f, 0f, closeDuration);
 
-        yield return new WaitForSecondsRealtime(0.08f);
-        yield return MoveEyelids(0f, 1f, finalOpenDuration);
+        //yield return new WaitForSecondsRealtime(0.08f);
+        //yield return MoveEyelids(0f, 1f, finalOpenDuration);
 
-        IsPlaying = false;
-        gameObject.SetActive(false);
+        //IsPlaying = false;
+        //gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -88,19 +89,26 @@ public class BlinkTransition : MonoBehaviour
 
     public void PlayBlink()
     {
+        if(IsPlaying && gameObject.activeSelf)
+        {
+            return; 
+        }
+
         gameObject.SetActive(true);
-        SetEyeOpening(0);
 
         Canvas.ForceUpdateCanvases();
 
         RectTransform panel = GetComponent<RectTransform>();
         moveDistance = panel.rect.height / 2f + 2f;
+
+        SetEyeOpening(0);
+
+        IsPlaying = true;
+        StartCoroutine(BlinkSequence());
     }
 
     private IEnumerator BlinkSequence()
     {
-        IsPlaying = true;
-
         yield return new WaitForSecondsRealtime(0.2f);
         yield return MoveEyelids(0f, 1f, firstOpenDuration);
 
