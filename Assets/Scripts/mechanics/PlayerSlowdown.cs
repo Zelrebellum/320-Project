@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSlowdown : MonoBehaviour
 {
@@ -19,7 +20,16 @@ public class PlayerSlowdown : MonoBehaviour
     private float recoveryTimer = 0.0f;
 
     private bool inSwamp = false;
+    private bool isSafe = false;
+    private bool atEnd = false;
     [SerializeField] PlayerManager playerManager;
+    
+    private dash dash;
+
+    void Awake()
+    {
+        dash = gameObject.GetComponent<dash>();
+    }
     
     // Update is called once per frame
     void Update()
@@ -27,19 +37,42 @@ public class PlayerSlowdown : MonoBehaviour
         UpdateSlowdown();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Entered Swamp");
-        if(other.CompareTag("Swamp")){
+        if(other.gameObject.CompareTag("Swamp")){
            EnterSwamp(); 
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if(other.CompareTag("Swamp")){
+        if(other.gameObject.CompareTag("Swamp")){
             ExitSwamp();
         }   
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("End"))
+        {
+            Debug.LogWarning("You did it!");
+            dash.enabled = false;
+            atEnd = true;
+            return;
+        }
+        isSafe = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("End"))
+        {
+            atEnd = false;
+            dash.enabled = true;
+            return;
+        }
+        isSafe = false;
     }
     
     void EnterSwamp()
@@ -74,9 +107,17 @@ public class PlayerSlowdown : MonoBehaviour
             return;
         }
         //while in swamp the slowdown meter builds over time
-        if (inSwamp)
+        if (inSwamp && !isSafe)
         {
             Debug.Log("SWAMPY");
+            if (atEnd)
+            {
+                accumulationRate = 30f;
+            }
+            else
+            {
+                accumulationRate = 12.5f;
+            }
             slowdownMeter += accumulationRate * Time.deltaTime;
             recoveryTimer = 0;
         }
@@ -99,6 +140,10 @@ public class PlayerSlowdown : MonoBehaviour
         //if slowdown exceeds max value, player will die
         if(slowdownMeter >= maxSlowdown)
         {
+            if (atEnd)
+            {
+                SceneManager.LoadScene("EndingCredits");
+            }
             playerManager.Die();
         }
     }

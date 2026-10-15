@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Swamp
+  - End
   layers:
   - Default
   - TransparentFX

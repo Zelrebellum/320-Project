@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDirection = Vector2.zero;
     private wallRun wall;
     [SerializeField] private Canvas uiCanvas;
-    [SerializeField] private PlayerSlowdown slowdownScript;
+    private PlayerSlowdown slowdownScript;
 
     [SerializeField] private float fadeIconTime;
 
