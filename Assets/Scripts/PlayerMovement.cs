@@ -145,6 +145,18 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+
+    public void ResetMovement()
+    {
+        currentSpeed = 0;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        moveDirection = Vector2.zero;
+        if (isCrouching)
+        {
+            Stand();
+        }
+    }
     
     //event function
     public void OnMove(InputAction.CallbackContext context)

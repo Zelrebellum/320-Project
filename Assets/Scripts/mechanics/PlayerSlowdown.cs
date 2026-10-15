@@ -93,9 +93,15 @@ public class PlayerSlowdown : MonoBehaviour
 
         if(slowdownMeter >= maxSlowdown)
         {
-            //isDead = true;
             //Die()
         }
+    }
+
+    public void ResetSlowdown()
+    {
+       slowdownMeter = 0;
+       recoveryTimer = 0;
+       inSwamp = false; 
     }
 
     public float GetSpeedMultiplier()
@@ -103,5 +109,10 @@ public class PlayerSlowdown : MonoBehaviour
         float slowdownPerc = slowdownMeter / maxSlowdown;
         float multiplier = 1 - (slowdownPerc * maxSpeedPenalty);
         return multiplier;
+    }
+
+    public float GetSlowdownPercentage()
+    {
+        return slowdownMeter/maxSlowdown;
     }
 }

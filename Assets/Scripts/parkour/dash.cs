@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,6 +46,12 @@ public class dash : MonoBehaviour
 
         waitTimer += Time.deltaTime;
 
+    }
+
+    public void ResetDash()
+    {
+        dashing = false;
+        coolDown = 0;
     }
 
     public void OnDash(InputAction.CallbackContext context)

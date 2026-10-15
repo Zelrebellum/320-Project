@@ -86,5 +86,32 @@ public class BlinkTransition : MonoBehaviour
         IsPlaying = false;
     }
 
+    public void PlayBlink()
+    {
+        gameObject.SetActive(true);
+        SetEyeOpening(0);
+
+        Canvas.ForceUpdateCanvases();
+
+        RectTransform panel = GetComponent<RectTransform>();
+        moveDistance = panel.rect.height / 2f + 2f;
+    }
+
+    private IEnumerator BlinkSequence()
+    {
+        IsPlaying = true;
+
+        yield return new WaitForSecondsRealtime(0.2f);
+        yield return MoveEyelids(0f, 1f, firstOpenDuration);
+
+        yield return new WaitForSecondsRealtime(0.15f);
+        yield return MoveEyelids(1f, 0f, closeDuration);
+
+        yield return new WaitForSecondsRealtime(0.08f);
+        yield return MoveEyelids(0f, 1f, finalOpenDuration);
+
+        IsPlaying = false;
+        gameObject.SetActive(false);
+    }
 
 }
