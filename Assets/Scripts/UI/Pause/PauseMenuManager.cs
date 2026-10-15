@@ -27,14 +27,6 @@ public class PauseMenuManager : MonoBehaviour
         {
             return;
         }
-        if (Keyboard.current != null &&
-            Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            if (IsPaused)
-                ResumeGame();
-            else
-                PauseGame();
-        }
     }
 
     /// <summary>
@@ -67,6 +59,20 @@ public class PauseMenuManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void Menu(InputAction.CallbackContext context)
+    {
+        if (!context.performed ||
+            BlinkTransition.IsPlaying)
+        {
+            return;
+        }
+        
+        if (IsPaused)
+            ResumeGame();
+        else
+            PauseGame();
     }
 
     /// <summary>

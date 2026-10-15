@@ -42,6 +42,16 @@ public class PlayerManager : MonoBehaviour
         playerRigidbody = player.GetComponent<Rigidbody>();
         spawnPosition = new Vector3(spawn.position.x, spawn.position.y, spawn.position.z);
         player.transform.position = spawnPosition;
+        movement = player.GetComponent<PlayerMovement>();
+    }
+
+    void Update()
+    {
+        if (!movement.LevelBoundary.Contains(player.transform.position))
+        {
+            Debug.Log("works");
+            Respawn();
+        }
     }
     
     //used to start death sequence by other scripts
@@ -100,5 +110,14 @@ public class PlayerManager : MonoBehaviour
         playerRigidbody.rotation = spawn.rotation;
 
         slowdown.ResetSlowdown();
+    }
+
+    public void OnReset(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        Respawn();
     }
 }
