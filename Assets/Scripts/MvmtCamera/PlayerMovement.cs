@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 6f;
 
     [SerializeField] private float topSpeed;
-    [SerializeField] public float speed;
+    [SerializeField] public float targetSpeed;
     [SerializeField,Range(0,30)] private float acceleration;
     [SerializeField] private float currentSpeed = 0;
     [SerializeField] private bool airborne = false;
@@ -30,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private RaycastHit hitInfo;
-    private bool isGrounded = true;
     
     private Vector3 defaultCameraPosition;
     private float defaultHeight;
@@ -51,10 +51,19 @@ public class PlayerMovement : MonoBehaviour
     private GameObject crouchIcon;
     float fadeTimer;
 
+    [SerializeField] private MeshRenderer levelBoundary;
+
+    public Bounds LevelBoundary
+    {
+        get => levelBoundary.bounds;
+    }
+
     public UIComponents UI
     {
         get => uiCanvas.GetComponent<UIComponents>();
     }
+
+    private bool holdCrouch = false;
 
     private void Start()
     {
@@ -65,10 +74,11 @@ public class PlayerMovement : MonoBehaviour
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
         defaultCameraPosition = playerCamera.localPosition;
-        speed = walkSpeed;
+        targetSpeed = walkSpeed;
         Application.targetFrameRate = 60;
         postureIcon = UI.PostureIcon;
         crouchIcon = UI.CrouchIcon;
+        holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
     }
 
     private void FixedUpdate()
@@ -79,14 +89,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSprinting)
         {
-            speed = sprintSpeed;
+            targetSpeed = sprintSpeed;
         }
         
         Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
         velocity *= currentSpeed * Time.fixedDeltaTime;
 
         Vector3 newPosition = rb.position + velocity;
-        rb.MovePosition(newPosition);
+
+        if(LevelBoundary.Contains(newPosition))
+        {
+            rb.MovePosition(newPosition);
+        }
 
         FadeIcon();
     }
@@ -133,19 +147,19 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirection != Vector2.zero)
         {
         // are we slower than the speed we can currently go? if we are, go faster
-            if (currentSpeed < speed)
+            if (currentSpeed < targetSpeed)
             {
                 currentSpeed += acceleration * Time.deltaTime;
             }
             // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
-            else if (currentSpeed < topSpeed && currentSpeed > speed + 0.2f)
+            else if (currentSpeed < topSpeed && currentSpeed > targetSpeed + 0.2f)
             {
                 currentSpeed -= acceleration * 1.5f * Time.deltaTime;
             }
             // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
             else
             {
-                currentSpeed = speed;
+                currentSpeed = targetSpeed;
             }
         }
         else
@@ -212,9 +226,18 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
+        if (!holdCrouch && !context.performed)
         {
             return;
+        }
+        else if (holdCrouch && context.performed)
+        {
+            isCrouching = false;
+        }
+        else if (holdCrouch && context.canceled)
+        {
+            isCrouching = true;
         }
 
         if (isCrouching)

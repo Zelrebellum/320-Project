@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     /// Reference to the player object
     /// </summary>
     [SerializeField] public GameObject player;
+
+    private PlayerMovement movement;
     /// <summary>
     /// Reference of the level spawn position 
     /// </summary>
@@ -18,6 +20,16 @@ public class PlayerManager : MonoBehaviour
     {
         spawnPosition = new Vector3(spawn.position.x,player.transform.position.y, spawn.position.z);
         player.transform.position = spawnPosition;
+        movement = player.GetComponent<PlayerMovement>();
+    }
+
+    void Update()
+    {
+        if (!movement.LevelBoundary.Contains(player.transform.position))
+        {
+            Debug.Log("works");
+            Respawn();
+        }
     }
 
     /// <summary>
@@ -34,6 +46,6 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-        transform.position = spawnPosition;
+        player.transform.position = spawnPosition;
     }
 }

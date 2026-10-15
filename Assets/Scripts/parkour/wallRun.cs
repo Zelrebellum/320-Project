@@ -33,13 +33,11 @@ public class wallRun : MonoBehaviour
     private bool leftWall = false;
     private bool rightWall = false;
 
-    [SerializeField]
-    private bool onWall = true;
+    [SerializeField] private bool onWall = true;
 
     [SerializeField] private int wallRunFOV;
     [SerializeField] private float FOVfade;
 
-    [SerializeField]
     private float initialHeight = 0;
 
     void Start()
@@ -79,7 +77,7 @@ public class wallRun : MonoBehaviour
         
         transform.rotation = rotation;
 
-        movement.speed = increaseSpeed;
+        movement.targetSpeed = increaseSpeed;
         onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 3.0f, wallJumpLayer);
 
         if (transform.position.y < initialHeight + 3.5f)

@@ -118,10 +118,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.65233016
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.15233016}
 --- !u!54 &1603732446468184169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   sprintSpeed: 8
   jumpForce: 3
   topSpeed: 50
-  speed: 5
+  targetSpeed: 0
   acceleration: 20
   currentSpeed: 0
   airborne: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   uiCanvas: {fileID: 0}
   fadeIconTime: 1.1
+  levelBoundary: {fileID: 0}
 --- !u!114 &1124682501939721075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +255,6 @@ MonoBehaviour:
   onWall: 1
   wallRunFOV: 120
   FOVfade: 15
-  initialHeight: 0
 --- !u!114 &1908503597326903813
 MonoBehaviour:
   m_ObjectHideFlags: 0

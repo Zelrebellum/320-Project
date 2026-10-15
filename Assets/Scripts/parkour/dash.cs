@@ -32,7 +32,7 @@ public class dash : MonoBehaviour
     void Start()
     {
         movement = gameObject.GetComponent<PlayerMovement>();
-        startSpeed = movement.speed;
+        startSpeed = movement.targetSpeed;
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
         hudCooldown = movement.UI.HudCooldown.GetComponent<RectTransform>();
@@ -85,7 +85,14 @@ public class dash : MonoBehaviour
 
         Vector3 position = transform.position;
         position += camControl.Camera.transform.forward * 3f;
-        transform.position = position;
+        if (movement.LevelBoundary.Contains(position))
+        {
+            rBody.MovePosition(position);
+        }
+        else
+        {
+            return;
+        }
         dashing = true;
         coolDown = dashTime;
         camControl.EnableFOV(dashFOV, 75f);
