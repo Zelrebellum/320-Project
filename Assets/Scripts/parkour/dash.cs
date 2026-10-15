@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,7 @@ public class dash : MonoBehaviour
         get => coolDown;
     }
     private PlayerMovement movement;
+    private PlayerSlowdown slowdown;
 
     private Rigidbody rBody;
 
@@ -36,6 +38,8 @@ public class dash : MonoBehaviour
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
         hudCooldown = movement.UI.HudCooldown.GetComponent<RectTransform>();
+        slowdown = gameObject.GetComponent<PlayerSlowdown>();
+        startSpeed = movement.targetSpeed;
     }
 
     // Update is called once per frame
@@ -60,17 +64,24 @@ public class dash : MonoBehaviour
         {
             scale.x = 1;
             dashing = false;
+            //movement.targetSpeed = startSpeed;
         }
         hudCooldown.localScale = scale;
         /*if (waitTimer >= dashTime)
         {
             dashing = false;
-            movement.speed = startSpeed;
+            movement.targetSpeed = startSpeed;
             waitTimer = 0;
         }
 
         waitTimer += Time.deltaTime;*/
 
+    }
+
+    public void ResetDash()
+    {
+        dashing = false;
+        coolDown = 0;
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -85,15 +96,16 @@ public class dash : MonoBehaviour
 
         Vector3 position = transform.position;
         position += camControl.Camera.transform.forward * 3f;
-        if (movement.LevelBoundary.Contains(position))
-        {
-            rBody.MovePosition(position);
-        }
-        else
+        if (!movement.LevelBoundary.Contains(position))
         {
             return;
         }
+        rBody.MovePosition(position);
+        Debug.Log("DASHED!");
+        slowdown.ReduceSlowdown(20);
         dashing = true;
+        //startSpeed = movement.targetSpeed;
+      //  movement.targetSpeed = increaseSpeed;
         coolDown = dashTime;
         camControl.EnableFOV(dashFOV, 75f);
     }

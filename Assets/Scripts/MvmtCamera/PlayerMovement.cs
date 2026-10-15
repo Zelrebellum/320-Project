@@ -41,9 +41,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     
     public Vector2 moveDirection = Vector2.zero;
-
     private wallRun wall;
     [SerializeField] private Canvas uiCanvas;
+    [SerializeField] private PlayerSlowdown slowdownScript;
 
     [SerializeField] private float fadeIconTime;
 
@@ -79,19 +79,27 @@ public class PlayerMovement : MonoBehaviour
         postureIcon = UI.PostureIcon;
         crouchIcon = UI.CrouchIcon;
         holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
+
+        slowdownScript = GetComponent<PlayerSlowdown>();
+
     }
 
     private void FixedUpdate()
     {
         airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
 
-        Acceleration();
-
         if (isSprinting)
         {
             targetSpeed = sprintSpeed;
+            targetSpeed = sprintSpeed * slowdownScript.GetSpeedMultiplier();
         }
-        
+        else 
+        { 
+            targetSpeed = walkSpeed;
+        }
+
+        Acceleration();
+
         Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
         velocity *= currentSpeed * Time.fixedDeltaTime;
 
@@ -190,7 +198,18 @@ public class PlayerMovement : MonoBehaviour
         Vector4 color = postureIcon.GetComponent<Image>().color;
         color.w = (fadeTimer) / fadeIconTime;
         postureIcon.GetComponent<Image>().color = color;
+    }
 
+    public void ResetMovement()
+    {
+        currentSpeed = 0;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        moveDirection = Vector2.zero;
+        if (isCrouching)
+        {
+            Stand();
+        }
     }
     
     //event function
