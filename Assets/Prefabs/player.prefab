@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5176416108548706402}
   - component: {fileID: 939205909518187893}
   - component: {fileID: 1908503597326903813}
+  - component: {fileID: 4457880705017223605}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -193,6 +194,7 @@ MonoBehaviour:
   crouchingHeight: 1.5
   moveDirection: {x: 0, y: 0}
   uiCanvas: {fileID: 0}
+  slowdownScript: {fileID: 0}
   fadeIconTime: 1.1
   levelBoundary: {fileID: 0}
 --- !u!114 &1124682501939721075
@@ -272,6 +274,25 @@ MonoBehaviour:
   dashTime: 3
   dashFOV: 120
   FOVfade: 15
+--- !u!114 &4457880705017223605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632353901539845077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be54c45c97718a14da415f8926abbbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
+  slowdownMeter: 0
+  maxSlowdown: 100
+  accumulationRate: 12.5
+  recoveryRate: 10
+  recoveryDelay: 3
+  maxSpeedPenalty: 0.8
+  playerManager: {fileID: 0}
 --- !u!1 &3724390532522663585
 GameObject:
   m_ObjectHideFlags: 0
