@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e677876f7bc83554abd9561027cdbb7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e23379f82ccf364b809c41732cce23f, type: 2}
     - target: {fileID: 919132149155446097, guid: e677876f7bc83554abd9561027cdbb7b, type: 3}
       propertyPath: m_Name
       value: SlothPlane
