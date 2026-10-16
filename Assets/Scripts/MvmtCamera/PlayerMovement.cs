@@ -38,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchingHeight = 1.5f;
     private bool isCrouching = false;
 
+    public bool IsCrouching
+    {
+        get => isCrouching;
+    }
+
     private Rigidbody rb;
     
     public Vector2 moveDirection = Vector2.zero;
@@ -229,8 +234,8 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if (!context.performed || 
-            (airborne &&
-            !wall.Wallrunning))
+            (airborne && !wall.Wallrunning) || 
+            isCrouching)
         {
             return;
         }

@@ -89,7 +89,9 @@ public class dash : MonoBehaviour
         // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
         if (!context.performed
          || dashing 
-         || coolDown > 0.0f)
+         || coolDown > 0.0f 
+         || movement.IsCrouching
+         )
         {
             return;
         }

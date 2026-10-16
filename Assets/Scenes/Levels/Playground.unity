@@ -513,16 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b22c3d04ab32594192f34a60b5a26f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathwallManager
-  manager: {fileID: 1095802842}
-  startPos: {fileID: 205790441}
-  endPos: {fileID: 1184433263}
-  intensity: 0.25
-  isLooping: 1
---- !u!4 &205790441 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 908362644434144096, guid: 49351f714d43c45439d3230c62d5651f, type: 3}
-  m_PrefabInstance: {fileID: 1560441934058132749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &247167177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1788,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1095802846}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: OnReset
         m_Mode: 0
@@ -1889,17 +1879,17 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1095802846 stripped
+--- !u!114 &1099706281 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8456121553774728439, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
-  m_PrefabInstance: {fileID: 8187540711417931906}
+  m_CorrespondingSourceObject: {fileID: 8196383448587007693, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+  m_PrefabInstance: {fileID: 6610805827632204005}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095802842}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc5d2dd48e03d940a47449708376288, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ef1ead72ba3e04f9931b5ff4edfca9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  m_EditorClassIdentifier: Assembly-CSharp::SlowdownOverlay
 --- !u!1 &1103164687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527e0313333491d47bb17aff76f25a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSceneManager
-  nextLevel: Test Level
 --- !u!64 &1225728642
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2347,6 +2336,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1241028129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6767730885577241956, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+  m_PrefabInstance: {fileID: 6610805827632204005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae13af5677ee9454abb902d795f42069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlinkTransition
 --- !u!4 &1262695001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4395649037417434124, guid: 9f33133a3577ef54881ab9598af996e8, type: 3}
@@ -4882,6 +4882,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 8196383448587007693, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 465896477}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4939,6 +4943,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7646445902442969793, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 162033264}
+    - target: {fileID: 7646445902442969793, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 465896477}
+    - target: {fileID: 7646445902442969793, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
+      propertyPath: blinkTransition
+      value: 
+      objectReference: {fileID: 1241028129}
+    - target: {fileID: 7646445902442969793, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
+      propertyPath: slowdownOverlay
+      value: 
+      objectReference: {fileID: 1099706281}
     - target: {fileID: 8456121553774728439, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: spawn
       value: 
