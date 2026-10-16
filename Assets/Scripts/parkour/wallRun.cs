@@ -44,7 +44,7 @@ public class wallRun : MonoBehaviour
     {
         movement = gameObject.GetComponent<PlayerMovement>();
         rBody = gameObject.GetComponent<Rigidbody>();
-        camControl = gameObject.GetComponentInParent<CameraController>();
+        camControl = gameObject.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
