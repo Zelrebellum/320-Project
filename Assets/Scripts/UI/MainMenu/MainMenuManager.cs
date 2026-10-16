@@ -40,7 +40,7 @@ public class MainMenuManager : MonoBehaviour
         fadePanel.alpha = 1f;
 
         // Load the game scene
-        SceneManager.LoadScene("Playground");
+        SceneManager.LoadScene("Sloth");
     }
 
     /// <summary>
