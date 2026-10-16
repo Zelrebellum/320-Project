@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279976892252343979}
   - component: {fileID: 4226774371252720669}
-  - component: {fileID: 7646445902442969793}
+  - component: {fileID: 1639505233908690053}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -227,7 +227,19 @@ MonoBehaviour:
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: bf902f74-6357-4459-b4f7-b94089aee857
     m_ActionName: 'Player/Settings[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -235,7 +247,7 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7646445902442969793
+--- !u!114 &1639505233908690053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

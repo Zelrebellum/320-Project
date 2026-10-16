@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 9124167342207275202}
   - component: {fileID: 1776921085756219078}
   - component: {fileID: 2023586848468160708}
-  - component: {fileID: 327283605907186703}
+  - component: {fileID: 3278298876503076003}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -331,7 +331,8 @@ MonoBehaviour:
   crouchingHeight: 1.5
   moveDirection: {x: 0, y: 0}
   uiCanvas: {fileID: 0}
-  fadeIconTime: 1.5
+  slowdownScript: {fileID: 3278298876503076003}
+  fadeIconTime: 3
   levelBoundary: {fileID: 0}
 --- !u!114 &194126818326946098
 MonoBehaviour:
@@ -388,11 +389,11 @@ MonoBehaviour:
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 3
-  wallRunTime: 3
+  wallRunTime: 0
   timer: 0
   onWall: 1
   wallRunFOV: 120
-  FOVfade: 3
+  FOVfade: 1.5
 --- !u!114 &2023586848468160708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,8 +410,8 @@ MonoBehaviour:
   dashing: 0
   dashTime: 3
   dashFOV: 120
-  FOVfade: 3
---- !u!114 &327283605907186703
+  FOVfade: 1.5
+--- !u!114 &3278298876503076003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
