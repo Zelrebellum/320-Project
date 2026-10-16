@@ -30,6 +30,8 @@ public class dash : MonoBehaviour
 
     private CameraController camControl;
 
+    private wallRun wall;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +41,7 @@ public class dash : MonoBehaviour
         camControl = gameObject.GetComponent<CameraController>();
         hudCooldown = movement.UI.HudCooldown.GetComponent<RectTransform>();
         slowdown = gameObject.GetComponent<PlayerSlowdown>();
+        wall = gameObject.GetComponent<wallRun>();
         startSpeed = movement.targetSpeed;
     }
 
@@ -91,6 +94,7 @@ public class dash : MonoBehaviour
          || dashing 
          || coolDown > 0.0f 
          || movement.IsCrouching
+         || wall.Wallrunning
          )
         {
             return;

@@ -60,7 +60,7 @@ public class climbScript : MonoBehaviour
             Vector3 trend = distanceToLedge - prevDistance;*/
 
 
-            if (bottom < hitInfo.transform.position.y + hitInfo.transform.localScale.y)
+            if (bottom < hitInfo.transform.position.y)
             {
                 position.y += climbSpeed * Time.deltaTime;
                 transform.position = position;
@@ -92,15 +92,15 @@ public class climbScript : MonoBehaviour
         Vector3 topPosition = transform.position;
         topPosition.y += transform.localScale.y;
 
-        bool hit = Physics.Raycast(topPosition, transform.forward * 1.3f, out hitInfo, scaleDistance.x, groundLayer);
+        bool hit = Physics.Raycast(topPosition, transform.forward * 2f, out hitInfo, scaleDistance.x, groundLayer);
 
         // is there something on the ground layer close enough to us in the local forward position?
         if (!hit)
         {
             return;
         }
-
-        float ledge = Mathf.Abs((hitInfo.transform.position.y + hitInfo.transform.localScale.y) - (topPosition.y));
+        // THIS IS HARDCODED AND DUMB PLEASE CHANGE IT PLEASE IT DOESNT WORK 4 NORMAL THINGS PLEASE PLEASE PLEASE
+        float ledge = Mathf.Abs((hitInfo.transform.position.y - 2.0f) - (topPosition.y));
 
         // if the ledge's height is close enough, but not *too* close, mantle it. prevents the wibblewobblies on jumping when tuned well.
         if (ledge <= scaleDistance.y && ledge > scaleDistance.z)

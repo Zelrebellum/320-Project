@@ -105,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
 
         Acceleration();
 
-        Vector3 velocity = transform.right * moveDirection.x + transform.forward * moveDirection.y;
+        Vector3 velocity = transform.right * moveDirection.x;
+        velocity += transform.forward * moveDirection.y;
         velocity *= currentSpeed * Time.fixedDeltaTime;
 
         Vector3 newPosition = rb.position + velocity;

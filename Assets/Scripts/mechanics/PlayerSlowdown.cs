@@ -19,7 +19,9 @@ public class PlayerSlowdown : MonoBehaviour
     
     private float recoveryTimer = 0.0f;
 
+    [SerializeField]
     private bool inSwamp = false;
+    [SerializeField]
     private bool isSafe = false;
     private bool atEnd = false;
     [SerializeField] PlayerManager playerManager;

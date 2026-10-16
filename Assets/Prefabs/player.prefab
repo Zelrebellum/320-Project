@@ -194,7 +194,6 @@ MonoBehaviour:
   crouchingHeight: 1.5
   moveDirection: {x: 0, y: 0}
   uiCanvas: {fileID: 0}
-  slowdownScript: {fileID: 0}
   fadeIconTime: 1.1
   levelBoundary: {fileID: 0}
 --- !u!114 &1124682501939721075
@@ -231,7 +230,7 @@ MonoBehaviour:
     m_Bits: 64
   scaleWallLimit: {x: 1.5, y: 1.5, z: 1.5}
   scaleDistance: {x: 2, y: 2, z: 0.5}
-  climbSpeed: 16
+  climbSpeed: 13
   scaleTime: 0.5
 --- !u!114 &939205909518187893
 MonoBehaviour:
@@ -252,7 +251,7 @@ MonoBehaviour:
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 1
-  wallRunTime: 3
+  wallRunTime: 8
   timer: 0
   onWall: 1
   wallRunFOV: 120
@@ -292,6 +291,8 @@ MonoBehaviour:
   recoveryRate: 10
   recoveryDelay: 3
   maxSpeedPenalty: 0.8
+  inSwamp: 0
+  isSafe: 0
   playerManager: {fileID: 0}
 --- !u!1 &3724390532522663585
 GameObject:
@@ -336,8 +337,8 @@ Camera:
   m_GameObject: {fileID: 3724390532522663585}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -359,7 +360,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 50
+  far clip plane: 150
   field of view: 90
   orthographic: 0
   orthographic size: 5

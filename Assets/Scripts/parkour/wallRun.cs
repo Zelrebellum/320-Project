@@ -38,6 +38,8 @@ public class wallRun : MonoBehaviour
     [SerializeField] private int wallRunFOV;
     [SerializeField] private float FOVfade;
 
+    public bool atHeight = false;
+
     private float initialHeight = 0;
 
     void Start()
@@ -80,14 +82,14 @@ public class wallRun : MonoBehaviour
         movement.targetSpeed = increaseSpeed;
         onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 5.0f, wallJumpLayer);
 
-        if (transform.position.y < initialHeight + 3.5f)
+        if (transform.position.y < initialHeight + 10.0f)
         {
             return;
         }
-
-        Vector3 position = transform.position;
-        position.y = initialHeight + 3.5f;
-        transform.position = position;
+        atHeight = true;
+        // Vector3 position = transform.position;
+        // position.y = initialHeight + 3.5f;
+        // transform.position = position;
 
     }
 
