@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 9124167342207275202}
   - component: {fileID: 1776921085756219078}
   - component: {fileID: 2023586848468160708}
-  - component: {fileID: 327283605907186703}
+  - component: {fileID: 3278298876503076003}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -330,9 +330,6 @@ MonoBehaviour:
     m_Bits: 64
   crouchingHeight: 1.5
   moveDirection: {x: 0, y: 0}
-  uiCanvas: {fileID: 0}
-  fadeIconTime: 1.5
-  levelBoundary: {fileID: 0}
 --- !u!114 &194126818326946098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,11 +385,6 @@ MonoBehaviour:
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 3
-  wallRunTime: 3
-  timer: 0
-  onWall: 1
-  wallRunFOV: 120
-  FOVfade: 3
 --- !u!114 &2023586848468160708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,24 +400,3 @@ MonoBehaviour:
   increaseSpeed: 20
   dashing: 0
   dashTime: 3
-  dashFOV: 120
-  FOVfade: 3
---- !u!114 &327283605907186703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7183149359934107357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be54c45c97718a14da415f8926abbbb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
-  slowdownMeter: 0
-  maxSlowdown: 100
-  accumulationRate: 12.5
-  recoveryRate: 10
-  recoveryDelay: 3
-  maxSpeedPenalty: 0.8
-  playerManager: {fileID: 0}
