@@ -20,10 +20,10 @@ public class OverlayManager : MonoBehaviour
         //    Debug.LogError("OverlayManager: Mud Image is missing!", this);
         //}
 
-        if (handsImage == null)
-        {
-            Debug.LogError("OverlayManager: Hands Image is missing!", this);
-        }
+        //if (handsImage == null)
+        //{
+        //    Debug.LogError("OverlayManager: Hands Image is missing!", this);
+        //}
 
         if (darknessImage == null)
         {
@@ -39,7 +39,6 @@ public class OverlayManager : MonoBehaviour
         {
             Debug.LogError("OverlayManager: Player reference is missing!", this);
         }
-
     }
 
     // Update is called once per frame

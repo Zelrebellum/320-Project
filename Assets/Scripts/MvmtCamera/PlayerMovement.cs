@@ -221,8 +221,6 @@ public class PlayerMovement : MonoBehaviour
     //event function
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("MOVING!");
-
         moveDirection = context.ReadValue<Vector2>();
 
         if (wall.Wallrunning)

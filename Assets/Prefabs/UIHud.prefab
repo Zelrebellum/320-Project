@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &150054662628989562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -684,9 +684,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25c27747640fd418353a5f03c7364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverlayManager
-  mudImage: {fileID: 0}
+  mudImage: {fileID: 1547625450753134389}
   handsImage: {fileID: 0}
-  darknessImage: {fileID: 0}
+  darknessImage: {fileID: 6083506664409354857}
   slowdown: {fileID: 8196383448587007693}
   player: {fileID: 0}
 --- !u!224 &6215484871829132658 stripped

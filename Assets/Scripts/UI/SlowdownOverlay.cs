@@ -23,9 +23,10 @@ public class SlowdownOverlay : MonoBehaviour
         darknessImage = overlayManager.GetDarknessImage();
 
         currentImage = mudImage;
-        Color color = handsImage.color;
-        color.a = 0;
-        handsImage.color = color;
+
+        //Color color = handsImage.color;
+        //color.a = 0;
+        //handsImage.color = color;
     }
 
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class SlowdownOverlay : MonoBehaviour
             return;
         }
 
-        if(slowdown.AtEnd && currentImage != handsImage) { SwitchOverlay(handsImage); }
+        if (slowdown.AtEnd && currentImage != handsImage) { SwitchOverlay(handsImage);}
         if (!slowdown.AtEnd && currentImage != mudImage) { SwitchOverlay(mudImage); }
 
         UpdateOverlay(slowdown.GetSlowdownPercentage());

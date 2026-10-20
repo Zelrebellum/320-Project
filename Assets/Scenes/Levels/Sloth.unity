@@ -3588,6 +3588,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3676240814595081166, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 242000358}
     - target: {fileID: 7137139620788129005, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: m_Name
       value: UIHud
