@@ -221,6 +221,8 @@ public class PlayerMovement : MonoBehaviour
     //event function
     public void OnMove(InputAction.CallbackContext context)
     {
+        Debug.Log("MOVING!");
+
         moveDirection = context.ReadValue<Vector2>();
 
         if (wall.Wallrunning)
@@ -233,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-
+        Debug.Log("JUMPING!");
         if (!context.performed || 
             (airborne && !wall.Wallrunning) || 
             isCrouching)

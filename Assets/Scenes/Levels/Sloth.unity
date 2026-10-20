@@ -3592,10 +3592,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIHud
       objectReference: {fileID: 0}
-    - target: {fileID: 7137139620788129005, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7530080874658388989, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
