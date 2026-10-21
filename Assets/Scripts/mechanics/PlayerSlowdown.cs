@@ -24,6 +24,7 @@ public class PlayerSlowdown : MonoBehaviour
     [SerializeField]
     private bool isSafe = false;
     private bool atEnd = false;
+    public bool AtEnd { get { return atEnd; } }
     [SerializeField] PlayerManager playerManager;
     
     private dash dash;
