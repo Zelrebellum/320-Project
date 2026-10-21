@@ -51,6 +51,9 @@ public class CameraController : MonoBehaviour
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         startFOV = playerCam.fieldOfView;
         currentFOV = startFOV;
+
+        // get sensitivity from saved
+        ChangeSensitivity(PlayerPrefs.GetFloat("MouseSensitivity", 1f));
     }
 
     public void Update()

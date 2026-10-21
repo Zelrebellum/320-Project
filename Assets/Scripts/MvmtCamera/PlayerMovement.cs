@@ -251,27 +251,35 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
-        if (!holdCrouch && !context.performed)
-        {
-            return;
-        }
-        else if (holdCrouch && context.performed)
-        {
-            isCrouching = false;
-        }
-        else if (holdCrouch && context.canceled)
-        {
-            isCrouching = true;
-        }
+        // 0 = Hold, 1 = Toggle
+        bool toggleCrouch = PlayerPrefs.GetInt("CrouchMode", 0) == 1;
 
-        if (isCrouching)
+        if (toggleCrouch)
         {
-            Stand();
+            // Press once to crouch, press again to stand
+            if (context.performed)
+            {
+                if (isCrouching)
+                {
+                    Stand();
+                }
+                else
+                {
+                    Crouch();
+                }
+            }
         }
         else
         {
-            Crouch();
+            // Press to crouch, release to stand
+            if (context.performed && !isCrouching)
+            {
+                Crouch();
+            }
+            else if (context.canceled && isCrouching)
+            {
+                Stand();
+            }
         }
     }
 

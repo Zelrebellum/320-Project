@@ -5,16 +5,19 @@ public class SensitivitySettings : MonoBehaviour
 {
     [SerializeField] private Slider sensitivitySlider;
 
+    private CameraController cameraController;
+
     /// <summary>
     /// Load the saved sensitivity when Settings opens
     /// </summary>
     private void OnEnable()
     {
-        float sensitivity =
-            PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
 
         sensitivitySlider.SetValueWithoutNotify(sensitivity);
         sensitivitySlider.onValueChanged.AddListener(ChangeSensitivity);
+
+        cameraController = FindAnyObjectByType<CameraController>();
     }
 
     /// <summary>
@@ -33,5 +36,15 @@ public class SensitivitySettings : MonoBehaviour
     private void ChangeSensitivity(float sensitivity)
     {
         PlayerPrefs.SetFloat("MouseSensitivity", sensitivity);
+
+        if (cameraController == null)
+        {
+            cameraController = FindAnyObjectByType<CameraController>();
+        }
+
+        if (cameraController != null)
+        {
+            cameraController.ChangeSensitivity(sensitivity);
+        }
     }
 }
