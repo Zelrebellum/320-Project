@@ -80,9 +80,24 @@ public class wallRun : MonoBehaviour
         transform.rotation = rotation;
 
         movement.targetSpeed = increaseSpeed;
-        onWall = Physics.Raycast(transform.position, -transform.up, out hitInfo, 5.0f, wallJumpLayer);
 
-        if (transform.position.y < initialHeight + 10.0f)
+        Vector3 positionCheck = Vector3.zero;
+        Vector3 rayDirection = Vector3.zero;
+        positionCheck = transform.position;
+        positionCheck.y -= transform.localScale.y;
+        if (leftWall)
+        {
+            rayDirection = -transform.up;
+            rayDirection = new Vector3((rayDirection.x + -transform.right.x)/ 2.0f, (rayDirection.y + -transform.right.y)/ 2.0f, (rayDirection.z + -transform.right.z)/ 2.0f);
+        }
+        else if (rightWall)
+        {
+            rayDirection = -transform.up;
+            rayDirection = new Vector3((rayDirection.x + transform.right.x)/ 2.0f, (rayDirection.y + transform.right.y)/ 2.0f, (rayDirection.z + transform.right.z)/ 2.0f);
+        }
+        onWall = Physics.Raycast(positionCheck, rayDirection, out hitInfo, 2.5f, wallJumpLayer);
+
+        if (transform.position.y < initialHeight + 3.0f)
         {
             return;
         }

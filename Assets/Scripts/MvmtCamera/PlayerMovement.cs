@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
+        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, transform.localScale.y + 0.3f, groundLayer);
 
         if (isSprinting)
         {

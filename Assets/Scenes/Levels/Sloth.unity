@@ -22600,7 +22600,11 @@ PrefabInstance:
       objectReference: {fileID: 1368200973}
     - target: {fileID: 939205909518187893, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: wallJumpDistance
-      value: 5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22608,7 +22612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.55779
+      value: 10.03
       objectReference: {fileID: 0}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22650,6 +22654,14 @@ PrefabInstance:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 1014216072}
+    - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: scaleDistance.y
+      value: 4.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: scaleDistance.z
+      value: 1.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
