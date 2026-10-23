@@ -10,9 +10,6 @@ public class climbScript : MonoBehaviour
     private LayerMask groundLayer;
 
     [SerializeField]
-    private Vector3 scaleWallLimit;
-
-    [SerializeField]
     private Vector3 scaleDistance;
 
     [SerializeField, Range(0, 20)]
@@ -21,6 +18,8 @@ public class climbScript : MonoBehaviour
     private PlayerMovement movement;
 
     private Rigidbody rBody;
+
+    [SerializeField]
     private bool climbing = false;
     private RaycastHit hitInfo;
 
@@ -42,12 +41,18 @@ public class climbScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // if we're not airborne, go to next update
+        if (!movement.Airborne)
+        {
+            return;
+        }
         // if we're climbing, ignore everything else and just climb 
         if (climbing)
         {
             Vector3 position = transform.position;
 
-            float bottom = (transform.position.y - transform.localScale.y);
+            float bottom = transform.position.y - transform.localScale.y;
             float top = transform.position.y + transform.localScale.y;
 
             /*Vector3 distanceToLedge = hitInfo.transform.position - transform.position;
@@ -59,11 +64,10 @@ public class climbScript : MonoBehaviour
 
             Vector3 trend = distanceToLedge - prevDistance;*/
 
-
-            if (bottom < hitInfo.transform.position.y)
+            if (bottom < hitInfo.transform.position.y + hitInfo.collider.bounds.size.y)
             {
                 position.y += climbSpeed * Time.deltaTime;
-                transform.position = position;
+                rBody.MovePosition(position);
             }
             else
             {
@@ -82,16 +86,10 @@ public class climbScript : MonoBehaviour
             waitTime -= Time.deltaTime;
             return;
         }
-
-        // if we're not airborne, go to next update
-        if (!movement.Airborne)
-        {
-            return;
-        }
         
         Vector3 topPosition = transform.position;
-        topPosition.y += transform.localScale.y / 2f ;
-        bool hit = Physics.Raycast(topPosition, transform.forward * 2f, out hitInfo, scaleDistance.x, groundLayer);
+        topPosition.y += transform.localScale.y;
+        bool hit = Physics.Raycast(transform.position, transform.forward, out hitInfo, scaleDistance.x, groundLayer);
 
         // is there something on the ground layer close enough to us in the local forward position?
         if (!hit)
@@ -99,8 +97,7 @@ public class climbScript : MonoBehaviour
             return;
         }
         // THIS IS HARDCODED AND DUMB PLEASE CHANGE IT PLEASE IT DOESNT WORK 4 NORMAL THINGS PLEASE PLEASE PLEASE
-        float ledge = Mathf.Abs((hitInfo.transform.position.y - 2.0f) - (topPosition.y));
-
+        float ledge = Mathf.Abs(( hitInfo.transform.position.y + hitInfo.collider.bounds.size.y) - topPosition.y);
         // if the ledge's height is close enough, but not *too* close, mantle it. prevents the wibblewobblies on jumping when tuned well.
         if (ledge <= scaleDistance.y && ledge > scaleDistance.z)
         {
