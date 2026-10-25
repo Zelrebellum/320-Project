@@ -64,7 +64,7 @@ public class climbScript : MonoBehaviour
 
             Vector3 trend = distanceToLedge - prevDistance;*/
 
-            if (bottom < hitInfo.transform.position.y + hitInfo.collider.bounds.size.y)
+            if (bottom < hitInfo.collider.bounds.center.y + hitInfo.collider.bounds.size.y/2)
             {
                 position.y += climbSpeed * Time.deltaTime;
                 rBody.MovePosition(position);
@@ -97,7 +97,9 @@ public class climbScript : MonoBehaviour
             return;
         }
         // THIS IS HARDCODED AND DUMB PLEASE CHANGE IT PLEASE IT DOESNT WORK 4 NORMAL THINGS PLEASE PLEASE PLEASE
-        float ledge = Mathf.Abs(( hitInfo.transform.position.y + hitInfo.collider.bounds.size.y) - topPosition.y);
+        float ledge = Mathf.Abs(( hitInfo.collider.bounds.center.y + hitInfo.collider.bounds.size.y/2) - transform.position.y);
+
+        Debug.Log(ledge);
         // if the ledge's height is close enough, but not *too* close, mantle it. prevents the wibblewobblies on jumping when tuned well.
         if (ledge <= scaleDistance.y && ledge > scaleDistance.z)
         {

@@ -19810,7 +19810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22538,6 +22538,18 @@ PrefabInstance:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 1014216072}
+    - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: climbSpeed
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: scaleDistance.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: scaleDistance.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

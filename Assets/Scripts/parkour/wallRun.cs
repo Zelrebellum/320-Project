@@ -33,10 +33,14 @@ public class wallRun : MonoBehaviour
     private bool leftWall = false;
     private bool rightWall = false;
 
-    [SerializeField] private bool onWall = true;
+    private bool onWall = true;
 
     [SerializeField] private int wallRunFOV;
     [SerializeField] private float FOVfade;
+    Vector3 positionCheck = Vector3.zero;
+    Vector3 rayDirection = Vector3.zero;
+
+    [SerializeField, Range(0, 5)] private float maximumHeight;
 
     public bool atHeight = false;
 
@@ -55,6 +59,7 @@ public class wallRun : MonoBehaviour
         // if we're not wall running, skip everything
         if (!wallrunning)
         {
+            rBody.constraints = (RigidbodyConstraints) 112;
             currentAngle = 0;
             rBody.useGravity = true;
             return;
@@ -81,31 +86,26 @@ public class wallRun : MonoBehaviour
 
         movement.targetSpeed = increaseSpeed;
 
-        Vector3 positionCheck = Vector3.zero;
-        Vector3 rayDirection = Vector3.zero;
         positionCheck = transform.position;
         positionCheck.y -= transform.localScale.y;
-        if (leftWall)
-        {
-            rayDirection = -transform.up;
-            rayDirection = new Vector3((rayDirection.x + -transform.right.x)/ 2.0f, (rayDirection.y + -transform.right.y)/ 2.0f, (rayDirection.z + -transform.right.z)/ 2.0f);
-        }
-        else if (rightWall)
-        {
-            rayDirection = -transform.up;
-            rayDirection = new Vector3((rayDirection.x + transform.right.x)/ 2.0f, (rayDirection.y + transform.right.y)/ 2.0f, (rayDirection.z + transform.right.z)/ 2.0f);
-        }
-        onWall = Physics.Raycast(positionCheck, rayDirection, out hitInfo, 2.5f, wallJumpLayer);
 
-        if (transform.position.y < initialHeight + 3.0f)
+        int side = leftWall ? -1: 1;
+
+        rayDirection = -transform.up;
+        rayDirection = new Vector3((rayDirection.x + transform.right.x * side)/ 2.0f, (rayDirection.y + transform.right.y * side)/ 2.0f, (rayDirection.z + transform.right.z * side)/ 2.0f);
+        onWall = Physics.Raycast(positionCheck, rayDirection, out hitInfo, wallJumpDistance, wallJumpLayer);
+
+        if (transform.position.y < initialHeight + maximumHeight)
         {
+            rBody.constraints = (RigidbodyConstraints) 112;
+            atHeight = false;
             return;
         }
         atHeight = true;
-        // Vector3 position = transform.position;
-        // position.y = initialHeight + 3.5f;
-        // transform.position = position;
 
+        // I HATE C# WITH EVERY FIBER IN MY BEING WHAT DO YOU MEAN I CANT ADD ENUMS THEY ARE INTS 
+        // OH MY GOD WHY DO I HAVE TO CAST IT ITS AN INT OHHHHHHHHHH MY GODDDDDDDDDDDDDDDDDDDDDDDDDDD
+        rBody.constraints = (RigidbodyConstraints) 116;
     }
 
     // list for what i need to do to implement this 4 now
@@ -134,15 +134,9 @@ public class wallRun : MonoBehaviour
         leftWall = Physics.Raycast(transform.position, left, out hitInfo, wallJumpDistance, wallJumpLayer);
         rightWall = Physics.Raycast(transform.position, right, out hitInfo, wallJumpDistance, wallJumpLayer);
 
-        if (leftWall)
-        {
-            currentAngle = -15f;
-        }
-        else if (rightWall)
-        {
-            currentAngle = 15f;
-        }
-        else
+        currentAngle = 15 * (leftWall ? -1 : 1);
+
+        if (!leftWall && !rightWall)
         {
             return;
         }
@@ -176,6 +170,8 @@ public class wallRun : MonoBehaviour
         
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(75.0f, Vector3.up) * transform.forward * 1.5f);
+
+        Gizmos.DrawRay(positionCheck, rayDirection * wallJumpDistance);
 
     }
 
