@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float defaultHeight;
     private Vector3 defaultCenter;
     [SerializeField] private float crouchingHeight = 1.5f;
-    private bool isCrouching = false;
+    [SerializeField] private bool isCrouching = false;
 
     public bool IsCrouching
     {
@@ -154,6 +154,11 @@ public class PlayerMovement : MonoBehaviour
         color.w = 1.0f;
         postureIcon.GetComponent<Image>().color = color;
     }
+
+    private void Slide()
+    {
+        rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
+    }
     
 
     private void Acceleration()
@@ -252,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnCrouch(InputAction.CallbackContext context)
     {
         holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
-        if (!holdCrouch && !context.performed)
+        if ((!holdCrouch && !context.performed) || wall.Wallrunning)
         {
             return;
         }
@@ -272,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Crouch();
+            Slide();
         }
     }
 
