@@ -1,17 +1,19 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
+    [Header("Panel References")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject pauseMenuContent;
     [SerializeField] private GameObject settingsPanel;
 
+    // Allows other scripts to read the pause state.
+    // Only this class can change its value.
     public static bool IsPaused { get; private set; }
 
     /// <summary>
-    /// Start with the pause menu hidden
+    /// Starts with the pause menu hidden and gameplay running.
     /// </summary>
     private void Start()
     {
@@ -19,21 +21,12 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Press Escape to pause or resume the game
-    /// </summary>
-    private void Update()
-    {
-        if (BlinkTransition.IsPlaying)
-        {
-            return;
-        }
-    }
-
-    /// <summary>
-    /// Pause the game and show the mouse cursor
+    /// Pauses gameplay, displays the pause menu,
+    /// and releases the mouse cursor.
     /// </summary>
     public void PauseGame()
     {
+        // Always open the main pause menu instead of Settings.
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
 
@@ -46,10 +39,12 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Resume the game and hide the mouse cursor
+    /// Resumes gameplay, hides the pause menu,
+    /// and locks the mouse cursor.
     /// </summary>
     public void ResumeGame()
     {
+        // Reset the menu pages for the next pause.
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
 
@@ -61,31 +56,8 @@ public class PauseMenuManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void Menu(InputAction.CallbackContext context)
-    {
-        if (!context.performed ||
-            BlinkTransition.IsPlaying)
-        {
-            return;
-        }
-        
-        if (IsPaused)
-            ResumeGame();
-        else
-            PauseGame();
-    }
-
     /// <summary>
-    /// Restore the time scale when this object is destroyed
-    /// </summary>
-    private void OnDestroy()
-    {
-        Time.timeScale = 1f;
-        IsPaused = false;
-    }
-
-    /// <summary>
-    /// Show settings and hide the pause menu buttons
+    /// Shows Settings while keeping gameplay paused.
     /// </summary>
     public void OpenSettings()
     {
@@ -94,7 +66,7 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Close settings and show the pause menu buttons
+    /// Returns from Settings to the main pause menu.
     /// </summary>
     public void CloseSettings()
     {
@@ -103,16 +75,26 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Restore the time scale and return to the main menu
+    /// Restores the time scale and returns to the main menu.
     /// </summary>
     public void ReturnToMainMenu()
     {
-        Time.timeScale = 1f;
         IsPaused = false;
+        Time.timeScale = 1f;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         SceneManager.LoadScene("MainMenu");
+    }
+
+    /// <summary>
+    /// Clears the pause state when this object is destroyed,
+    /// including when its scene is unloaded.
+    /// </summary>
+    private void OnDestroy()
+    {
+        IsPaused = false;
+        Time.timeScale = 1f;
     }
 }
