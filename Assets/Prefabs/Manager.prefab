@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   player: {fileID: 0}
-  slowdownOverlay: {fileID: 0}
-  blinkTransition: {fileID: 0}
   spawn: {fileID: 0}
+  levelBoundary: {fileID: 0}
+  blinkTransition: {fileID: 0}
+  slowdownOverlay: {fileID: 0}

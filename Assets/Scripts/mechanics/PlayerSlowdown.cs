@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSlowdown : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 99.0f)]
+    [Header("Slowdown Settings")]
+    [SerializeField, Range(0f, 100f)]
     private float slowdownMeter = 0;
     
     [SerializeField]
@@ -19,51 +20,53 @@ public class PlayerSlowdown : MonoBehaviour
     
     private float recoveryTimer = 0.0f;
 
-    [SerializeField]
     private bool inSwamp = false;
-    [SerializeField]
     private bool isSafe = false;
-    private bool atEnd = false;
-    public bool AtEnd { get { return atEnd; } }
+    private bool atEndZone = false;
+    public bool AtEnd { get { return atEndZone; } }
+
+
+    [Header("References")]
     [SerializeField] PlayerManager playerManager;
     
-    private dash dash;
+    private Dash dash;
 
-    void Awake()
+    private void Awake()
     {
-        dash = gameObject.GetComponent<dash>();
+        dash = GetComponent<Dash>();
     }
-    
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         UpdateSlowdown();
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Entered Swamp");
-        if(other.gameObject.CompareTag("Swamp")){
-           EnterSwamp(); 
+        if (other.gameObject.CompareTag("Swamp"))
+        {
+            EnterSwamp();
         }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        if(other.gameObject.CompareTag("Swamp")){
+        if (other.gameObject.CompareTag("Swamp"))
+        {
             ExitSwamp();
-        }   
+        }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("End"))
         {
             Debug.LogWarning("You did it!");
             dash.enabled = false;
-            atEnd = true;
+            atEndZone = true;
             return;
         }
+
         isSafe = true;
     }
 
@@ -71,49 +74,47 @@ public class PlayerSlowdown : MonoBehaviour
     {
         if (other.CompareTag("End"))
         {
-            atEnd = false;
+            atEndZone = false;
             dash.enabled = true;
             return;
         }
+
         isSafe = false;
     }
-    
-    void EnterSwamp()
+
+    private void EnterSwamp()
     {
         inSwamp = true;
-        recoveryTimer = 0;
+        recoveryTimer = 0f;
     }
 
-    void ExitSwamp()
+    private void ExitSwamp()
     {
         inSwamp = false;
     }
 
-    //reduces slowdown meter automatically by given amount
     public void ReduceSlowdown(float amount)
     {
-        //if isDead
         if (playerManager.IsDead)
         {
             return;
         }
+
         slowdownMeter -= amount;
-        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+        slowdownMeter = Mathf.Clamp(
+            slowdownMeter, 0f, maxSlowdown);
     }
 
-    //updates current slowdown meter based on player status
-    void UpdateSlowdown()
+    private void UpdateSlowdown()
     {
-        //if isDead
         if (playerManager.IsDead)
         {
             return;
         }
-        //while in swamp the slowdown meter builds over time
+
         if (inSwamp && !isSafe)
         {
-            Debug.Log("SWAMPY");
-            if (atEnd)
+            if (atEndZone)
             {
                 accumulationRate = 30f;
             }
@@ -121,53 +122,56 @@ public class PlayerSlowdown : MonoBehaviour
             {
                 accumulationRate = 12.5f;
             }
+
             slowdownMeter += accumulationRate * Time.deltaTime;
-            recoveryTimer = 0;
+            recoveryTimer = 0f;
         }
         else
         {
-            //while out of swamp, recovery timer starts if it hasn't already
-            if(recoveryTimer < recoveryDelay)
+            if (recoveryTimer < recoveryDelay)
             {
-                recoveryTimer += Time.deltaTime; 
+                recoveryTimer += Time.deltaTime;
             }
-            //once delay is finished, slow will start decaying over time
             else
             {
                 slowdownMeter -= recoveryRate * Time.deltaTime;
             }
         }
 
-        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+        slowdownMeter = Mathf.Clamp(
+            slowdownMeter, 0f, maxSlowdown);
 
-        //if slowdown exceeds max value, player will die
-        if(slowdownMeter >= maxSlowdown)
+        if (slowdownMeter >= maxSlowdown)
         {
-            if (atEnd)
+            if (atEndZone)
             {
                 SceneManager.LoadScene("EndingCredits");
             }
+
             playerManager.Die();
         }
     }
 
-    //resets slowdown values to default
     public void ResetSlowdown()
     {
-       slowdownMeter = 0;
-       recoveryTimer = 0;
-       inSwamp = false; 
+        slowdownMeter = 0f;
+        recoveryTimer = 0f;
+        inSwamp = false;
     }
 
     public float GetSpeedMultiplier()
     {
-        float slowdownPerc = slowdownMeter / maxSlowdown;
-        float multiplier = 1 - (slowdownPerc * maxSpeedPenalty);
+        float slowdownPercentage =
+            slowdownMeter / maxSlowdown;
+
+        float multiplier =
+            1f - (slowdownPercentage * maxSpeedPenalty);
+
         return multiplier;
     }
 
     public float GetSlowdownPercentage()
     {
-        return slowdownMeter/maxSlowdown;
+        return slowdownMeter / maxSlowdown;
     }
 }

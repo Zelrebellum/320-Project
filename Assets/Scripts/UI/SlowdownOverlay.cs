@@ -1,49 +1,84 @@
-using UnityEngine.UI;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlowdownOverlay : MonoBehaviour
 {
-    OverlayManager overlayManager;
-    Image currentImage;
-    Image mudImage;
-    Image handsImage;
-    Image darknessImage;
-    [SerializeField] float startingScale = 1.5f;
-    [SerializeField] float endScale = 1.0f;
-    public bool isActive { get; set; } = true;
+    [Header("Overlay References")]
+    [SerializeField] private Image mudImage;
+    [SerializeField] private Image handsImage;
+    [SerializeField] private Image darknessImage;
+
+    [Header("Overlay Settings")]
+    [SerializeField] private float startingScale = 1.5f;
+    [SerializeField] private float endScale = 1.0f;
+
+    [Header("Player Reference")]
+    [SerializeField] private GameObject player;
+
     private PlayerSlowdown slowdown;
+    private Image currentImage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public bool isActive { get; set; } = true;
+
+    private void Start()
     {
-        overlayManager = gameObject.GetComponentInParent<OverlayManager>();
-        slowdown = overlayManager.GetPlayer().GetComponent<PlayerSlowdown>();
-        mudImage = overlayManager.GetMudImage();
-        handsImage = overlayManager.GetHandsImage();
-        darknessImage = overlayManager.GetDarknessImage();
+        if (player == null ||
+            mudImage == null ||
+            handsImage == null ||
+            darknessImage == null)
+        {
+            Debug.LogError(
+                "SlowdownOverlay: Required reference is missing!",
+                this
+            );
+            enabled = false;
+            return;
+        }
 
-        currentImage = mudImage;
+        slowdown = player.GetComponent<PlayerSlowdown>();
 
-        //Color color = handsImage.color;
-        //color.a = 0;
-        //handsImage.color = color;
+        if (slowdown == null)
+        {
+            Debug.LogError(
+                "SlowdownOverlay: PlayerSlowdown is missing!",
+                this
+            );
+            enabled = false;
+            return;
+        }
+
+        // Hide all overlays when the scene starts.
+        SetImageAlpha(mudImage, 0f);
+        SetImageAlpha(handsImage, 0f);
+        SetImageAlpha(darknessImage, 0f);
+
+        // Select the overlay appropriate for the current zone.
+        currentImage = slowdown.AtEnd ? handsImage : mudImage;
+
+        UpdateOverlay(slowdown.GetSlowdownPercentage());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!isActive)
         {
             return;
         }
 
-        if (slowdown.AtEnd && currentImage != handsImage) { SwitchOverlay(handsImage);}
-        if (!slowdown.AtEnd && currentImage != mudImage) { SwitchOverlay(mudImage); }
+        // Hands replace mud while the player is in the end zone.
+        if (slowdown.AtEnd && currentImage != handsImage)
+        {
+            SwitchOverlay(handsImage);
+        }
+        else if (!slowdown.AtEnd && currentImage != mudImage)
+        {
+            SwitchOverlay(mudImage);
+        }
 
         UpdateOverlay(slowdown.GetSlowdownPercentage());
     }
 
-    //updates overlay depending on the current slowdown value
     public void UpdateOverlay(float slowdown)
     {
         float progress;
@@ -51,48 +86,50 @@ public class SlowdownOverlay : MonoBehaviour
         float darknessAlpha;
         float currentScale;
 
-        //0-25% slowdown, hands slowly start appearing at edges of screen
-        if(slowdown <= 0.25)
+        // 0-25%: Overlay gradually fades in.
+        if (slowdown <= 0.25f)
         {
-            progress = slowdown/0.25f;
-            currentAlpha = Mathf.Lerp(0, 1, progress);
+            progress = slowdown / 0.25f;
+            currentAlpha = Mathf.Lerp(0f, 1f, progress);
             currentScale = startingScale;
-            darknessAlpha = 0;
+            darknessAlpha = 0f;
         }
-        //25-75% hands slowly grow onto screen, taking up more space
-        else if (slowdown <= 0.75)
+        // 25-75%: Overlay grows toward the center.
+        else if (slowdown <= 0.75f)
         {
             progress = (slowdown - 0.25f) / 0.5f;
-            currentAlpha = 1;
+            currentAlpha = 1f;
             currentScale = Mathf.Lerp(startingScale, endScale, progress);
-            darknessAlpha = 0;
+            darknessAlpha = 0f;
         }
-        //75-100% screen starts to darken until player is dead
+        // 75-100%: Darkness gradually increases.
         else
         {
             progress = (slowdown - 0.75f) / 0.25f;
-            currentAlpha = 1;
+            currentAlpha = 1f;
             currentScale = endScale;
-            darknessAlpha = Mathf.Lerp(0, 1, progress);
+            darknessAlpha = Mathf.Lerp(0f, 1f, progress);
         }
 
-        Color color = currentImage.color;
-        color.a = currentAlpha;
-        currentImage.color = color;
+        SetImageAlpha(currentImage, currentAlpha);
+        SetImageAlpha(darknessImage, darknessAlpha);
 
-        color = darknessImage.color;
-        color.a = darknessAlpha;
-        darknessImage.color = color;
-
-        currentImage.rectTransform.localScale = new Vector3(currentScale, currentScale, 1.0f);
+        currentImage.rectTransform.localScale =
+            new Vector3(currentScale, currentScale, 1f);
     }
 
-    void SwitchOverlay(Image newImage)
+    private void SwitchOverlay(Image newImage)
     {
-        Color color = currentImage.color;
-        color.a = 0;
-        currentImage .color = color;
+        // Hide the previous overlay before selecting the next one.
+        SetImageAlpha(currentImage, 0f);
 
         currentImage = newImage;
+    }
+
+    private void SetImageAlpha(Image image, float alpha)
+    {
+        Color color = image.color;
+        color.a = alpha;
+        image.color = color;
     }
 }

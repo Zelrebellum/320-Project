@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a40a89ecfac114b9c1b46c5b71a797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHover
-  hoverCrack: {fileID: 378014459}
+  hoverEffect: {fileID: 378014459}
 --- !u!1 &771834296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a40a89ecfac114b9c1b46c5b71a797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHover
-  hoverCrack: {fileID: 45392336}
+  hoverEffect: {fileID: 45392336}
 --- !u!1 &1297855764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a40a89ecfac114b9c1b46c5b71a797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHover
-  hoverCrack: {fileID: 113591587}
+  hoverEffect: {fileID: 113591587}
 --- !u!1 &1552066362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,7 +5696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a40a89ecfac114b9c1b46c5b71a797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHover
-  hoverCrack: {fileID: 2026924183}
+  hoverEffect: {fileID: 2026924183}
 --- !u!114 &2017244903 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7990490551211881738, guid: fc1c6f953baef964081b5914ebecc850, type: 3}

@@ -1,28 +1,24 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class dash : MonoBehaviour
+public class Dash : MonoBehaviour
 {
-    [SerializeField] private float increaseSpeed;
-    private float startSpeed;
-    [SerializeField] private bool dashing = false;
+    [SerializeField] private float impulseForce = 8.0f;
+    private bool dashing;
+    [SerializeField, Range(0.5f, 10.0f)] private float dashCooldownDuration;
+    [Header("FOV")]
 
-    [SerializeField, Range(0.5f, 10.0f)] private float dashTime;
-    private float waitTimer = 0;
     [SerializeField] private float dashFOV;
 
     [SerializeField] private float FOVfade;
 
-    private RectTransform hudCooldown;
+    private PlayerHUD playerHUD;
+    private float cooldownRemaining;
 
-    private float coolDown;
-
-    public float CoolDown
-    {
-        get => coolDown;
-    }
+    //public float CoolDown
+    //{
+    //    get => cooldownRemaining;
+    //}
     private PlayerMovement movement;
     private PlayerSlowdown slowdown;
 
@@ -30,61 +26,53 @@ public class dash : MonoBehaviour
 
     private CameraController camControl;
 
-    private wallRun wall;
+    private WallRun wall;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         movement = gameObject.GetComponent<PlayerMovement>();
-        startSpeed = movement.targetSpeed;
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
-        hudCooldown = movement.UI.HudCooldown.GetComponent<RectTransform>();
+        playerHUD = movement.UI;
+        Debug.Log($"Movement HUD: {movement.UI}");
+        Debug.Log($"Dash HUD: {playerHUD}");
         slowdown = gameObject.GetComponent<PlayerSlowdown>();
-        wall = gameObject.GetComponent<wallRun>();
-        startSpeed = movement.targetSpeed;
+        wall = gameObject.GetComponent<WallRun>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-        coolDown -= Time.deltaTime;
+        cooldownRemaining -= Time.deltaTime;
 
         if (!dashing)
         {
             return;
         }
-        
-        if (coolDown < dashTime - 0.7f)
+
+        if (cooldownRemaining < dashCooldownDuration - 0.7f)
         {
             camControl.EnableFOV(camControl.StartFOV, FOVfade);
         }
-        Vector3 scale = hudCooldown.localScale;
-        scale.x =  (dashTime - coolDown) / dashTime;
-    
-        if (coolDown < 0f)
-        {
-            scale.x = 1;
-            dashing = false;
-            //movement.targetSpeed = startSpeed;
-        }
-        hudCooldown.localScale = scale;
-        /*if (waitTimer >= dashTime)
+
+        Debug.Log($"PlayerHUD: {playerHUD}");
+
+        if (cooldownRemaining < 0f)
         {
             dashing = false;
-            movement.targetSpeed = startSpeed;
-            waitTimer = 0;
+            playerHUD.UpdateDashCooldown(1f);
+            return;
         }
 
-        waitTimer += Time.deltaTime;*/
-
+        playerHUD.UpdateDashCooldown((dashCooldownDuration - cooldownRemaining) / dashCooldownDuration);
     }
 
     public void ResetDash()
     {
         dashing = false;
-        coolDown = 0;
+        cooldownRemaining = 0;
+        playerHUD.UpdateDashCooldown(1f);
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -92,7 +80,7 @@ public class dash : MonoBehaviour
         // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
         if (!context.performed
          || dashing 
-         || coolDown > 0.0f 
+         || cooldownRemaining > 0.0f 
          || movement.IsCrouching
          || wall.Wallrunning
          )
@@ -100,19 +88,12 @@ public class dash : MonoBehaviour
             return;
         }
 
-        Vector3 position = transform.position;
-        position += camControl.Camera.transform.forward;
-        if (!movement.LevelBoundary.Contains(position))
-        {
-            return;
-        }
-        rBody.AddForce(camControl.Camera.transform.forward * increaseSpeed, ForceMode.Impulse);
+        rBody.AddForce(camControl.Camera.transform.forward * impulseForce, ForceMode.Impulse);
         Debug.Log("DASHED!");
         slowdown.ReduceSlowdown(20);
         dashing = true;
-        //startSpeed = movement.targetSpeed;
-      //  movement.targetSpeed = increaseSpeed;
-        coolDown = dashTime;
+
+        cooldownRemaining = dashCooldownDuration;
         camControl.EnableFOV(dashFOV, 75f);
     }
 }
