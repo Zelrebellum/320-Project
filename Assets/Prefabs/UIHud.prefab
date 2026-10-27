@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &150054662628989562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -200,12 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ef1ead72ba3e04f9931b5ff4edfca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlowdownOverlay
-  handsImage: {fileID: 1547625450753134389}
-  handsRectTransform: {fileID: 3370890551525217459}
-  darknessImage: {fileID: 6083506664409354857}
   startingScale: 1.5
   endScale: 1
-  player: {fileID: 0}
 --- !u!1 &7137139620788129005
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,13 +657,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 649674240741960981, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8354187375728733521}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2034924615005898967, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3676240814595081166}
   m_SourcePrefab: {fileID: 100100000, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
 --- !u!1 &874887070554046595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6008352686127266020, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
   m_PrefabInstance: {fileID: 6865119470018754663}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4861720387416092848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2034924615005898967, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
+  m_PrefabInstance: {fileID: 6865119470018754663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3676240814595081166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861720387416092848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a25c27747640fd418353a5f03c7364d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverlayManager
+  mudImage: {fileID: 1547625450753134389}
+  handsImage: {fileID: 0}
+  darknessImage: {fileID: 6083506664409354857}
+  slowdown: {fileID: 8196383448587007693}
+  player: {fileID: 0}
 --- !u!224 &6215484871829132658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 649674240741960981, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}

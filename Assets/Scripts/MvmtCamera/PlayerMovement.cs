@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-
+        Debug.Log("JUMPING!");
         if (!context.performed || 
             (airborne && !wall.Wallrunning) || 
             isCrouching)
