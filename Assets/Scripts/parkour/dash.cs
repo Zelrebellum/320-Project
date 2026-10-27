@@ -101,12 +101,12 @@ public class dash : MonoBehaviour
         }
 
         Vector3 position = transform.position;
-        position += camControl.Camera.transform.forward * 3f;
+        position += camControl.Camera.transform.forward;
         if (!movement.LevelBoundary.Contains(position))
         {
             return;
         }
-        rBody.MovePosition(position);
+        rBody.AddForce(camControl.Camera.transform.forward * increaseSpeed, ForceMode.Impulse);
         Debug.Log("DASHED!");
         slowdown.ReduceSlowdown(20);
         dashing = true;
