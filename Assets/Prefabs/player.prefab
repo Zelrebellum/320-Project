@@ -37,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5.486, z: -34.14}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2250898964316632270}
@@ -212,7 +212,7 @@ MonoBehaviour:
   upDownInversion: 0
   limitUpDownRange: 1
   lookSensitivity: {x: 5, y: 5}
-  maxLookUpDownAngle: 45
+  maxLookUpDownAngle: 75
 --- !u!114 &5176416108548706402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,8 +228,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  scaleWallLimit: {x: 1.5, y: 1.5, z: 1.5}
-  scaleDistance: {x: 2, y: 2, z: 0.5}
+  scaleDistance: {x: 2, y: 10, z: 0}
   climbSpeed: 13
   scaleTime: 0.5
 --- !u!114 &939205909518187893
@@ -247,7 +246,7 @@ MonoBehaviour:
   wallJumpLayer:
     serializedVersion: 2
     m_Bits: 128
-  wallJumpDistance: 1.3
+  wallJumpDistance: 2
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 1
@@ -256,6 +255,7 @@ MonoBehaviour:
   onWall: 1
   wallRunFOV: 120
   FOVfade: 15
+  atHeight: 0
 --- !u!114 &1908503597326903813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5645049e330bdab2a9f79aec67bae0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::dash
-  increaseSpeed: 12
+  increaseSpeed: 5
   dashing: 0
   dashTime: 3
   dashFOV: 120
@@ -360,7 +360,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 150
+  far clip plane: 200
   field of view: 90
   orthographic: 0
   orthographic size: 5
