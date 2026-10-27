@@ -97,4 +97,28 @@ public class UIManager : MonoBehaviour
             PauseGame();
         }
     }
+    [Header("Onboarding")]
+    [SerializeField] private OnboardingPanel onboardingPanel;
+
+    /// <summary>
+    /// Show trigger-specific content using this scene's shared panel.
+    /// </summary>
+    public bool TryShowOnboarding(string title, string instructions)
+    {
+        if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
+        {
+            return false;
+        }
+
+        if (onboardingPanel == null || !onboardingPanel.IsConfigured ||
+            pauseMenuManager == null || !onboardingPanel.transform.parent.gameObject.activeInHierarchy)
+        {
+            Debug.LogWarning("UIManager: Onboarding panel references are missing or inactive.", this);
+            return false;
+        }
+
+        onboardingPanel.SetContent(title, instructions);
+        pauseMenuManager.OpenOnboarding(onboardingPanel.gameObject);
+        return onboardingPanel.gameObject.activeInHierarchy && PauseMenuManager.IsPaused;
+    }
 }
