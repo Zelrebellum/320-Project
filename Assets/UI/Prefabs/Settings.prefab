@@ -574,10 +574,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 3974376147327912485}
   m_HandleRect: {fileID: 675136508269601408}
   m_Direction: 0
-  m_MinValue: 0.1
+  m_MinValue: 0
   m_MaxValue: 3
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3946,9 +3946,9 @@ GameObject:
   - component: {fileID: 2610998100241165440}
   - component: {fileID: 2403781405249826214}
   - component: {fileID: 892961520434757349}
-  - component: {fileID: -4846307128673528245}
   - component: {fileID: -6392214978267276332}
   - component: {fileID: 8435462722884028716}
+  - component: {fileID: 7353615550217076878}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -4032,19 +4032,6 @@ MonoBehaviour:
   controlsPage: {fileID: 4564313890654078396}
   instructionsPage: {fileID: 6983661047649208523}
   audioPage: {fileID: 6527946592174790163}
---- !u!114 &-4846307128673528245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8844389752742847165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b12596397f37dbc498d2562a5a9e7568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
-  volumeSlider: {fileID: 7990490551211881738}
 --- !u!114 &-6392214978267276332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4071,3 +4058,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrouchSettings
   crouchDropdown: {fileID: 7318718966510821800}
+--- !u!114 &7353615550217076878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844389752742847165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf4fdec1a1dba94a9d99ad40a7d89ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSettings
+  volumeSlider: {fileID: 7990490551211881738}
