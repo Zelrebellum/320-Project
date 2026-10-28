@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Slide()
     {
-        rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
+        //rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
     }
     
 

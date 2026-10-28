@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         playerRigidbody = player.GetComponent<Rigidbody>();
         spawnPosition = new Vector3(spawn.position.x, spawn.position.y, spawn.position.z);
         player.transform.position = spawnPosition;
+        playerRigidbody.rotation = spawn.rotation;
         movement = player.GetComponent<PlayerMovement>();
     }
 

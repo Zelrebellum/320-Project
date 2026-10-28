@@ -181,7 +181,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2250898964316632270}
   walkSpeed: 5
   sprintSpeed: 8
-  jumpForce: 3
+  jumpForce: 5
   topSpeed: 50
   targetSpeed: 0
   acceleration: 20
@@ -192,6 +192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   crouchingHeight: 1.5
+  isCrouching: 0
   moveDirection: {x: 0, y: 0}
   uiCanvas: {fileID: 0}
   fadeIconTime: 1.1
@@ -230,6 +231,7 @@ MonoBehaviour:
     m_Bits: 64
   scaleDistance: {x: 2, y: 10, z: 0}
   climbSpeed: 13
+  climbing: 0
   scaleTime: 0.5
 --- !u!114 &939205909518187893
 MonoBehaviour:
@@ -246,15 +248,15 @@ MonoBehaviour:
   wallJumpLayer:
     serializedVersion: 2
     m_Bits: 128
-  wallJumpDistance: 2
+  wallJumpDistance: 5
   wallrunning: 0
   increaseSpeed: 5
   speedMinimum: 1
   wallRunTime: 8
   timer: 0
-  onWall: 1
   wallRunFOV: 120
   FOVfade: 15
+  maximumHeight: 0
   atHeight: 0
 --- !u!114 &1908503597326903813
 MonoBehaviour:
