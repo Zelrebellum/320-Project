@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float defaultHeight;
     private Vector3 defaultCenter;
     [SerializeField] private float crouchingHeight = 1.5f;
-    private bool isCrouching = false;
+    [SerializeField] private bool isCrouching = false;
 
     public bool IsCrouching
     {
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, 1.3f, groundLayer);
+        airborne = !Physics.Raycast(transform.position, -transform.up, out hitInfo, transform.localScale.y + 0.3f, groundLayer);
 
         if (isSprinting)
         {
@@ -153,6 +153,11 @@ public class PlayerMovement : MonoBehaviour
         Vector4 color = postureIcon.GetComponent<Image>().color;
         color.w = 1.0f;
         postureIcon.GetComponent<Image>().color = color;
+    }
+
+    private void Slide()
+    {
+        rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
     }
     
 
@@ -251,27 +256,46 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
-        if (!holdCrouch && !context.performed)
+        // Prevent crouching while wallrunning.
+        if (wall.Wallrunning)
         {
             return;
         }
-        else if (holdCrouch && context.performed)
-        {
-            isCrouching = false;
-        }
-        else if (holdCrouch && context.canceled)
-        {
-            isCrouching = true;
-        }
 
-        if (isCrouching)
+        // 0 = Hold, 1 = Toggle.
+        bool toggleCrouch =
+            PlayerPrefs.GetInt("CrouchMode", 0) == 1;
+
+        if (toggleCrouch)
         {
-            Stand();
+            // Toggle only when the button is pressed.
+            if (!context.performed)
+            {
+                return;
+            }
+
+            if (isCrouching)
+            {
+                Stand();
+            }
+            else
+            {
+                Crouch();
+                Slide();
+            }
         }
         else
         {
-            Crouch();
+            // Hold to crouch, release to stand.
+            if (context.performed && !isCrouching)
+            {
+                Crouch();
+                Slide();
+            }
+            else if (context.canceled && isCrouching)
+            {
+                Stand();
+            }
         }
     }
 
@@ -279,5 +303,4 @@ public class PlayerMovement : MonoBehaviour
     {
         return currentSpeed;
     }
-  
 }
