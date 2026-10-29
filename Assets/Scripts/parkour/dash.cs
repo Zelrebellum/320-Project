@@ -89,8 +89,7 @@ public class Dash : MonoBehaviour
         }
 
         rBody.AddForce(camControl.Camera.transform.forward * impulseForce, ForceMode.Impulse);
-        Debug.Log("DASHED!");
-        slowdown.ReduceSlowdown(20);
+        slowdown.ReduceSlowdown(10.0f);
         dashing = true;
 
         cooldownRemaining = dashCooldownDuration;

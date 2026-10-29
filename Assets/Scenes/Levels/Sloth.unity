@@ -22307,7 +22307,7 @@ GameObject:
   - component: {fileID: 2114389438}
   m_Layer: 0
   m_Name: Safe Area
-  m_TagString: Swamp
+  m_TagString: Safe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22521,17 +22521,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: topSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: uiCanvas
       value: 
       objectReference: {fileID: 233357281}
+    - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 491190881}
     - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: isSprinting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: sprintSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: acceleration
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 212249843953435260, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: levelBoundary
       value: 
       objectReference: {fileID: 1368200973}
+    - target: {fileID: 1908503597326903813, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: impulseForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908503597326903813, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: dashCooldownDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.x
       value: -93.63
@@ -22580,6 +22608,22 @@ PrefabInstance:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 1014216072}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: maxSpeedPenalty
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: accumulationRate
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: swampSpeedPenalty
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: endZoneAccumulationRate
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5176416108548706402, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: climbSpeed
       value: 10.8

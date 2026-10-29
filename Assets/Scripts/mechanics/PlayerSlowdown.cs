@@ -12,11 +12,17 @@ public class PlayerSlowdown : MonoBehaviour
     [SerializeField]
     private float accumulationRate = 12.5f;
     [SerializeField]
+    private float endZoneAccumulationRate = 30f;
+    [SerializeField]
     private float recoveryRate = 10.0f;
     [SerializeField]
     private float recoveryDelay = 3.0f;
     [SerializeField]
     private float maxSpeedPenalty = 0.8f;
+    [SerializeField, Range(0f, 1f)]
+    private float swampSpeedPenalty = 0.10f;
+    [SerializeField, Min(1f)]
+    private float crouchAccumulationMultiplier = 1.25f;
     
     private float recoveryTimer = 0.0f;
 
@@ -30,10 +36,12 @@ public class PlayerSlowdown : MonoBehaviour
     [SerializeField] PlayerManager playerManager;
     
     private Dash dash;
+    private PlayerMovement movement;
 
     private void Awake()
     {
         dash = GetComponent<Dash>();
+        movement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -61,25 +69,28 @@ public class PlayerSlowdown : MonoBehaviour
     {
         if (other.CompareTag("End"))
         {
-            Debug.LogWarning("You did it!");
-            dash.enabled = false;
-            atEndZone = true;
+            SetEndZoneState(true);
             return;
         }
 
-        isSafe = true;
+        if (other.CompareTag("Safe"))
+        {
+            isSafe = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("End"))
         {
-            atEndZone = false;
-            dash.enabled = true;
+            SetEndZoneState(false);
             return;
         }
 
-        isSafe = false;
+        if (other.CompareTag("Safe"))
+        {
+            isSafe = false;
+        }
     }
 
     private void EnterSwamp()
@@ -114,18 +125,18 @@ public class PlayerSlowdown : MonoBehaviour
 
         if (inSwamp && !isSafe)
         {
-            if (atEndZone)
+            float currentAccumulationRate = atEndZone
+                ? endZoneAccumulationRate
+                : accumulationRate;
+
+            if (movement.IsCrouching)
             {
-                accumulationRate = 30f;
-            }
-            else
-            {
-                accumulationRate = 12.5f;
+                currentAccumulationRate *= crouchAccumulationMultiplier;
             }
 
-            slowdownMeter += accumulationRate * Time.deltaTime;
-            recoveryTimer = 0f;
+            slowdownMeter += currentAccumulationRate * Time.deltaTime;
         }
+        
         else
         {
             if (recoveryTimer < recoveryDelay)
@@ -146,10 +157,27 @@ public class PlayerSlowdown : MonoBehaviour
             if (atEndZone)
             {
                 SceneManager.LoadScene("EndingCredits");
+                return;
             }
 
             playerManager.Die();
         }
+    }
+    
+    private void SetEndZoneState(bool active)
+    {
+        if (atEndZone == active)
+        {
+            return;
+        }
+
+        atEndZone = active;
+
+        slowdownMeter = 0f;
+        recoveryTimer = 0f;
+
+        dash.enabled = !active;
+        movement.SetEndZoneJump(active);
     }
 
     public void ResetSlowdown()
@@ -161,13 +189,21 @@ public class PlayerSlowdown : MonoBehaviour
 
     public float GetSpeedMultiplier()
     {
-        float slowdownPercentage =
-            slowdownMeter / maxSlowdown;
+        float slowdownPerc = slowdownMeter / maxSlowdown;
 
-        float multiplier =
-            1f - (slowdownPercentage * maxSpeedPenalty);
+        float meterPenalty = slowdownPerc * maxSpeedPenalty;
+        float swampPenalty;
 
-        return multiplier;
+        if (inSwamp && !isSafe)
+        {
+            swampPenalty = swampSpeedPenalty;
+        }
+        else
+        {
+            swampPenalty = 0f;
+        }
+        
+        return Mathf.Clamp01(1f - meterPenalty - swampPenalty);
     }
 
     public float GetSlowdownPercentage()

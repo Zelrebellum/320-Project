@@ -11,13 +11,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float topSpeed;
     [SerializeField, Range(0, 30)] private float acceleration;
     public float targetSpeed;
-    [SerializeField] private bool isSprinting = false;
+    [SerializeField] private bool isSprinting = true;
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
 
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private LayerMask groundLayer;
+    
+    [SerializeField, Range(0f, 1f)]
+    private float endZoneJumpMultiplier = 0.5f;
+    private float normalJumpForce;
+    private bool jumpReducedByEndZone = false;
 
     [Header("Crouching")]
     [SerializeField] private Transform playerCamera;
@@ -28,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Runtime state
-    private float currentSpeed;
+    [SerializeField] private float currentSpeed;
     private bool airborne;
     private bool isCrouching;
     private bool holdCrouch;
@@ -67,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //checks if player is above ground using raycast
         airborne = !Physics.Raycast(
             transform.position,
             -transform.up,
@@ -75,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             groundLayer
         );
 
+        //adjusts player speed based on player state
         if (isSprinting)
         {
             targetSpeed = sprintSpeed * slowdown.GetSpeedMultiplier();
@@ -135,15 +142,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveDirection != Vector2.zero)
         {
+            // are we slower than the speed we can currently go? if we are, go faster
             if (currentSpeed < targetSpeed)
             {
                 currentSpeed += acceleration * Time.deltaTime;
             }
+            // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
             else if (currentSpeed < topSpeed &&
                      currentSpeed > targetSpeed + 0.2f)
             {
                 currentSpeed -= acceleration * 1.5f * Time.deltaTime;
             }
+            // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
             else
             {
                 currentSpeed = targetSpeed;
@@ -160,6 +170,26 @@ public class PlayerMovement : MonoBehaviour
                 currentSpeed = 0;
             }
         }
+    }
+    
+    public void SetEndZoneJump(bool reduced)
+    {
+        if (jumpReducedByEndZone == reduced)
+        {
+            return;
+        }
+
+        if (reduced)
+        {
+            normalJumpForce = jumpForce;
+            jumpForce *= endZoneJumpMultiplier;
+        }
+        else
+        {
+            jumpForce = normalJumpForce;
+        }
+
+        jumpReducedByEndZone = reduced;
     }
 
     public void ResetMovement()
@@ -228,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Crouch();
-            Slide();
+            //Slide();
         }
     }
 
