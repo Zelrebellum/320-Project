@@ -33,6 +33,9 @@ public class CameraController : MonoBehaviour
 
         startFOV = playerCam.fieldOfView;
         currentFOV = startFOV;
+
+        // get sensitivity from saved
+        ChangeSensitivity(PlayerPrefs.GetFloat("MouseSensitivity", 5f));
     }
 
     private void Update()

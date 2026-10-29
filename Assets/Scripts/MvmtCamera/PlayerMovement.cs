@@ -204,7 +204,8 @@ public class PlayerMovement : MonoBehaviour
             Stand();
         }
     }
-
+    
+    //event function
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
@@ -236,29 +237,46 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        holdCrouch = Convert.ToBoolean(PlayerPrefs.GetInt("CrouchMode"));
-
-        if ((!holdCrouch && !context.performed) || wall.Wallrunning)
+        // Prevent crouching while wallrunning.
+        if (wall.Wallrunning)
         {
             return;
         }
-        else if (holdCrouch && context.performed)
-        {
-            isCrouching = false;
-        }
-        else if (holdCrouch && context.canceled)
-        {
-            isCrouching = true;
-        }
 
-        if (isCrouching)
+        // 0 = Hold, 1 = Toggle.
+        bool toggleCrouch =
+            PlayerPrefs.GetInt("CrouchMode", 0) == 1;
+
+        if (toggleCrouch)
         {
-            Stand();
+            // Toggle only when the button is pressed.
+            if (!context.performed)
+            {
+                return;
+            }
+
+            if (isCrouching)
+            {
+                Stand();
+            }
+            else
+            {
+                Crouch();
+                //Slide();
+            }
         }
         else
         {
-            Crouch();
-            //Slide();
+            // Hold to crouch, release to stand.
+            if (context.performed && !isCrouching)
+            {
+                Crouch();
+                Slide();
+            }
+            else if (context.canceled && isCrouching)
+            {
+                Stand();
+            }
         }
     }
 
