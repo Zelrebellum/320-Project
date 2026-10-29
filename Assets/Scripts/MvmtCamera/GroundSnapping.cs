@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class GroundSnapping : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask layerMask;
+    private LayerMask groundLayerMask;
 
     [SerializeField]
     private float yOffset = 1;
+
+    [SerializeField] private float snapDistance = 1.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,29 +16,41 @@ public class GroundSnapping : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, 1.0f, layerMask))
+        if (Physics.Raycast(
+                transform.position,
+                Vector3.down,
+                out RaycastHit groundHit,
+                snapDistance,
+                groundLayerMask))
         {
-            Vector3 newForward = Vector3.Cross(transform.right, hitInfo.normal);
-            transform.LookAt(transform.position + newForward, hitInfo.normal);
-            Vector3 snapPoint = transform.position;
+            Vector3 alignedForward =
+                Vector3.Cross(transform.right, groundHit.normal);
 
-            snapPoint.y = hitInfo.point.y + yOffset;
+            transform.LookAt(
+                transform.position + alignedForward,
+                groundHit.normal
+            );
 
-            transform.position = snapPoint;
+            Vector3 snapPosition = transform.position;
+            snapPosition.y = groundHit.point.y + yOffset;
 
+            transform.position = snapPosition;
         }
-        else if (Physics.Raycast(transform.position, -Vector3.up, Mathf.Infinity, layerMask))
+        else if (Physics.Raycast(
+                     transform.position,
+                     Vector3.down,
+                     Mathf.Infinity,
+                     groundLayerMask))
         {
-            Vector3 newForward = Vector3.Cross(transform.right,new Vector3(0, 1, 0));
-            transform.LookAt(transform.position + newForward, new Vector3(0, 1, 0));
+            Vector3 alignedForward =
+                Vector3.Cross(transform.right, Vector3.up);
+
+            transform.LookAt(
+                transform.position + alignedForward,
+                Vector3.up
+            );
         }
-       
-
-
-
     }
 }

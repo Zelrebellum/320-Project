@@ -1,54 +1,36 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    private Camera playerCam;
+    [Header("Camera Reference")]
+    [SerializeField] private Camera playerCam;
 
-    public Camera Camera
-    {
-        get => playerCam;
-    }
+    [Header("Look Settings")]
+    [SerializeField] private bool upDownInversion = true;
+    [SerializeField] private bool limitUpDownRange = false;
+    [SerializeField] private Vector2 lookSensitivity = Vector2.one;
+    [SerializeField] private float maxLookUpDownAngle = 25f;
 
-    [SerializeField]
-    bool upDownInversion = true;
-
-    [SerializeField]
-    bool limitUpDownRange = false;
-
-    [SerializeField]
-    Vector2 lookSensitivity = Vector2.one;
-
-    [SerializeField]
-    float maxLookUpDownAngle = 25;
-
+    // FOV state
     private float startFOV;
-
-    public float StartFOV
-    {
-        get => startFOV;
-    }
-
     private float currentFOV;
-
     private float targetFOV;
-
     private float fovAcceleration;
 
+    private bool changingFOV;
+    private bool decreaseFOV;
 
-    private bool changingFOV = false;
-    
-    public bool FOVStatus
-    {
-        get => changingFOV;
-    }
-    private bool decreaseFOV = false;
+    public Camera Camera => playerCam;
+    public float StartFOV => startFOV;
+    public bool FOVStatus => changingFOV;
 
     private void Awake()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         playerCam.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
         startFOV = playerCam.fieldOfView;
         currentFOV = startFOV;
 
@@ -56,23 +38,31 @@ public class CameraController : MonoBehaviour
         ChangeSensitivity(PlayerPrefs.GetFloat("MouseSensitivity", 5f));
     }
 
-    public void Update()
+    private void Update()
     {
-        playerCam.transform.localRotation = Quaternion.Euler(playerCam.transform.localRotation.eulerAngles.x, 0f, 0f );
+        playerCam.transform.localRotation = Quaternion.Euler(
+            playerCam.transform.localRotation.eulerAngles.x,
+            0f,
+            0f
+        );
+
         playerCam.fieldOfView = currentFOV;
+
         if (!changingFOV)
         {
             return;
         }
 
-        if ((!decreaseFOV && currentFOV > targetFOV)
-        || (decreaseFOV && currentFOV < targetFOV))
+        if ((!decreaseFOV && currentFOV > targetFOV) ||
+            (decreaseFOV && currentFOV < targetFOV))
         {
             changingFOV = false;
             currentFOV = targetFOV;
             return;
         }
-        currentFOV += fovAcceleration * Time.deltaTime * (decreaseFOV ? -1f : 1f);
+
+        currentFOV += fovAcceleration * Time.deltaTime *
+                      (decreaseFOV ? -1f : 1f);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -86,46 +76,55 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        // read the mouse displacement from the center of the screen
+
         Vector2 lookInput = context.ReadValue<Vector2>();
 
-        // if we've turned left or right
         if (lookInput.x != 0f)
         {
-            // use that to rotate the entire player object
-            transform.Rotate(0f, lookInput.x * lookSensitivity.x * Time.deltaTime, 0f);
-            //transform.Rotate(0f, lookInput.x, 0f);
+            transform.Rotate(
+                0f,
+                lookInput.x * lookSensitivity.x * Time.deltaTime,
+                0f
+            );
         }
 
-        // if we've turned up or down
         if (lookInput.y != 0f)
         {
-            // invert the y axis if needed
             lookInput.y *= upDownInversion ? 1f : -1f;
 
-            // Find the new camera rotation
-            Quaternion newLook = playerCam.transform.rotation * Quaternion.Euler(lookInput.y * lookSensitivity.y * Time.deltaTime, 0f, 0f);
-
-            // See if it's gone too far
-
-            // 0 == the horizon
-            // 0 -> maxAngle == looking down
-            // 360 --> 360-maxAngle == looking up
+            Quaternion newLook =
+                playerCam.transform.rotation *
+                Quaternion.Euler(
+                    lookInput.y * lookSensitivity.y * Time.deltaTime,
+                    0f,
+                    0f
+                );
 
             if (limitUpDownRange)
             {
-                // If we're past the max angle looking down and looking down or behind us
-                if (newLook.eulerAngles.x > maxLookUpDownAngle && newLook.eulerAngles.x <= 180f)
+                // Limit downward pitch.
+                if (newLook.eulerAngles.x > maxLookUpDownAngle &&
+                    newLook.eulerAngles.x <= 180f)
                 {
-                    newLook = Quaternion.Euler(maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
+                    newLook = Quaternion.Euler(
+                        maxLookUpDownAngle,
+                        newLook.eulerAngles.y,
+                        0f
+                    );
                 }
 
-                // otherwise, if we're past the max angle looking up AND looking up
-                if (newLook.eulerAngles.x < 360 - maxLookUpDownAngle && newLook.eulerAngles.x >= 180f)
+                // Limit upward pitch.
+                if (newLook.eulerAngles.x < 360f - maxLookUpDownAngle &&
+                    newLook.eulerAngles.x >= 180f)
                 {
-                    newLook = Quaternion.Euler(360 - maxLookUpDownAngle, newLook.eulerAngles.y, 0f);
+                    newLook = Quaternion.Euler(
+                        360f - maxLookUpDownAngle,
+                        newLook.eulerAngles.y,
+                        0f
+                    );
                 }
             }
+
             playerCam.transform.rotation = newLook;
         }
     }
@@ -159,24 +158,21 @@ public class CameraController : MonoBehaviour
 
     public void ChangeSensitivity(float sensitivity)
     {
-        sensitivity *= 20;
+        sensitivity *= 20f;
 
-        if (sensitivity < 5)
+        if (sensitivity < 5f)
         {
-            sensitivity = 5;
+            sensitivity = 5f;
         }
+
         lookSensitivity = new Vector2(sensitivity, sensitivity);
     }
 
-    /// <summary>
-    /// Enables FOV change over time
-    /// </summary>
-    /// <param name="target">The final FOV</param>
-    /// <param name="acceleration">How quick the FOV should go</param>
     public void EnableFOV(float target, float acceleration)
     {
         changingFOV = true;
         targetFOV = target;
+
         if (targetFOV < currentFOV)
         {
             decreaseFOV = true;
@@ -185,7 +181,7 @@ public class CameraController : MonoBehaviour
         {
             decreaseFOV = false;
         }
+
         fovAcceleration = acceleration;
     }
-
 }

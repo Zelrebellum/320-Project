@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 2027010055189062796}
   - component: {fileID: 1785844216981677752}
   - component: {fileID: 1603732446468184169}
-  - component: {fileID: 2173885828147200511}
   - component: {fileID: 212249843953435260}
   - component: {fileID: 1124682501939721075}
   - component: {fileID: 5176416108548706402}
-  - component: {fileID: 939205909518187893}
-  - component: {fileID: 1908503597326903813}
+  - component: {fileID: 4335015046802814074}
+  - component: {fileID: 1311157092182668748}
   - component: {fileID: 4457880705017223605}
+  - component: {fileID: 2173885828147200511}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3b67b76d5d73ef43b6b7489783c387a, type: 2}
+  - {fileID: 2100000, guid: c43dd3463dc504f93a4268f325a31b5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,22 +150,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2173885828147200511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632353901539845077}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253c9e636bd775bb083f4045e6191c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GroundSnapping
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  yOffset: 1
 --- !u!114 &212249843953435260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,25 +162,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbd2cec6a4ab22c7ada384c8613b20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  playerCamera: {fileID: 2250898964316632270}
   walkSpeed: 5
   sprintSpeed: 8
-  jumpForce: 5
-  topSpeed: 50
+  topSpeed: 30
+  acceleration: 15
   targetSpeed: 0
-  acceleration: 20
-  currentSpeed: 0
-  airborne: 0
-  isSprinting: 0
+  isSprinting: 1
+  moveDirection: {x: 0, y: 0}
+  jumpForce: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  endZoneJumpMultiplier: 0.5
+  playerCamera: {fileID: 2250898964316632270}
   crouchingHeight: 1.5
-  isCrouching: 0
-  moveDirection: {x: 0, y: 0}
-  uiCanvas: {fileID: 0}
-  fadeIconTime: 1.1
-  levelBoundary: {fileID: 0}
+  playerHUD: {fileID: 0}
+  currentSpeed: 0
 --- !u!114 &1124682501939721075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,11 +210,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  scaleDistance: {x: 2, y: 10, z: 0}
-  climbSpeed: 13
-  climbing: 0
+  ledgeDetectionDistance: 2
+  maxLedgeHeight: 10
+  minLedgeHeight: 0
+  climbSpeed: 10.8
   scaleTime: 0.5
---- !u!114 &939205909518187893
+--- !u!114 &4335015046802814074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,21 +226,19 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7fd7b9447d5e94ea2876b0e93f5b80, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::wallRun
+  m_EditorClassIdentifier: Assembly-CSharp::WallRun
   wallJumpLayer:
     serializedVersion: 2
-    m_Bits: 128
-  wallJumpDistance: 5
-  wallrunning: 0
-  increaseSpeed: 5
-  speedMinimum: 1
-  wallRunTime: 8
-  timer: 0
-  wallRunFOV: 120
-  FOVfade: 15
-  maximumHeight: 0
+    m_Bits: 0
+  wallDetectionDistance: 1.3
+  wallRunSpeed: 7
+  speedMinimum: 3
+  maxWallRunTime: 5
+  maximumHeight: 5
+  wallRunFOV: 100
+  FOVfade: 50
   atHeight: 0
---- !u!114 &1908503597326903813
+--- !u!114 &1311157092182668748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,12 +249,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5645049e330bdab2a9f79aec67bae0ed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::dash
-  increaseSpeed: 5
-  dashing: 0
-  dashTime: 3
+  m_EditorClassIdentifier: Assembly-CSharp::Dash
+  impulseForce: 7
+  dashCooldownDuration: 0.5
   dashFOV: 120
-  FOVfade: 15
+  FOVfade: 1.5
 --- !u!114 &4457880705017223605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,13 +268,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
   slowdownMeter: 0
   maxSlowdown: 100
-  accumulationRate: 12.5
+  accumulationRate: 50
+  endZoneAccumulationRate: 50
   recoveryRate: 10
   recoveryDelay: 3
-  maxSpeedPenalty: 0.8
-  inSwamp: 0
-  isSafe: 0
+  maxSpeedPenalty: 0.9
+  swampSpeedPenalty: 0.3
+  crouchAccumulationMultiplier: 1.25
   playerManager: {fileID: 0}
+--- !u!114 &2173885828147200511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632353901539845077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c9e636bd775bb083f4045e6191c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundSnapping
+  yOffset: 1
+  snapDistance: 1
 --- !u!1 &3724390532522663585
 GameObject:
   m_ObjectHideFlags: 0

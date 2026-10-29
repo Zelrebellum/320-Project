@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class CreditsScroll : MonoBehaviour
 {
-    public RectTransform creditsContent;
+    [Header("Credits References")]
+    [SerializeField] private RectTransform creditsContent;
 
-    public float scrollSpeed = 80f;
-    public float startY = -700f;
-    public float endY = 1200f;
+    [Header("Scrolling Settings")]
+    [SerializeField] private float scrollSpeed = 80f;
+    [SerializeField] private float startY = -700f;
+    [SerializeField] private float endY = 1200f;
 
     private bool isScrolling = true;
 
@@ -29,15 +31,17 @@ public class CreditsScroll : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (isScrolling == true)
+        if (!isScrolling)
         {
-            creditsContent.anchoredPosition +=
-                Vector2.up * scrollSpeed * Time.deltaTime;
+            return;
+        }
 
-            if (creditsContent.anchoredPosition.y >= endY)
-            {
-                isScrolling = false;
-            }
+        creditsContent.anchoredPosition +=
+            Vector2.up * scrollSpeed * Time.unscaledDeltaTime;
+
+        if (creditsContent.anchoredPosition.y >= endY)
+        {
+            isScrolling = false;
         }
     }
 }

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+//THIS SCRIPT CURRENTLY DOESNT WORK, UPDATE LATER
+//THIS SCRIPT CURRENTLY DOESNT WORK, UPDATE LATER
+//THIS SCRIPT CURRENTLY DOESNT WORK, UPDATE LATER
+
 public class DeathwallManager : MonoBehaviour
 {
     /// <summary>
@@ -49,12 +53,12 @@ public class DeathwallManager : MonoBehaviour
     /// NEEDS TO BE TESTED WITH PLAYER OBJECT
     /// </summary>
     /// <param name="collision">The collided object</param>
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == manager.GetComponent<PlayerManager>().player)
-        {
-            manager.GetComponent<PlayerManager>().Respawn();
-            transform.position = startPosPure;
-        }
-    }
+    //public void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject == manager.GetComponent<PlayerManager>().player)
+    //    {
+    //        manager.GetComponent<PlayerManager>().Respawn();
+    //        transform.position = startPosPure;
+    //    }
+    //}
 }
