@@ -164,18 +164,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   walkSpeed: 5
   sprintSpeed: 8
-  topSpeed: 50
-  acceleration: 20
+  topSpeed: 30
+  acceleration: 15
   targetSpeed: 0
-  isSprinting: 0
+  isSprinting: 1
   moveDirection: {x: 0, y: 0}
-  jumpForce: 3
+  jumpForce: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  endZoneJumpMultiplier: 0.5
   playerCamera: {fileID: 2250898964316632270}
   crouchingHeight: 1.5
   playerHUD: {fileID: 0}
+  currentSpeed: 0
 --- !u!114 &1124682501939721075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ MonoBehaviour:
   ledgeDetectionDistance: 2
   maxLedgeHeight: 10
   minLedgeHeight: 0
-  climbSpeed: 13
+  climbSpeed: 10.8
   scaleTime: 0.5
 --- !u!114 &939205909518187893
 MonoBehaviour:
@@ -248,8 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5645049e330bdab2a9f79aec67bae0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::dash
-  impulseForce: 8
-  dashCooldownDuration: 0.5
+  impulseForce: 7
+  dashCooldownDuration: 2
   dashFOV: 120
   FOVfade: 15
 --- !u!114 &4457880705017223605
@@ -266,10 +268,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
   slowdownMeter: 0
   maxSlowdown: 100
-  accumulationRate: 12.5
+  accumulationRate: 50
+  endZoneAccumulationRate: 50
   recoveryRate: 10
   recoveryDelay: 3
-  maxSpeedPenalty: 0.8
+  maxSpeedPenalty: 0.9
+  swampSpeedPenalty: 0.3
+  crouchAccumulationMultiplier: 1.25
   playerManager: {fileID: 0}
 --- !u!114 &2173885828147200511
 MonoBehaviour:
