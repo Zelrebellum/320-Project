@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSlowdown : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 99.0f)]
+    [Header("Slowdown Settings")]
+    [SerializeField, Range(0f, 100f)]
     private float slowdownMeter = 0;
     
     [SerializeField]
@@ -11,163 +12,202 @@ public class PlayerSlowdown : MonoBehaviour
     [SerializeField]
     private float accumulationRate = 12.5f;
     [SerializeField]
+    private float endZoneAccumulationRate = 30f;
+    [SerializeField]
     private float recoveryRate = 10.0f;
     [SerializeField]
     private float recoveryDelay = 3.0f;
     [SerializeField]
     private float maxSpeedPenalty = 0.8f;
+    [SerializeField, Range(0f, 1f)]
+    private float swampSpeedPenalty = 0.10f;
+    [SerializeField, Min(1f)]
+    private float crouchAccumulationMultiplier = 1.25f;
     
     private float recoveryTimer = 0.0f;
 
-    [SerializeField]
     private bool inSwamp = false;
-    [SerializeField]
     private bool isSafe = false;
-    private bool atEnd = false;
-    public bool AtEnd { get { return atEnd; } }
+    private bool atEndZone = false;
+    public bool AtEnd { get { return atEndZone; } }
+
+
+    [Header("References")]
     [SerializeField] PlayerManager playerManager;
     
-    private dash dash;
+    private Dash dash;
+    private PlayerMovement movement;
 
-    void Awake()
+    private void Awake()
     {
-        dash = gameObject.GetComponent<dash>();
+        dash = GetComponent<Dash>();
+        movement = GetComponent<PlayerMovement>();
     }
-    
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         UpdateSlowdown();
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Entered Swamp");
-        if(other.gameObject.CompareTag("Swamp")){
-           EnterSwamp(); 
+        if (other.gameObject.CompareTag("Swamp"))
+        {
+            EnterSwamp();
         }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        if(other.gameObject.CompareTag("Swamp")){
+        if (other.gameObject.CompareTag("Swamp"))
+        {
             ExitSwamp();
-        }   
+        }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("End"))
         {
-            Debug.LogWarning("You did it!");
-            dash.enabled = false;
-            atEnd = true;
+            SetEndZoneState(true);
             return;
         }
-        isSafe = true;
+
+        if (other.CompareTag("Safe"))
+        {
+            isSafe = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("End"))
         {
-            atEnd = false;
-            dash.enabled = true;
+            SetEndZoneState(false);
             return;
         }
-        isSafe = false;
-    }
-    
-    void EnterSwamp()
-    {
-        inSwamp = true;
-        recoveryTimer = 0;
+
+        if (other.CompareTag("Safe"))
+        {
+            isSafe = false;
+        }
     }
 
-    void ExitSwamp()
+    private void EnterSwamp()
+    {
+        inSwamp = true;
+        recoveryTimer = 0f;
+    }
+
+    private void ExitSwamp()
     {
         inSwamp = false;
     }
 
-    //reduces slowdown meter automatically by given amount
     public void ReduceSlowdown(float amount)
     {
-        //if isDead
         if (playerManager.IsDead)
         {
             return;
         }
+
         slowdownMeter -= amount;
-        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+        slowdownMeter = Mathf.Clamp(
+            slowdownMeter, 0f, maxSlowdown);
     }
 
-    //updates current slowdown meter based on player status
-    void UpdateSlowdown()
+    private void UpdateSlowdown()
     {
-        //if isDead
         if (playerManager.IsDead)
         {
             return;
         }
-        //while in swamp the slowdown meter builds over time
+
         if (inSwamp && !isSafe)
         {
-            Debug.Log("SWAMPY");
-            if (atEnd)
+            float currentAccumulationRate = atEndZone
+                ? endZoneAccumulationRate
+                : accumulationRate;
+
+            if (movement.IsCrouching)
             {
-                accumulationRate = 30f;
+                currentAccumulationRate *= crouchAccumulationMultiplier;
             }
-            else
-            {
-                accumulationRate = 12.5f;
-            }
-            slowdownMeter += accumulationRate * Time.deltaTime;
-            recoveryTimer = 0;
+
+            slowdownMeter += currentAccumulationRate * Time.deltaTime;
         }
+        
         else
         {
-            //while out of swamp, recovery timer starts if it hasn't already
-            if(recoveryTimer < recoveryDelay)
+            if (recoveryTimer < recoveryDelay)
             {
-                recoveryTimer += Time.deltaTime; 
+                recoveryTimer += Time.deltaTime;
             }
-            //once delay is finished, slow will start decaying over time
             else
             {
                 slowdownMeter -= recoveryRate * Time.deltaTime;
             }
         }
 
-        slowdownMeter = Mathf.Clamp(slowdownMeter, 0, maxSlowdown);
+        slowdownMeter = Mathf.Clamp(
+            slowdownMeter, 0f, maxSlowdown);
 
-        //if slowdown exceeds max value, player will die
-        if(slowdownMeter >= maxSlowdown)
+        if (slowdownMeter >= maxSlowdown)
         {
-            if (atEnd)
+            if (atEndZone)
             {
                 SceneManager.LoadScene("EndingCredits");
+                return;
             }
+
             playerManager.Die();
         }
     }
+    
+    private void SetEndZoneState(bool active)
+    {
+        if (atEndZone == active)
+        {
+            return;
+        }
 
-    //resets slowdown values to default
+        atEndZone = active;
+
+        slowdownMeter = 0f;
+        recoveryTimer = 0f;
+
+        dash.enabled = !active;
+        movement.SetEndZoneJump(active);
+    }
+
     public void ResetSlowdown()
     {
-       slowdownMeter = 0;
-       recoveryTimer = 0;
-       inSwamp = false; 
+        slowdownMeter = 0f;
+        recoveryTimer = 0f;
+        inSwamp = false;
     }
 
     public float GetSpeedMultiplier()
     {
         float slowdownPerc = slowdownMeter / maxSlowdown;
-        float multiplier = 1 - (slowdownPerc * maxSpeedPenalty);
-        return multiplier;
+
+        float meterPenalty = slowdownPerc * maxSpeedPenalty;
+        float swampPenalty;
+
+        if (inSwamp && !isSafe)
+        {
+            swampPenalty = swampSpeedPenalty;
+        }
+        else
+        {
+            swampPenalty = 0f;
+        }
+        
+        return Mathf.Clamp01(1f - meterPenalty - swampPenalty);
     }
 
     public float GetSlowdownPercentage()
     {
-        return slowdownMeter/maxSlowdown;
+        return slowdownMeter / maxSlowdown;
     }
 }

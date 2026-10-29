@@ -1,78 +1,80 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject optionsPanel;
-    public GameObject mainMenuContent;
+    [Header("Menu Panels")]
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject mainMenuContent;
 
-    // Black panel used for the fade transition
-    public CanvasGroup fadePanel;
-    public float fadeDuration = 0.8f;
+    [Header("Scene Transition")]
+    [Tooltip("CanvasGroup used to fade the screen to black.")]
+    [SerializeField] private CanvasGroup fadePanel;
 
-    /// <summary>
-    /// Press Start game and fade to the Game Scene
-    /// </summary>
+    [SerializeField] private float fadeDuration = 0.8f;
+
+    private bool isTransitioning;
+
+    private void Start()
+    {
+        fadePanel.alpha = 0f;
+        fadePanel.blocksRaycasts = false;
+        fadePanel.interactable = false;
+    }
+
     public void StartGame()
     {
+        if (isTransitioning)
+        {
+            return;
+        }
+
+        isTransitioning = true;
+
+        // Block menu interaction during the scene transition.
+        fadePanel.blocksRaycasts = true;
+
         StartCoroutine(FadeAndLoadGame());
     }
 
-    /// <summary>
-    /// Fade the screen to black, then load the Playground scene
-    /// </summary>
     private IEnumerator FadeAndLoadGame()
     {
         float time = 0f;
 
-        // Change the fade panel from transparent to black
         while (time < fadeDuration)
         {
             time += Time.unscaledDeltaTime;
 
-            fadePanel.alpha = time / fadeDuration;
+            fadePanel.alpha = Mathf.Clamp01(time / fadeDuration);
 
             yield return null;
         }
 
-        // Make sure the screen completely black
         fadePanel.alpha = 1f;
 
-        // Load the game scene
         SceneManager.LoadScene("Sloth");
     }
 
-    /// <summary>
-    /// Press Setting open the Options panel
-    /// </summary>
     public void OpenOptions()
     {
         mainMenuContent.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
-    /// <summary>
-    /// Close the Credits panel
-    /// </summary>
     public void CloseOptions()
     {
         optionsPanel.SetActive(false);
         mainMenuContent.SetActive(true);
     }
 
-    /// <summary>
-    /// Open the ending credits scene
-    /// </summary>
     public void OpenCredits()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("EndingCredits");
     }
 
-    /// <summary>
-    /// Quit the game
-    /// </summary>
     public void QuitGame()
     {
         Debug.Log("Quit Game");

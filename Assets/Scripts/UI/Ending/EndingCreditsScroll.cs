@@ -4,12 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class EndingCreditsScroll : MonoBehaviour
 {
-    public RectTransform creditsContent;
+    [Header("Credits References")]
+    [SerializeField] private RectTransform creditsContent;
 
-    public float scrollSpeed = 80f;
-    public float startY = -700f;
-    public float endY = 1200f;
-
+    [Header("Scrolling Settings")]
+    [SerializeField] private float scrollSpeed = 80f;
+    [SerializeField] private float startY = -700f;
+    [SerializeField] private float endY = 1200f;
     private bool isScrolling = true;
 
     /// <summary>
@@ -32,19 +33,20 @@ public class EndingCreditsScroll : MonoBehaviour
     /// <summary>
     /// Textcontent scrolling
     /// </summary>
-    void Update()
+    private void Update()
     {
-        if (isScrolling == true)
+        if (!isScrolling)
         {
-            creditsContent.anchoredPosition +=
-                Vector2.up * scrollSpeed * Time.unscaledDeltaTime;
+            return;
+        }
 
-            if (creditsContent.anchoredPosition.y >= endY)
-            {
-                isScrolling = false;
+        creditsContent.anchoredPosition +=
+            Vector2.up * scrollSpeed * Time.unscaledDeltaTime;
 
-                StartCoroutine(ReturnToMainMenu());
-            }
+        if (creditsContent.anchoredPosition.y >= endY)
+        {
+            isScrolling = false;
+            StartCoroutine(ReturnToMainMenu());
         }
     }
 
@@ -54,7 +56,7 @@ public class EndingCreditsScroll : MonoBehaviour
     /// <returns></returns>
     IEnumerator ReturnToMainMenu()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
 
         SceneManager.LoadScene("MainMenu");
     }
