@@ -29,7 +29,7 @@ public class SlowdownOverlay : MonoBehaviour
             darknessImage == null)
         {
             Debug.LogError(
-                "SlowdownOverlay: Required reference is missing!",
+                "SlowdownOverlay: Required references is missing!",
                 this
             );
             enabled = false;

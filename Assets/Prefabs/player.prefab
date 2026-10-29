@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 212249843953435260}
   - component: {fileID: 1124682501939721075}
   - component: {fileID: 5176416108548706402}
-  - component: {fileID: 939205909518187893}
-  - component: {fileID: 1908503597326903813}
+  - component: {fileID: 4335015046802814074}
+  - component: {fileID: 1311157092182668748}
   - component: {fileID: 4457880705017223605}
   - component: {fileID: 2173885828147200511}
   m_Layer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   minLedgeHeight: 0
   climbSpeed: 10.8
   scaleTime: 0.5
---- !u!114 &939205909518187893
+--- !u!114 &4335015046802814074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,19 +226,19 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7fd7b9447d5e94ea2876b0e93f5b80, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::wallRun
+  m_EditorClassIdentifier: Assembly-CSharp::WallRun
   wallJumpLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   wallDetectionDistance: 1.3
-  wallRunSpeed: 0
-  speedMinimum: 1
-  maxWallRunTime: 0
-  maximumHeight: 0
-  wallRunFOV: 120
-  FOVfade: 15
+  wallRunSpeed: 7
+  speedMinimum: 3
+  maxWallRunTime: 5
+  maximumHeight: 5
+  wallRunFOV: 100
+  FOVfade: 50
   atHeight: 0
---- !u!114 &1908503597326903813
+--- !u!114 &1311157092182668748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,11 +249,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5645049e330bdab2a9f79aec67bae0ed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::dash
+  m_EditorClassIdentifier: Assembly-CSharp::Dash
   impulseForce: 7
-  dashCooldownDuration: 2
+  dashCooldownDuration: 0.5
   dashFOV: 120
-  FOVfade: 15
+  FOVfade: 1.5
 --- !u!114 &4457880705017223605
 MonoBehaviour:
   m_ObjectHideFlags: 0

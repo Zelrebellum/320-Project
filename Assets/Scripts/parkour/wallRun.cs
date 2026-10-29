@@ -9,16 +9,16 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float wallDetectionDistance = 1.3f;
 
     [Header("Wall Run Movement")]
-    [SerializeField] private float wallRunSpeed;
-    [SerializeField] private float speedMinimum;
-    [SerializeField] private float maxWallRunTime;
+    [SerializeField] private float wallRunSpeed = 7;
+    [SerializeField] private float speedMinimum = 3;
+    [SerializeField] private float maxWallRunTime = 5;
 
     [Tooltip("Maximum vertical distance the player can travel during a wall run.")]
-    [SerializeField, Range(0, 5)] private float maximumHeight;
+    [SerializeField, Range(0, 5)] private float maximumHeight = 10;
 
     [Header("Camera Effects")]
-    [SerializeField] private int wallRunFOV;
-    [SerializeField] private float FOVfade;
+    [SerializeField] private int wallRunFOV = 100;
+    [SerializeField] private float FOVfade = 50;
 
     // Component references
     private PlayerMovement movement;

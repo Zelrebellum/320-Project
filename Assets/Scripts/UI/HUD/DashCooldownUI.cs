@@ -4,7 +4,7 @@ using UnityEngine;
 public class DashCooldownUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private dash dashSource;
+    [SerializeField] private Dash dashSource;
 
     [Header("Visibility")]
     [SerializeField, Min(0f)] private float readyHoldTime = 0.4f;

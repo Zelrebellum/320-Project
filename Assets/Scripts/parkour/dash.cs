@@ -8,17 +8,18 @@ public class Dash : MonoBehaviour
     [SerializeField, Range(0.5f, 10.0f)] private float dashCooldownDuration;
     [Header("FOV")]
 
-    [SerializeField] private float dashFOV;
+    [SerializeField] private float dashFOV = 120;
 
-    [SerializeField] private float FOVfade;
+    [SerializeField] private float FOVfade = 1.5f;
 
     private PlayerHUD playerHUD;
     private float cooldownRemaining;
 
-    //public float CoolDown
-    //{
-    //    get => cooldownRemaining;
-    //}
+    public float CoolDown
+    {
+        get => cooldownRemaining;
+    }
+    
     private PlayerMovement movement;
     private PlayerSlowdown slowdown;
 
