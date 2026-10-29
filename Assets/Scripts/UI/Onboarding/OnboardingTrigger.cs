@@ -36,7 +36,7 @@ public class OnboardingTrigger : MonoBehaviour
             return false;
         }
 
-        foreach (UIManager manager in FindObjectsByType<UIManager>(FindObjectsSortMode.None))
+        foreach (UIManager manager in FindObjectsByType<UIManager>())
         {
             if (manager.gameObject.scene != gameObject.scene)
             {
