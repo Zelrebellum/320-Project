@@ -38,8 +38,9 @@ public class PlayerManager : MonoBehaviour
         dashAbility = player.GetComponent<Dash>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidbody = player.GetComponent<Rigidbody>();
-
         player.transform.position = spawn.position;
+        playerRigidbody.rotation = spawn.rotation;
+        movement = player.GetComponent<PlayerMovement>();
     }
 
     private void Update()

@@ -114,7 +114,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Strength: 1.51
+    - _Strength: 0.04
     - _Surface: 0
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
@@ -122,9 +122,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWaterColor: {r: 0.29094082, g: 0.36792442, b: 0.123219915, a: 0.9372549}
+    - _DeepWaterColor: {r: 0.12156861, g: 0.36862746, b: 0.215023, a: 0.9372549}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShallowWaterColor: {r: 0.69930065, g: 1, b: 0, a: 0.36862746}
+    - _ShallowWaterColor: {r: 0.015185714, g: 1, b: 0, a: 0.36862746}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
