@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1868108010160616414
+--- !u!1001 &3116138186478981627
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,43 +10,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 72
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 45.15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 72
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 210.1511
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.8407803
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.97983
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.46212265
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8868161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 235.048
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c43dd3463dc504f93a4268f325a31b5c, type: 2}
     - target: {fileID: 919132149155446097, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_Name
-      value: platform-hand (17)
+      value: Hand Platform
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       propertyPath: m_Layer
@@ -78,20 +78,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3633659907273462228}
+      addedObject: {fileID: 1503840885742778354}
   m_SourcePrefab: {fileID: 100100000, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
---- !u!1 &1526073243560201871 stripped
+--- !u!1 &2882258656979659946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91deb01de99720d47ac83b26eed7d9c5, type: 3}
-  m_PrefabInstance: {fileID: 1868108010160616414}
+  m_PrefabInstance: {fileID: 3116138186478981627}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &3633659907273462228
+--- !u!64 &1503840885742778354
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526073243560201871}
+  m_GameObject: {fileID: 2882258656979659946}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
