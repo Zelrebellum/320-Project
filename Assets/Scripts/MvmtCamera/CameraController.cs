@@ -158,7 +158,7 @@ public class CameraController : MonoBehaviour
 
     public void ChangeSensitivity(float sensitivity)
     {
-        sensitivity *= 20f;
+        sensitivity *= 5f;
 
         if (sensitivity < 5f)
         {
