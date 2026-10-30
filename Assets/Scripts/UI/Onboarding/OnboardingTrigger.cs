@@ -25,6 +25,22 @@ public class OnboardingTrigger : MonoBehaviour
     {
         TryActivate(other.GetComponentInParent<PlayerMovement>());
     }
+    private void OnTriggerStay(Collider other)
+    {
+        // Stop retrying after the tutorial has successfully opened.
+        if (hasTriggered)
+        {
+            return;
+        }
+
+        // Wait until the blink or pause has ended.
+        if (BlinkTransition.IsPlaying || PauseMenuManager.IsPaused)
+        {
+            return;
+        }
+
+        TryActivate(other.GetComponentInParent<PlayerMovement>());
+    }
 
     /// <summary>
     /// Find UI in this scene and consume the trigger only after it opens.
