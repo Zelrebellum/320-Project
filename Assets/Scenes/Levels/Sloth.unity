@@ -30116,6 +30116,10 @@ PrefabInstance:
       propertyPath: accumulationRate
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: crouchAccumulationMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
