@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WallRun
   wallJumpLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   wallDetectionDistance: 1.3
   wallRunSpeed: 7
   speedMinimum: 3
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dash
   impulseForce: 7
-  dashCooldownDuration: 0.5
+  dashCooldownDuration: 2
   dashFOV: 120
   FOVfade: 1.5
 --- !u!114 &4457880705017223605

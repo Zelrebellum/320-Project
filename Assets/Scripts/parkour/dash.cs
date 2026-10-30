@@ -36,8 +36,6 @@ public class Dash : MonoBehaviour
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
         playerHUD = movement.UI;
-        Debug.Log($"Movement HUD: {movement.UI}");
-        Debug.Log($"Dash HUD: {playerHUD}");
         slowdown = gameObject.GetComponent<PlayerSlowdown>();
         wall = gameObject.GetComponent<WallRun>();
     }
@@ -56,9 +54,7 @@ public class Dash : MonoBehaviour
         {
             camControl.EnableFOV(camControl.StartFOV, FOVfade);
         }
-
-        Debug.Log($"PlayerHUD: {playerHUD}");
-
+        
         if (cooldownRemaining < 0f)
         {
             dashing = false;

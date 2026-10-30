@@ -14,7 +14,7 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float maxWallRunTime = 5;
 
     [Tooltip("Maximum vertical distance the player can travel during a wall run.")]
-    [SerializeField, Range(0, 5)] private float maximumHeight = 10;
+    [SerializeField, Range(0, 5)] private float maximumHeight = 5;
 
     [Header("Camera Effects")]
     [SerializeField] private int wallRunFOV = 100;
@@ -64,6 +64,12 @@ public class WallRun : MonoBehaviour
             movement.GetCurrentSpeed() < speedMinimum ||
             !onWall)
         {
+            Debug.Log(
+                $"WallRun stopped: Timer={timer}, " +
+                $"Speed={movement.GetCurrentSpeed()}, " +
+                $"OnWall={onWall}"
+            );
+            
             StopWallrun();
             return;
         }
@@ -116,9 +122,15 @@ public class WallRun : MonoBehaviour
 
     public void WallJump(InputAction.CallbackContext context)
     {
+        Debug.Log(
+            $"Performed: {context.performed}, " +
+            $"Wallrunning: {wallrunning}, " +
+            $"Airborne: {movement.Airborne}, " +
+            $"Crouching: {movement.IsCrouching}"
+        );
+        Debug.Log("WallJump input received");
         if (!context.performed ||
             wallrunning ||
-            movement.Airborne ||
             movement.IsCrouching)
         {
             return;
@@ -154,6 +166,13 @@ public class WallRun : MonoBehaviour
         {
             return;
         }
+        
+        Debug.Log(
+            $"Left wall: {leftWall}, " +
+            $"Right wall: {rightWall}, " +
+            $"Layer mask: {wallJumpLayer.value}, " +
+            $"Detection distance: {wallDetectionDistance}"
+        );
 
         initialHeight = transform.position.y;
         wallrunning = true;
