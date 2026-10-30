@@ -213,7 +213,7 @@ MonoBehaviour:
     m_Bits: 64
   ledgeDetectionDistance: 2
   maxLedgeHeight: 10
-  minLedgeHeight: 0
+  minLedgeHeight: 0.2
   climbSpeed: 10.8
   scaleTime: 0.5
 --- !u!114 &4335015046802814074
@@ -231,7 +231,7 @@ MonoBehaviour:
   wallJumpLayer:
     serializedVersion: 2
     m_Bits: 128
-  wallDetectionDistance: 1.3
+  wallDetectionDistance: 2
   wallRunSpeed: 7
   speedMinimum: 3
   maxWallRunTime: 5
@@ -269,13 +269,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
   slowdownMeter: 0
   maxSlowdown: 100
-  accumulationRate: 30
+  accumulationRate: 15
   endZoneAccumulationRate: 50
-  recoveryRate: 10
+  recoveryRate: 20
   recoveryDelay: 3
   maxSpeedPenalty: 0.9
-  swampSpeedPenalty: 0.3
-  crouchAccumulationMultiplier: 1
+  swampSpeedPenalty: 0.1
+  crouchAccumulationMultiplier: 1.3
   playerManager: {fileID: 0}
 --- !u!114 &2173885828147200511
 MonoBehaviour:
@@ -454,7 +454,7 @@ Transform:
   m_GameObject: {fileID: 6011303242688790334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.855629, y: 4.0056, z: -10.061138}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -471,17 +471,17 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: dc56da7a69fb2fa1b8df1754d5a32305, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5.873749
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
