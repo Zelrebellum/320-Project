@@ -833,11 +833,15 @@ PrefabInstance:
       objectReference: {fileID: 8620647994242989180}
     - target: {fileID: 3541106581186254884, guid: 2c2efaff281bd5e409bd72dc7a2570eb, type: 3}
       propertyPath: m_Value
-      value: 0.482
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3541106581186254884, guid: 2c2efaff281bd5e409bd72dc7a2570eb, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541106581186254884, guid: 2c2efaff281bd5e409bd72dc7a2570eb, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208432875136394017, guid: 2c2efaff281bd5e409bd72dc7a2570eb, type: 3}
       propertyPath: hoverEffect

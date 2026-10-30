@@ -12,7 +12,7 @@ public class SensitivitySettings : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 5f);
+        float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
 
         sensitivitySlider.SetValueWithoutNotify(sensitivity);
         sensitivitySlider.onValueChanged.AddListener(ChangeSensitivity);
