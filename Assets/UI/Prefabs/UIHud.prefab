@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 45764829247655982}
   - component: {fileID: 3778369679366864411}
   - component: {fileID: 2556010541885684048}
+  - component: {fileID: 3847452185305435519}
   m_Layer: 5
   m_Name: UIHud
   m_TagString: Untagged
@@ -596,6 +597,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3847452185305435519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137139620788129005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0111abac3e97f4389e9cab53627d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  clickSound: {fileID: 8300000, guid: d2ec9b8308607a549aa4a90277ab4af9, type: 3}
 --- !u!1001 &995010481427119068
 PrefabInstance:
   m_ObjectHideFlags: 0
