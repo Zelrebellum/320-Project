@@ -3623,6 +3623,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
   optionsPanel: {fileID: 887212069}
   mainMenuContent: {fileID: 871661142}
+  titleText: {fileID: 1585321881}
+  titleFragments: {fileID: 1238440814}
+  scatterDuration: 1.5
+  scatterDistance: 450
   fadePanel: {fileID: 106642047}
   fadeDuration: 0.8
 --- !u!1 &1901031229
