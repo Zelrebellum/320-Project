@@ -5,8 +5,9 @@ public class PlayerSlowdown : MonoBehaviour
 {
     [Header("Slowdown Settings")]
     [SerializeField, Range(0f, 100f)]
+    private float onboardingSlowdown = 25f;
+    [SerializeField, Range(0f, 100f)]
     private float slowdownMeter = 0;
-    
     [SerializeField]
     private float maxSlowdown = 100.0f;
     [SerializeField]
@@ -30,8 +31,7 @@ public class PlayerSlowdown : MonoBehaviour
     private bool isSafe = false;
     private bool atEndZone = false;
     public bool AtEnd { get { return atEndZone; } }
-
-
+    
     [Header("References")]
     [SerializeField] PlayerManager playerManager;
     
@@ -42,6 +42,7 @@ public class PlayerSlowdown : MonoBehaviour
     {
         dash = GetComponent<Dash>();
         movement = GetComponent<PlayerMovement>();
+        slowdownMeter = onboardingSlowdown;
     }
 
     private void Update()
