@@ -64,12 +64,6 @@ public class WallRun : MonoBehaviour
             movement.GetCurrentSpeed() < speedMinimum ||
             !onWall)
         {
-            Debug.Log(
-                $"WallRun stopped: Timer={timer}, " +
-                $"Speed={movement.GetCurrentSpeed()}, " +
-                $"OnWall={onWall}"
-            );
-            
             StopWallrun();
             return;
         }
@@ -122,13 +116,6 @@ public class WallRun : MonoBehaviour
 
     public void WallJump(InputAction.CallbackContext context)
     {
-        Debug.Log(
-            $"Performed: {context.performed}, " +
-            $"Wallrunning: {wallrunning}, " +
-            $"Airborne: {movement.Airborne}, " +
-            $"Crouching: {movement.IsCrouching}"
-        );
-        Debug.Log("WallJump input received");
         if (!context.performed ||
             wallrunning ||
             movement.IsCrouching)
@@ -167,13 +154,6 @@ public class WallRun : MonoBehaviour
             return;
         }
         
-        Debug.Log(
-            $"Left wall: {leftWall}, " +
-            $"Right wall: {rightWall}, " +
-            $"Layer mask: {wallJumpLayer.value}, " +
-            $"Detection distance: {wallDetectionDistance}"
-        );
-
         initialHeight = transform.position.y;
         wallrunning = true;
         rBody.useGravity = false;

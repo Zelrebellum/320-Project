@@ -3,6 +3,13 @@ using UnityEngine.InputSystem;
 
 public class Dash : MonoBehaviour
 {
+    [Header("Dash Momentum")]
+    [SerializeField, Min(0f)]
+    private float dashMomentumDuration = 0.2f;
+
+    private float dashMomentumTimer;
+
+    public bool HasDashMomentum => dashMomentumTimer > 0f;
     [SerializeField] private float impulseForce = 8.0f;
     private bool dashing;
     [SerializeField, Range(0.5f, 10.0f)] private float dashCooldownDuration;
@@ -44,7 +51,7 @@ public class Dash : MonoBehaviour
     private void Update()
     {
         cooldownRemaining -= Time.deltaTime;
-
+        
         if (!dashing)
         {
             return;
@@ -65,10 +72,22 @@ public class Dash : MonoBehaviour
         playerHUD.UpdateDashCooldown((dashCooldownDuration - cooldownRemaining) / dashCooldownDuration);
     }
 
+    public void FixedUpdate()
+    {
+        if (dashMomentumTimer > 0f)
+        {
+            dashMomentumTimer = Mathf.Max(
+                0f,
+                dashMomentumTimer - Time.deltaTime
+            );
+        }
+    }
+
     public void ResetDash()
     {
         dashing = false;
         cooldownRemaining = 0;
+        dashMomentumTimer = 0f;
         playerHUD.UpdateDashCooldown(1f);
     }
 
@@ -86,6 +105,7 @@ public class Dash : MonoBehaviour
         }
 
         rBody.AddForce(camControl.Camera.transform.forward * impulseForce, ForceMode.Impulse);
+        dashMomentumTimer = dashMomentumDuration;
         slowdown.ReduceSlowdown(10.0f);
         dashing = true;
 

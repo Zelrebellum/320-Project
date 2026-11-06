@@ -170,13 +170,19 @@ MonoBehaviour:
   targetSpeed: 0
   isSprinting: 1
   moveDirection: {x: 0, y: 0}
-  jumpForce: 5
+  groundAcceleration: 25
+  groundDeceleration: 40
+  groundTurnAcceleration: 35
+  airAcceleration: 20
+  jumpForce: 8.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  risingGravityMultiplier: 1.2
+  fallingGravityMultiplier: 1.6
   endZoneJumpMultiplier: 0.5
   playerCamera: {fileID: 2250898964316632270}
-  crouchingHeight: 1.5
+  crouchingHeight: 1
   playerHUD: {fileID: 0}
   currentSpeed: 0
 --- !u!114 &1124682501939721075
@@ -267,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be54c45c97718a14da415f8926abbbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSlowdown
+  onboardingSlowdown: 25
   slowdownMeter: 0
   maxSlowdown: 100
   accumulationRate: 15
