@@ -1420,6 +1420,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1659861755560684961, guid: b3c179a6a494d564894d87c380468472, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3c179a6a494d564894d87c380468472, type: 3}
       propertyPath: m_Name
       value: Tree 1
