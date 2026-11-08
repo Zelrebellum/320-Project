@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: 
-  instructions: Press Ctrl to Crouch.
+  instructions: 'Press Ctrl to Crouch to go under blockages. '
   triggerOnce: 1
 --- !u!65 &142730305
 BoxCollider:
@@ -6059,7 +6059,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.0261
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4695800478147515171, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 431206016374771245, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -8791,7 +8792,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.0464
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13776,7 +13778,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.0543
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2948533099263572437, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 4695800478147515171, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -14002,7 +14005,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.0797
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1688597382903517328, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_AddedGameObjects: []
@@ -14311,7 +14315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: 
-  instructions: 'Press Space to Jump. '
+  instructions: 'Press Space to Jump on surfaces low to the ground. '
   triggerOnce: 1
 --- !u!65 &624001829
 BoxCollider:
@@ -17654,13 +17658,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721075436}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.008978917, y: -0.16381577, z: 0.024775768, w: 0.98613894}
-  m_LocalPosition: {x: 25.2, y: -12.2, z: 25}
+  m_LocalRotation: {x: -0.004621025, y: -0.1638164, z: 0.011436976, w: 0.9864138}
+  m_LocalPosition: {x: 25.2, y: -9.1, z: 25}
   m_LocalScale: {x: 259.4417, y: 8.388269, z: 222.57185}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2066176532}
-  m_LocalEulerAnglesHint: {x: 1.48, y: -18.829, z: 2.633}
+  m_LocalEulerAnglesHint: {x: -0.308, y: -18.862, z: 1.38}
 --- !u!1001 &735474367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21014,7 +21018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: ESCAPE FROM THE VINES
-  instructions: Press shift to dash and shake off the vines
+  instructions: "The swamp is trying to slow you down. \nPress shift to dash and loosen yourself from the vines. "
   triggerOnce: 1
 --- !u!65 &957874232
 BoxCollider:
@@ -23994,7 +23998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: 
-  instructions: 'Jump against a tall platform to Mantle. '
+  instructions: 'Jump against tall platforms to Mantle and get to a better vantage point. '
   triggerOnce: 1
 --- !u!65 &1006032669
 BoxCollider:
@@ -24081,7 +24085,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 1688597382903517328, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -25452,7 +25457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: 
-  instructions: Dash to move faster and go across large distances
+  instructions: Dash to move faster and go across farther distances.
   triggerOnce: 1
 --- !u!65 &1129260392
 BoxCollider:
@@ -28737,7 +28742,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6299695436105006403, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -31477,7 +31483,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 1688597382903517328, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -31556,13 +31563,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499117162}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04107197, y: -0.28918868, z: -0.13448158, w: 0.9468884}
-  m_LocalPosition: {x: -0.037, y: -0.493, z: -0.105}
+  m_LocalRotation: {x: 0.14968272, y: -0.30273446, z: -0.10033557, w: 0.9358844}
+  m_LocalPosition: {x: -0.03700005, y: -0.466, z: -0.10500003}
   m_LocalScale: {x: 1, y: 0.15002, z: 0.75491756}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2114389441}
-  m_LocalEulerAnglesHint: {x: 0, y: -33.966, z: -16.167}
+  m_LocalEulerAnglesHint: {x: 12.675, y: -37.705, z: -16.582}
 --- !u!33 &1499117164
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36168,7 +36175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OnboardingTrigger
   title: 
-  instructions: Jump by a wall to run across it
+  instructions: 'Jump next to a wall to run across it. '
   triggerOnce: 1
 --- !u!65 &1604271758
 BoxCollider:
@@ -36561,7 +36568,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.27
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -42567,7 +42574,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1688597382903517328, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 8257455780780817838, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -43006,7 +43014,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6299695436105006403, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -44409,7 +44418,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6299695436105006403, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
@@ -45407,7 +45417,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6868665180808359790, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8777059256762862079, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
     - {fileID: 1688597382903517328, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
