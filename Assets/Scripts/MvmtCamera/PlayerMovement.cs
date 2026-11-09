@@ -15,9 +15,32 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
 
 
+    [Header("Movement Acceleration")]
+    [SerializeField] private float groundAcceleration = 25f;
+    [SerializeField] private float groundDeceleration = 40f;
+    [SerializeField] private float groundTurnAcceleration = 35f;
+    [SerializeField] private float airAcceleration = 10f;
+    
+    [Header("Ground Detection")]
+    [SerializeField] private float sphereCastCheckRadius = 0.45f;
+    [Tooltip("Distance the sphere cast travels")]
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [Tooltip("Offset from player capsule bottom and sphere bottom")]
+    [SerializeField] private float groundCheckOffset = 0.15f;
+
+    [SerializeField, Range(0f, 1f)]
+    [Tooltip("Acceptable angle for surface to be counted as ground (THIS IS THE COSX VALUE OF DOT PRODUCT)")]
+    private float minimumGroundNormal = 0.5f;
+    
     [Header("Jumping")]
-    [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float jumpForce = 8.5f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField, Min(1f)]
+    private float risingGravityMultiplier = 1.2f;
+    [SerializeField, Min(1f)]
+    private float fallingGravityMultiplier = 1.6f;
+    private bool wasAirborne;
+    private float previousHorizontalSpeed;
     
     [SerializeField, Range(0f, 1f)]
     private float endZoneJumpMultiplier = 0.5f;
@@ -47,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider playerCollider;
     private WallRun wall;
+    private Dash dash;
+    private LedgeMantle ledgeMantle;
     private PlayerSlowdown slowdown;
     public bool Airborne => airborne;
     public bool IsCrouching => isCrouching;
@@ -59,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider>();
         wall = GetComponent<WallRun>();
         slowdown = GetComponent<PlayerSlowdown>();
+        ledgeMantle = GetComponent<LedgeMantle>();
+        dash = GetComponent<Dash>();
 
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
@@ -72,34 +99,67 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //checks if player is above ground using raycast
-        airborne = !Physics.Raycast(
-            transform.position,
-            -transform.up,
-            out hitInfo,
-            transform.localScale.y + 0.3f,
-            groundLayer
+        Bounds colliderBounds = playerCollider.bounds;
+
+        Vector3 groundCheckOrigin = new Vector3(
+            colliderBounds.center.x,
+            colliderBounds.min.y + sphereCastCheckRadius + groundCheckOffset,
+            colliderBounds.center.z
         );
 
-        //adjusts player speed based on player state
+        bool groundHit = Physics.SphereCast(
+            groundCheckOrigin,
+            sphereCastCheckRadius,
+            Vector3.down,
+            out hitInfo,
+            groundCheckDistance,
+            groundLayer,
+            QueryTriggerInteraction.Ignore
+        );
+
+        airborne = !groundHit ||
+                   Vector3.Dot(hitInfo.normal, Vector3.up) < minimumGroundNormal;
+        
+        Vector3 velocity = rb.linearVelocity;
+
+        float horizontalSpeed = new Vector3(
+            velocity.x,
+            0f,
+            velocity.z
+        ).magnitude;
+
+        if (wasAirborne && !airborne)
+        {
+            Debug.Log(
+                $"LANDED | " +
+                $"Before Speed: {previousHorizontalSpeed:F2} | " +
+                $"After Velocity: {rb.linearVelocity} | " +
+                $"Target: {targetSpeed:F2} | " +
+                $"Airborne: {airborne} | " +
+                $"Input: {moveDirection} | " +
+                $"Constraints: {rb.constraints}"
+            );
+        }
+
+        previousHorizontalSpeed = horizontalSpeed;
+        wasAirborne = airborne;
+
+        wasAirborne = airborne;
+        
+        ApplyJumpGravity();
+
         if (isSprinting)
         {
-            targetSpeed = sprintSpeed * slowdown.GetSpeedMultiplier();
+            targetSpeed = sprintSpeed * (slowdown != null
+                ? slowdown.GetSpeedMultiplier()
+                : 1f);
         }
         else
         {
             targetSpeed = walkSpeed;
         }
 
-        Acceleration();
-
-        Vector3 velocity = transform.right * moveDirection.x;
-        velocity += transform.forward * moveDirection.y;
-        velocity *= currentSpeed * Time.fixedDeltaTime;
-
-        Vector3 newPosition = rb.position + velocity;
-
-        rb.MovePosition(newPosition);
+        ApplyMovement();
     }
 
     private void Crouch()
@@ -138,6 +198,90 @@ public class PlayerMovement : MonoBehaviour
         //rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
     }
 
+    private void ApplyMovement()
+    {
+        if (dash.HasDashMomentum)
+        {
+            return;
+        }
+        
+        Vector3 inputDirection =
+            transform.right * moveDirection.x +
+            transform.forward * moveDirection.y;
+
+        inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
+
+        Vector3 velocity = rb.linearVelocity;
+
+        Vector3 horizontalVelocity = new Vector3(
+            velocity.x,
+            0f,
+            velocity.z
+        );
+
+        Vector3 desiredVelocity = inputDirection * targetSpeed;
+
+        float accelerationRate;
+
+        if (airborne)
+        {
+            if (moveDirection.sqrMagnitude < 0.01f)
+            {
+                accelerationRate = 0f;
+            }
+            else
+            {
+                accelerationRate = airAcceleration;
+            }
+        }
+        else if (moveDirection.sqrMagnitude < 0.01f)
+        {
+            accelerationRate = groundDeceleration;
+        }
+        else if (horizontalVelocity.sqrMagnitude > 0.01f &&
+                 Vector3.Dot(horizontalVelocity, desiredVelocity) < 0f)
+        {
+            accelerationRate = groundTurnAcceleration;
+        }
+        else
+        {
+            accelerationRate = groundAcceleration;
+        }
+
+        horizontalVelocity = Vector3.MoveTowards(
+            horizontalVelocity,
+            desiredVelocity,
+            accelerationRate * Time.fixedDeltaTime
+        );
+
+        rb.linearVelocity = new Vector3(
+            horizontalVelocity.x,
+            velocity.y,
+            horizontalVelocity.z
+        );
+
+        currentSpeed = horizontalVelocity.magnitude;
+    }
+    
+    private void ApplyJumpGravity()
+    {
+        if (!airborne || wall.Wallrunning || ledgeMantle.IsMantling)
+        {
+            return;
+        }
+        
+        float verticalVelocity = rb.linearVelocity.y;
+
+        float gravityMultiplier = verticalVelocity > 0f
+            ? risingGravityMultiplier
+            : fallingGravityMultiplier;
+
+        Vector3 additionalGravity =
+            Physics.gravity * (gravityMultiplier - 1f);
+
+        rb.AddForce(additionalGravity, ForceMode.Acceleration);
+    }
+    
     private void Acceleration()
     {
         if (moveDirection != Vector2.zero)
@@ -220,6 +364,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        Debug.Log(
+            $"Jump attempted | Airborne: {airborne} | " +
+            $"Crouching: {isCrouching} | " +
+            $"Wallrunning: {wall.Wallrunning}"
+        );
+        
         if (!context.performed ||
             (airborne && !wall.Wallrunning) ||
             isCrouching)
@@ -279,7 +429,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
+    
     public float GetCurrentSpeed()
     {
         return currentSpeed;

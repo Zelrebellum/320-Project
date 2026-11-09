@@ -12,19 +12,24 @@ public class LedgeMantle : MonoBehaviour
     [SerializeField] private float maxLedgeHeight = 10f;
     [Tooltip("minimum ledge height (height difference between player and ledge must be at least this value)")]
     [SerializeField] private float minLedgeHeight = 0f;
+    [SerializeField]
+    private float maximumMantleFallSpeed = 3f;
 
     [Header("Mantling")]
     [SerializeField, Range(0, 20)]
     private float climbSpeed;
+    private Vector3 approachVelocity;
+    [SerializeField, Range(0f, 1f)]
+    private float momentumRetention = 0.8f;
 
-    [SerializeField] private float scaleTime;
+    [SerializeField] private float scaleCooldown = 0.5f;
 
     // Component references
     private PlayerMovement movement;
     private Rigidbody rBody;
-
-    // Runtime state
+    
     private bool climbing;
+    public bool IsMantling => climbing;
     private RaycastHit hitInfo;
     private float waitTime;
 
@@ -36,13 +41,9 @@ public class LedgeMantle : MonoBehaviour
 
     private void Update()
     {
-        if (!movement.Airborne)
-        {
-            return;
-        }
-
         if (climbing)
         {
+            rBody.useGravity = false;
             Vector3 position = transform.position;
 
             float bottom = transform.position.y - transform.localScale.y;
@@ -55,24 +56,33 @@ public class LedgeMantle : MonoBehaviour
             }
             else
             {
-                rBody.AddForce(
-                    transform.forward * 2f,
-                    ForceMode.Impulse
+                Vector3 exitVelocity = approachVelocity * momentumRetention;
+
+                rBody.linearVelocity = new Vector3(
+                    exitVelocity.x,
+                    rBody.linearVelocity.y,
+                    exitVelocity.z
                 );
 
-                waitTime = scaleTime;
+                waitTime = scaleCooldown;
                 climbing = false;
+                rBody.useGravity = true;
+                Debug.Log("Mantling finished");
             }
-
             return;
         }
-
+        
         if (waitTime > 0f)
         {
             waitTime -= Time.deltaTime;
             return;
         }
-
+        
+        if (!movement.Airborne)
+        {
+            return;
+        }
+        
         bool hit = Physics.Raycast(
             transform.position,
             transform.forward,
@@ -92,9 +102,19 @@ public class LedgeMantle : MonoBehaviour
             transform.position.y
         );
 
+        if (rBody.linearVelocity.y < -maximumMantleFallSpeed)
+        {
+            return;
+        }
+        
         if (ledge <= maxLedgeHeight && ledge > minLedgeHeight)
         {
             climbing = true;
+            rBody.useGravity = false;
+            Vector3 velocity = rBody.linearVelocity;
+            approachVelocity = new  Vector3(velocity.x, 0, velocity.z);
+            rBody.linearVelocity = Vector3.zero;
+            Debug.Log("Mantling started");
         }
     }
 
