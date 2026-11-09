@@ -64,9 +64,14 @@ public class UIButtonAudio : MonoBehaviour
     /// </summary>
     private void PlayClick()
     {
-        if (clickSound != null)
+        if (clickSound == null)
         {
-            audioSource.PlayOneShot(clickSound);
+            return;
         }
+
+        audioSource.volume = Mathf.Clamp01(
+            PlayerPrefs.GetFloat("UIVolume", 1f));
+
+        audioSource.PlayOneShot(clickSound);
     }
 }
