@@ -26,11 +26,6 @@ public class BlinkTransition : MonoBehaviour
         SetEyeOpening(0f);
     }
 
-    private void Start()
-    {
-        PlayBlink();
-    }
-
     public void PlayBlink()
     {
         if (IsPlaying && gameObject.activeSelf)
