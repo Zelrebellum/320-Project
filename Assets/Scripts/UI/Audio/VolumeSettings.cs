@@ -11,7 +11,7 @@ public class VolumeSettings : MonoBehaviour
     public static event Action<float> BGMVolumeChanged;
 
     /// <summary>
-    /// Load saved volumes and connect slider listeners.
+    /// Load saved volumes and connect slider listeners
     /// </summary>
     private void OnEnable()
     {
@@ -38,7 +38,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Load a saved volume, using full volume as the default.
+    /// Load a saved volume, using full volume as the default
     /// </summary>
     private float LoadVolume(string key)
     {
@@ -46,7 +46,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Configure the slider without triggering its listeners.
+    /// Configure the slider without triggering its listeners
     /// </summary>
     private void SetupSlider(Slider slider, float volume)
     {
@@ -58,7 +58,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Apply and store the master volume immediately.
+    /// Apply and store the master volume immediately
     /// </summary>
     private void ChangeVolume(float volume)
     {
@@ -69,7 +69,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Store the music volume and notify active music sources.
+    /// Store the music volume and notify active music sources
     /// </summary>
     private void ChangeBGMVolume(float volume)
     {
@@ -80,7 +80,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Store the volume used by UI button sounds.
+    /// Store the volume used by UI button sounds
     /// </summary>
     private void ChangeUIVolume(float volume)
     {
@@ -90,7 +90,7 @@ public class VolumeSettings : MonoBehaviour
     }
 
     /// <summary>
-    /// Save settings and disconnect listeners when closed.
+    /// Save settings and disconnect listeners when closed
     /// </summary>
     private void OnDisable()
     {

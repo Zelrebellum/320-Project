@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Displays the level title card before playing the blink transition
+/// Attached to the TitleCard object
+/// </summary>
 public class TitleCardTransition : MonoBehaviour
 {
     [Header("References")]
@@ -10,6 +14,10 @@ public class TitleCardTransition : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float holdDuration = 2f;
 
+    /// <summary>
+    /// Shows the title for the configured duration then starts
+    /// the blink transition and hides the title card
+    /// </summary>
     private IEnumerator Start()
     {
         if (titleCanvasGroup == null || blinkTransition == null)
@@ -22,10 +30,10 @@ public class TitleCardTransition : MonoBehaviour
         titleCanvasGroup.alpha = 1f;
         titleCanvasGroup.blocksRaycasts = true;
 
-        // Keep the title fully visible.
+        // Keep the title visible even when the game is paused.
         yield return new WaitForSecondsRealtime(holdDuration);
 
-        // Start the blink before hiding the title card.
+        // Close the eyelids before removing the title card.
         blinkTransition.PlayBlink();
         gameObject.SetActive(false);
     }

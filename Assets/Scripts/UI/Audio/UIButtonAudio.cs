@@ -11,7 +11,7 @@ public class UIButtonAudio : MonoBehaviour
     private Button[] buttons;
 
     /// <summary>
-    /// Configure a shared audio source outside individual panels.
+    /// a shared audio source outside individual panels
     /// </summary>
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class UIButtonAudio : MonoBehaviour
     }
 
     /// <summary>
-    /// Connect all existing child buttons, including inactive ones.
+    /// Connect all existing child buttons, including inactive ones
     /// </summary>
     private void OnEnable()
     {
@@ -40,7 +40,7 @@ public class UIButtonAudio : MonoBehaviour
     }
 
     /// <summary>
-    /// Remove listeners when this UI is disabled.
+    /// Remove listeners when this UI is disabled
     /// </summary>
     private void OnDisable()
     {
@@ -60,7 +60,7 @@ public class UIButtonAudio : MonoBehaviour
 
     /// <summary>
     /// Play through the shared source so closing a panel
-    /// does not stop its button sound.
+    /// does not stop its button sound
     /// </summary>
     private void PlayClick()
     {
