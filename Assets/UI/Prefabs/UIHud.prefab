@@ -935,6 +935,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7530080874658388989}
     m_Modifications:
+    - target: {fileID: 602359891215886763, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -213
+      objectReference: {fileID: 0}
     - target: {fileID: 1624674975977261737, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1015,9 +1019,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1914509312819971041, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1512.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914509312819971041, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -303
+      objectReference: {fileID: 0}
     - target: {fileID: 1970846330426411089, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
       propertyPath: m_Name
       value: OnboardingPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476541830902083625, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSize
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476541830902083625, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622787707156155929, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSize
+      value: 33.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622787707156155929, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 33.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968197143913262417, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -394.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500359718331882083, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSize
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500359718331882083, guid: 4142c052c87f63847ac64a1aebf61662, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
