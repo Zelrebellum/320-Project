@@ -21,9 +21,6 @@ public class BrightnessManager : MonoBehaviour
 
         Instance = this;
 
-        // save when switch the scene
-        DontDestroyOnLoad(gameObject);
-
         Volume volume = GetComponent<Volume>();
 
         if (volume.sharedProfile == null)
