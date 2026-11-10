@@ -255,6 +255,7 @@ MonoBehaviour:
   dashCooldownDuration: 2
   dashFOV: 120
   FOVfade: 1.5
+  dashFeedbackUI: {fileID: 0}
 --- !u!114 &4457880705017223605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +408,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -438,6 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3639801145595229538}
   - component: {fileID: 3466754604467326019}
+  - component: {fileID: 3408385834131600169}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -557,3 +559,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3408385834131600169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011303242688790334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912124521cbcd81488e56322abd23d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BGMVolume
