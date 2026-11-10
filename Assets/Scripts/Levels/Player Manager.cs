@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Player References")]
     [Tooltip("Player GameObject reference")]
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject player;
     [SerializeField] private Transform spawn;
 
     [Header("Level Boundary")]
