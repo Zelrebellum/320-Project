@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI/MainMenu.unity
+    path: Assets/Scenes/UI/MainMenu/MainMenu.unity
     guid: 20116edba01186f43bc229165a596851
   - enabled: 1
     path: Assets/Scenes/Levels/Sloth.unity
     guid: 2f3eefcc353298e46aedfdd39c945cb6
   - enabled: 1
-    path: Assets/Scenes/UI/EndingCredits.unity
+    path: Assets/Scenes/UI/Ending/EndingCredits.unity
     guid: f1f55451ddd2fc242aaa79c1392e73f4
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

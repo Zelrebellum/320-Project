@@ -39,6 +39,7 @@ public class PlayerHUD : MonoBehaviour
         image.color = color;
     }
 
+// fade the stand/crounch Icon
     private void FadeIcon()
     {
         if (!standIcon.activeSelf)
@@ -59,6 +60,7 @@ public class PlayerHUD : MonoBehaviour
         standIcon.GetComponent<Image>().color = color;
     }
 
+//dash CD change the bar
     public void UpdateDashCooldown(float progress)
     {
         Vector3 scale = hudCooldown.transform.localScale;

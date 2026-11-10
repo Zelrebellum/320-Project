@@ -1,5 +1,5 @@
-
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
@@ -9,15 +9,12 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuContent;
     [SerializeField] private GameObject settingsPanel;
 
-    // Allows other scripts to read the pause state.
-    // Only this class can change its value.
     public static bool IsPaused { get; private set; }
 
-    // Tracks the onboarding panel currently displayed.
     private GameObject currentOnboardingPanel;
 
     /// <summary>
-    /// Start with the pause menu hidden and gameplay running.
+    /// Start with the pause menu hidden and gameplay running
     /// </summary>
     private void Start()
     {
@@ -25,16 +22,28 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Pause gameplay, display the pause menu,
-    /// and release the mouse cursor.
+    /// Clear the button selection left
+    /// </summary>
+    private void ClearUISelection()
+    {
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+    }
+
+    /// <summary>
+    /// Pause gameplay, display the pause menu
     /// </summary>
     public void PauseGame()
     {
-        // Prevent the pause menu from opening over onboarding.
+        // Prevent the pause menu from opening over onboarding
         if (currentOnboardingPanel != null)
         {
             return;
         }
+
+        ClearUISelection();
 
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
@@ -44,8 +53,7 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Display onboarding, pause gameplay,
-    /// and release the mouse cursor.
+    /// Display onboarding and pause gameplay
     /// </summary>
     public void OpenOnboarding(GameObject panel)
     {
@@ -54,9 +62,10 @@ public class PauseMenuManager : MonoBehaviour
             return;
         }
 
+        ClearUISelection();
+
         currentOnboardingPanel = panel;
 
-        // Hide the pause menu while displaying onboarding.
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
         pausePanel.SetActive(false);
@@ -66,18 +75,18 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Close onboarding and the pause menu,
-    /// then restore gameplay and lock the cursor.
+    /// Close onboarding and the pause menu
     /// </summary>
     public void ResumeGame()
     {
+        ClearUISelection();
+
         if (currentOnboardingPanel != null)
         {
             currentOnboardingPanel.SetActive(false);
             currentOnboardingPanel = null;
         }
 
-        // Reset the menu pages for the next pause.
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
         pausePanel.SetActive(false);
@@ -86,8 +95,7 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Update the pause state, gameplay time,
-    /// and mouse cursor together.
+    /// Update the pause state
     /// </summary>
     private void SetPausedState(bool paused)
     {
@@ -102,34 +110,39 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Show Settings while keeping gameplay paused.
+    /// Show Settings while keeping gameplay paused
     /// </summary>
     public void OpenSettings()
     {
-        // Keep Settings from opening over onboarding.
         if (currentOnboardingPanel != null)
         {
             return;
         }
+
+        ClearUISelection();
 
         pauseMenuContent.SetActive(false);
         settingsPanel.SetActive(true);
     }
 
     /// <summary>
-    /// Return from Settings to the main pause menu.
+    /// Return from Settings to the main pause
     /// </summary>
     public void CloseSettings()
     {
+        ClearUISelection();
+
         settingsPanel.SetActive(false);
         pauseMenuContent.SetActive(true);
     }
 
     /// <summary>
-    /// Restore the time scale and return to the main menu.
+    /// Restore gameplay time and return
     /// </summary>
     public void ReturnToMainMenu()
     {
+        ClearUISelection();
+
         IsPaused = false;
         Time.timeScale = 1f;
 
@@ -140,8 +153,7 @@ public class PauseMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Clear the pause state when this object is destroyed,
-    /// including when its scene is unloaded.
+    /// Clear the pause state
     /// </summary>
     private void OnDestroy()
     {

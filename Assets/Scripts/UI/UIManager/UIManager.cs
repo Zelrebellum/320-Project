@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
         if (onboardingPanel == null || !onboardingPanel.IsConfigured ||
             pauseMenuManager == null || !onboardingPanel.transform.parent.gameObject.activeInHierarchy)
         {
-            Debug.LogWarning("UIManager: Onboarding panel references are missing or inactive.", this);
+            Debug.LogWarning("UIManager: Onboarding panel references are missing.", this);
             return false;
         }
 

@@ -321,3 +321,4 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3348534341886287565, guid: fd64db1437638af4bbdb16011a002af7, type: 3}
+
