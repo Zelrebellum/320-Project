@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,22 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private GameObject crouchIcon;
     [SerializeField] private GameObject standIcon;
 
+    [SerializeField] private TextMeshProUGUI timerText;
+
     [Header("Icon Settings")]
     [SerializeField] private float fadeIconTime = 2f;
 
     private float fadeTimer;
 
+    private float timer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Update()
     {
+        timer += Time.deltaTime;
+        System.TimeSpan t = System.TimeSpan.FromSeconds(timer);
+
+        timerText.text = string.Format("{0:D2}m:{1:D2}s:{2:D3}ms", t.Minutes, t.Seconds, t.Milliseconds);
         FadeIcon();
     }
 

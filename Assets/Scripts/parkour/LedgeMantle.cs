@@ -85,6 +85,10 @@ public class LedgeMantle : MonoBehaviour
         {
             return;
         }
+        if (!hitInfo.collider.CompareTag("Mantle") && !hitInfo.collider.CompareTag("WallrunMantle"))
+        {
+            return;
+        }
 
         float ledge = Mathf.Abs(
             (hitInfo.collider.bounds.center.y +

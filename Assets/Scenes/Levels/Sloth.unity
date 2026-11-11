@@ -740,6 +740,10 @@ PrefabInstance:
       value: Rock (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -933,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 96.909
@@ -1042,6 +1050,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -1194,6 +1206,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -2496,6 +2512,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7953891190141431186, guid: f5bb890f290938845ace2c0dc1008a55, type: 3}
   m_PrefabInstance: {fileID: 134662222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &139496673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+  m_PrefabInstance: {fileID: 233357280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92f741711fe153439a6ab092f633ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DashFeedbackUI
 --- !u!1001 &139714768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2750,6 +2777,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3198,6 +3229,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -6073,17 +6108,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
   m_PrefabInstance: {fileID: 227384033}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &139496673 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
-  m_PrefabInstance: {fileID: 233357280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92f741711fe153439a6ab092f633ec1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DashFeedbackUI
 --- !u!1001 &233357280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6516,6 +6540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 130.69
@@ -6679,6 +6707,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7507,7 +7539,7 @@ GameObject:
   - component: {fileID: 293461447}
   m_Layer: 7
   m_Name: Large water fence 2
-  m_TagString: Untagged
+  m_TagString: Wallrun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9359,6 +9391,10 @@ PrefabInstance:
       value: Rock (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9549,6 +9585,10 @@ PrefabInstance:
       value: Rock (10)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9655,6 +9695,10 @@ PrefabInstance:
       value: Rock (5)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9735,6 +9779,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12524,6 +12572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 110.53999
@@ -12637,6 +12689,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -12818,6 +12874,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13513,7 +13573,7 @@ GameObject:
   - component: {fileID: 572877685}
   m_Layer: 7
   m_Name: WallRun
-  m_TagString: Untagged
+  m_TagString: Wallrun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13767,6 +13827,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14310,6 +14374,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -14576,6 +14644,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -17640,6 +17712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70.90713
@@ -17737,6 +17813,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20242,6 +20322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -72.6
@@ -20612,6 +20696,10 @@ PrefabInstance:
       value: Rock (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -20770,6 +20858,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.z
@@ -21013,6 +21105,10 @@ PrefabInstance:
       value: Rock (8)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -21193,6 +21289,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: Wallrun Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -24703,6 +24803,10 @@ PrefabInstance:
       value: Rock (9)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -26824,6 +26928,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 83.02099
@@ -27143,6 +27251,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -27620,6 +27732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 106.57001
@@ -27918,7 +28034,7 @@ GameObject:
   - component: {fileID: 1288855930}
   m_Layer: 7
   m_Name: Fence
-  m_TagString: Untagged
+  m_TagString: Wallrun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28072,6 +28188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 58.350998
@@ -28183,6 +28303,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -29864,6 +29988,10 @@ PrefabInstance:
       value: Rock (13)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -30515,6 +30643,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -35729,6 +35861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 61.508
@@ -35948,6 +36084,10 @@ PrefabInstance:
       value: Rock (4)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -36025,7 +36165,7 @@ GameObject:
   - component: {fileID: 1602098326}
   m_Layer: 7
   m_Name: Small water fence
-  m_TagString: Untagged
+  m_TagString: Wallrun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36294,6 +36434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 81.659004
@@ -36399,6 +36543,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -37301,6 +37449,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -38783,6 +38935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 91.307
@@ -39108,6 +39264,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -42706,6 +42866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PlatformHand (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
       value: 56.451
@@ -43408,6 +43572,10 @@ PrefabInstance:
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_Name
       value: Rock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -44809,6 +44977,10 @@ PrefabInstance:
       value: Rock (12)
       objectReference: {fileID: 0}
     - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410168366072758447, guid: 9f0b797726b69f64cb6e6575108e9f4b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -44889,6 +45061,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -45866,7 +46042,7 @@ GameObject:
   - component: {fileID: 2093082652}
   m_Layer: 0
   m_Name: LevelPlatforms
-  m_TagString: Untagged
+  m_TagString: Mantle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46312,7 +46488,7 @@ GameObject:
   - component: {fileID: 2126613363}
   m_Layer: 7
   m_Name: Large water fence 1
-  m_TagString: Untagged
+  m_TagString: Wallrun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46456,6 +46632,10 @@ PrefabInstance:
     - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_Name
       value: PF_PlatformHand (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270632874906092298, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 1939328996550793648, guid: 36b7f7e34472fae4096ab2da1b5b1ebd, type: 3}
       propertyPath: m_LocalScale.x
@@ -46785,4 +46965,3 @@ SceneRoots:
   - {fileID: 868440540}
   - {fileID: 241277328}
   - {fileID: 2107359192}
-
