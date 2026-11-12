@@ -72,18 +72,21 @@ public class PlayerMovement : MonoBehaviour
     private WallRun wall;
     private Dash dash;
     private LedgeMantle ledgeMantle;
-    private PlayerSlowdown slowdown;
+    private SlothManager slowdown;
     public bool Airborne => airborne;
     public bool IsCrouching => isCrouching;
     public PlayerHUD UI => playerHUD;
-
-
+    
+    private float wrathSpeedMultiplier = 1f;
+    private float wrathJumpMultiplier = 1f;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         wall = GetComponent<WallRun>();
-        slowdown = GetComponent<PlayerSlowdown>();
+        //EDIT BEFORE PUSH
+        //slowdown = GetComponent<SlothManager>();
         ledgeMantle = GetComponent<LedgeMantle>();
         dash = GetComponent<Dash>();
 
@@ -127,28 +130,17 @@ public class PlayerMovement : MonoBehaviour
             0f,
             velocity.z
         ).magnitude;
-
-        if (wasAirborne && !airborne)
-        {
-            Debug.Log(
-                $"LANDED | " +
-                $"Before Speed: {previousHorizontalSpeed:F2} | " +
-                $"After Velocity: {rb.linearVelocity} | " +
-                $"Target: {targetSpeed:F2} | " +
-                $"Airborne: {airborne} | " +
-                $"Input: {moveDirection} | " +
-                $"Constraints: {rb.constraints}"
-            );
-        }
-
+        
         previousHorizontalSpeed = horizontalSpeed;
-        wasAirborne = airborne;
-
         wasAirborne = airborne;
         
         ApplyJumpGravity();
 
-        if (isSprinting)
+        if (wall.Wallrunning)
+        {
+            targetSpeed = wall.WallRunSpeed;
+        }
+        else if (isSprinting)
         {
             targetSpeed = sprintSpeed * (slowdown != null
                 ? slowdown.GetSpeedMultiplier()
@@ -158,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
         {
             targetSpeed = walkSpeed;
         }
+
+        targetSpeed *= wrathSpeedMultiplier;
 
         ApplyMovement();
     }
@@ -282,40 +276,6 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(additionalGravity, ForceMode.Acceleration);
     }
     
-    private void Acceleration()
-    {
-        if (moveDirection != Vector2.zero)
-        {
-            // are we slower than the speed we can currently go? if we are, go faster
-            if (currentSpeed < targetSpeed)
-            {
-                currentSpeed += acceleration * Time.deltaTime;
-            }
-            // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
-            else if (currentSpeed < topSpeed &&
-                     currentSpeed > targetSpeed + 0.2f)
-            {
-                currentSpeed -= acceleration * 1.5f * Time.deltaTime;
-            }
-            // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
-            else
-            {
-                currentSpeed = targetSpeed;
-            }
-        }
-        else
-        {
-            if (currentSpeed > 0)
-            {
-                currentSpeed -= (acceleration * 2) * Time.deltaTime;
-            }
-            else
-            {
-                currentSpeed = 0;
-            }
-        }
-    }
-    
     public void SetEndZoneJump(bool reduced)
     {
         if (jumpReducedByEndZone == reduced)
@@ -336,6 +296,12 @@ public class PlayerMovement : MonoBehaviour
         jumpReducedByEndZone = reduced;
     }
 
+    public void SetWrathBonuses(float speedMultiplier, float jumpMultiplier)
+    {
+        wrathSpeedMultiplier = speedMultiplier;
+        wrathJumpMultiplier = jumpMultiplier;
+    }
+    
     public void ResetMovement()
     {
         currentSpeed = 0;
@@ -364,12 +330,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log(
-            $"Jump attempted | Airborne: {airborne} | " +
-            $"Crouching: {isCrouching} | " +
-            $"Wallrunning: {wall.Wallrunning}"
-        );
-        
         if (!context.performed ||
             (airborne && !wall.Wallrunning) ||
             isCrouching)
@@ -377,7 +337,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        float effectiveJumpForce = jumpForce * wrathJumpMultiplier;
+        rb.AddForce(transform.up * effectiveJumpForce, ForceMode.Impulse);
 
         if (wall.Wallrunning)
         {

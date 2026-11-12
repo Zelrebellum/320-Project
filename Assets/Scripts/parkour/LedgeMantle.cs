@@ -83,12 +83,18 @@ public class LedgeMantle : MonoBehaviour
             return;
         }
         
+        if (rBody.linearVelocity.y < -maximumMantleFallSpeed)
+        {
+            return;
+        }
+        
         bool hit = Physics.Raycast(
             transform.position,
             transform.forward,
             out hitInfo,
             ledgeDetectionDistance,
-            groundLayer
+            groundLayer,
+            QueryTriggerInteraction.Ignore
         );
 
         if (!hit)
@@ -101,11 +107,6 @@ public class LedgeMantle : MonoBehaviour
              hitInfo.collider.bounds.size.y / 2f) -
             transform.position.y
         );
-
-        if (rBody.linearVelocity.y < -maximumMantleFallSpeed)
-        {
-            return;
-        }
         
         if (ledge <= maxLedgeHeight && ledge > minLedgeHeight)
         {

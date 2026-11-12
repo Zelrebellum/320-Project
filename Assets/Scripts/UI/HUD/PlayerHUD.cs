@@ -8,6 +8,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private GameObject hudCooldown;
     [SerializeField] private GameObject crouchIcon;
     [SerializeField] private GameObject standIcon;
+    [SerializeField] private Image wrathMeterFill;
 
     [Header("Icon Settings")]
     [SerializeField] private float fadeIconTime = 2f;
@@ -65,6 +66,9 @@ public class PlayerHUD : MonoBehaviour
         scale.x = Mathf.Clamp01(progress);
         hudCooldown.transform.localScale = scale;
     }
-
-
+    
+    public void UpdateWrathMeter(float percentage)
+    {
+        wrathMeterFill.fillAmount = Mathf.Clamp01(percentage);
+    }
 }

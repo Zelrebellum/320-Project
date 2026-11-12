@@ -10,6 +10,7 @@ public class WallRun : MonoBehaviour
 
     [Header("Wall Run Movement")]
     [SerializeField] private float wallRunSpeed = 7;
+    public float WallRunSpeed => wallRunSpeed;
     [SerializeField] private float speedMinimum = 3;
     [SerializeField] private float maxWallRunTime = 5;
 
@@ -42,6 +43,7 @@ public class WallRun : MonoBehaviour
     public bool atHeight = false;
 
     public bool Wallrunning => wallrunning;
+    
 
     private void Start()
     {
@@ -54,12 +56,9 @@ public class WallRun : MonoBehaviour
     {
         if (!wallrunning)
         {
-            rBody.constraints = (RigidbodyConstraints)112;
-            currentAngle = 0;
-            rBody.useGravity = true;
             return;
         }
-
+        
         if (timer < 0 ||
             movement.GetCurrentSpeed() < speedMinimum ||
             !onWall)
@@ -80,9 +79,7 @@ public class WallRun : MonoBehaviour
         );
 
         transform.rotation = rotation;
-
-        movement.targetSpeed = wallRunSpeed;
-
+        
         positionCheck = transform.position;
         positionCheck.y -= transform.localScale.y;
 
@@ -164,6 +161,9 @@ public class WallRun : MonoBehaviour
 
     public void StopWallrun()
     {
+        rBody.useGravity = true;
+        rBody.constraints = RigidbodyConstraints.FreezeRotation;
+        
         timer = maxWallRunTime;
         wallrunning = false;
 
@@ -178,7 +178,7 @@ public class WallRun : MonoBehaviour
         transform.rotation = rotation;
         onWall = true;
 
-        camControl.EnableFOV(camControl.StartFOV, FOVfade);
+        camControl.EnableFOV(camControl.BaseFOV, FOVfade);
     }
 
     private void OnDrawGizmos()

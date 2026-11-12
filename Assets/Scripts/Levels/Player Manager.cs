@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Player References")]
     [Tooltip("Player GameObject reference")]
     [SerializeField] private GameObject player;
+    public GameObject Player => player;
     [SerializeField] private Transform spawn;
 
     [Header("Level Boundary")]
@@ -17,13 +18,17 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private BlinkTransition blinkTransition;
     [SerializeField] private SlowdownOverlay slowdownOverlay;
 
+    [SerializeField] private RisingEnemy enemy;
+    
     // Player components
     private PlayerMovement movement;
     private PlayerSlowdown slowdown;
+    private WrathManager wrathManager;
     private WallRun wallRun;
     private Dash dashAbility;
     private PlayerInput playerInput;
     private Rigidbody playerRigidbody;
+    private CameraController camControl;
 
     // Runtime state
     private bool isDead;
@@ -34,13 +39,14 @@ public class PlayerManager : MonoBehaviour
     {
         movement = player.GetComponent<PlayerMovement>();
         slowdown = player.GetComponent<PlayerSlowdown>();
+        wrathManager = gameObject.GetComponent<WrathManager>();
         wallRun = player.GetComponent<WallRun>();
         dashAbility = player.GetComponent<Dash>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidbody = player.GetComponent<Rigidbody>();
+        camControl = player.GetComponent<CameraController>();
         player.transform.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
-        movement = player.GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -101,7 +107,11 @@ public class PlayerManager : MonoBehaviour
         playerRigidbody.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
 
+        enemy?.ResetEnemy();
         slowdown.ResetSlowdown();
+        wrathManager.ResetWrath();
+        
+        camControl.ResetFOV();
     }
 
     public void OnReset(InputAction.CallbackContext context)

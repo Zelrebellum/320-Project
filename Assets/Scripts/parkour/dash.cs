@@ -1,5 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+public enum DashState
+{
+    OnCooldown,
+    WrathReady,
+    SafeReady
+}
 
 public class Dash : MonoBehaviour
 {
@@ -11,30 +19,57 @@ public class Dash : MonoBehaviour
 
     public bool HasDashMomentum => dashMomentumTimer > 0f;
     [SerializeField] private float impulseForce = 8.0f;
-    private bool dashing;
-    [SerializeField, Range(0.5f, 10.0f)] private float dashCooldownDuration;
+    [SerializeField, Range(0.5f, 10.0f)] private float dashCooldownDuration = 2.5f;
     [Header("FOV")]
 
     [SerializeField] private float dashFOV = 120;
-
     [SerializeField] private float FOVfade = 1.5f;
+    private bool dashFOVActive;
 
+    [Header("Cooldown")]
     private PlayerHUD playerHUD;
-    private float cooldownRemaining;
-
+    [SerializeField] private float cooldownRemaining;
     public float CoolDown
     {
-        get => cooldownRemaining;
+        get
+        {
+            if (wrath.CurrentWrathState == WrathState.Active)
+            {
+                return Mathf.Max(
+                    0f,
+                    cooldownRemaining - (dashCooldownDuration - wrath.WrathDashCooldown)
+                );
+            }
+
+            return cooldownRemaining;
+        }
     }
+    
+    public DashState DashCooldownState
+    {
+        get
+        {
+            if(cooldownRemaining <= 0f && wrath.CurrentWrathState != WrathState.Active)
+            {
+                return DashState.SafeReady;
+            }
+            if (cooldownRemaining <= dashCooldownDuration - wrath.WrathDashCooldown
+                && wrath.CurrentWrathState != WrathState.Recovery)
+            {
+                return DashState.WrathReady;
+            }
+            return DashState.OnCooldown;
+        }
+    }
+    
+    public WrathState CurrentWrathState => wrath.CurrentWrathState; 
     
     private PlayerMovement movement;
     private PlayerSlowdown slowdown;
-
     private Rigidbody rBody;
-
     private CameraController camControl;
-
     private WallRun wall;
+    [SerializeField] private WrathManager wrath;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,27 +85,27 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        cooldownRemaining -= Time.deltaTime;
+        cooldownRemaining = Mathf.Clamp(
+            cooldownRemaining - Time.deltaTime,
+            0f,
+            dashCooldownDuration
+        );
         
-        if (!dashing)
+        float effectiveCooldown =
+            wrath.CurrentWrathState == WrathState.Active
+                ? wrath.WrathDashCooldown
+                : dashCooldownDuration;
+        
+        if (dashFOVActive &&
+            cooldownRemaining <= dashCooldownDuration - 0.7f)
         {
-            return;
-        }
-
-        if (cooldownRemaining < dashCooldownDuration - 0.7f)
-        {
-            camControl.EnableFOV(camControl.StartFOV, FOVfade);
+            camControl.EnableFOV(camControl.BaseFOV, FOVfade);
+            dashFOVActive = false;
         }
         
-        if (cooldownRemaining < 0f)
-        {
-            dashing = false;
-            playerHUD.UpdateDashCooldown(1f);
-            return;
-        }
+        float progress = 1f - (CoolDown / effectiveCooldown);
 
-        playerHUD.UpdateDashCooldown((dashCooldownDuration - cooldownRemaining) / dashCooldownDuration);
-    }
+        playerHUD.UpdateDashCooldown(Mathf.Clamp01(progress));    }
 
     public void FixedUpdate()
     {
@@ -85,7 +120,7 @@ public class Dash : MonoBehaviour
 
     public void ResetDash()
     {
-        dashing = false;
+        dashFOVActive = false;
         cooldownRemaining = 0;
         dashMomentumTimer = 0f;
         playerHUD.UpdateDashCooldown(1f);
@@ -93,23 +128,38 @@ public class Dash : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
-        if (!context.performed
-         || dashing 
-         || cooldownRemaining > 0.0f 
-         || movement.IsCrouching
-         || wall.Wallrunning
-         )
+        if (!context.performed)
         {
             return;
         }
+        
+        if (DashCooldownState == DashState.OnCooldown
+            || movement.IsCrouching
+            || wall.Wallrunning)
+        {
+            return;
+        }
+        
+        bool wrathDash = cooldownRemaining > 0f;
+        float effectiveDashForce = impulseForce;
 
-        rBody.AddForce(camControl.Camera.transform.forward * impulseForce, ForceMode.Impulse);
+        if (wrath.CurrentWrathState == WrathState.Active)
+        {
+            effectiveDashForce *= wrath.DashForceMultiplier;
+        }
+        rBody.AddForce(camControl.Camera.transform.forward * effectiveDashForce, ForceMode.Impulse);
+        wrath.NotifyDash();
+        
+        if (wrathDash)
+        {
+            wrath.AddWrath(wrath.DashWrathGain);
+        }
+        
         dashMomentumTimer = dashMomentumDuration;
         slowdown.ReduceSlowdown(10.0f);
-        dashing = true;
 
         cooldownRemaining = dashCooldownDuration;
+        dashFOVActive = true;
         camControl.EnableFOV(dashFOV, 75f);
     }
 }
