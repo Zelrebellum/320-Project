@@ -8,9 +8,8 @@ TagManager:
   - Swamp
   - End
   - Safe
-  - Mantle
   - Wallrun
-  - WallrunMantle
+  - Mantle
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - UI
   - ground
   - wallRun
-  - 
+  - player
   - 
   - 
   - 
