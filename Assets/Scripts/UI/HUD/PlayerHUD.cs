@@ -1,13 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-
 
 public class PlayerHUD : MonoBehaviour
 {
     [Header("HUD References")]
     [SerializeField] private GameObject hudCooldown;
     [SerializeField] private GameObject crouchIcon;
+
+    [FormerlySerializedAs("postureIcon")]
     [SerializeField] private GameObject standIcon;
 
     [SerializeField] private TextMeshProUGUI timerText;
@@ -16,66 +18,102 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private float fadeIconTime = 2f;
 
     private float fadeTimer;
-
     private float timer;
+    private Image standImage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Update()
+    private void Awake()
+    {
+        if (standIcon != null)
+        {
+            standImage = standIcon.GetComponent<Image>();
+        }
+    }
+
+    private void Update()
     {
         timer += Time.deltaTime;
-        System.TimeSpan t = System.TimeSpan.FromSeconds(timer);
 
-        timerText.text = string.Format("{0:D2}m:{1:D2}s:{2:D3}ms", t.Minutes, t.Seconds, t.Milliseconds);
+        if (timerText != null)
+        {
+            int minutes = Mathf.FloorToInt(timer / 60f);
+            int seconds = Mathf.FloorToInt(timer % 60f);
+
+            timerText.text = $"{minutes:00}:{seconds:00}";
+        }
+
         FadeIcon();
     }
 
     public void ShowCrouch()
     {
-        crouchIcon.SetActive(true);
-        standIcon.SetActive(false);
+        if (crouchIcon != null)
+        {
+            crouchIcon.SetActive(true);
+        }
+
+        if (standIcon != null)
+        {
+            standIcon.SetActive(false);
+        }
     }
 
     public void ShowStanding()
     {
-        crouchIcon.SetActive(false);
-        standIcon.SetActive(true);
+        if (crouchIcon != null)
+        {
+            crouchIcon.SetActive(false);
+        }
 
-        fadeTimer = fadeIconTime;
-
-        Image image = standIcon.GetComponent<Image>();
-        Color color = image.color;
-        color.a = 1f;
-        image.color = color;
-    }
-
-// fade the stand/crounch Icon
-    private void FadeIcon()
-    {
-        if (!standIcon.activeSelf)
+        if (standIcon == null)
         {
             return;
         }
 
-        if(fadeTimer <= 0)
+        standIcon.SetActive(true);
+        fadeTimer = Mathf.Max(0f, fadeIconTime);
+
+        if (standImage != null)
+        {
+            Color color = standImage.color;
+            color.a = 1f;
+            standImage.color = color;
+        }
+    }
+
+    // Fade out the standing icon
+    private void FadeIcon()
+    {
+        if (standIcon == null || !standIcon.activeSelf)
+        {
+            return;
+        }
+
+        fadeTimer = Mathf.Max(0f, fadeTimer - Time.deltaTime);
+
+        if (fadeTimer <= 0f)
         {
             standIcon.SetActive(false);
             return;
         }
 
-        fadeTimer -= Time.deltaTime;
-
-        Vector4 color = standIcon.GetComponent<Image>().color;
-        color.w = fadeTimer / fadeIconTime;
-        standIcon.GetComponent<Image>().color = color;
+        if (standImage != null)
+        {
+            Color color = standImage.color;
+            color.a = Mathf.Clamp01(fadeTimer / fadeIconTime);
+            standImage.color = color;
+        }
     }
 
-//dash CD change the bar
+    // Update the dash cooldown bar
     public void UpdateDashCooldown(float progress)
     {
+        if (hudCooldown == null)
+        {
+            return;
+        }
+
         Vector3 scale = hudCooldown.transform.localScale;
         scale.x = Mathf.Clamp01(progress);
         hudCooldown.transform.localScale = scale;
     }
-
-
 }
