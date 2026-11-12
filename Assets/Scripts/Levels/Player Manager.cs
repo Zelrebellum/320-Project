@@ -17,6 +17,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private BlinkTransition blinkTransition;
     [SerializeField] private SlowdownOverlay slowdownOverlay;
 
+    [SerializeField] private PlayerHUD playerHUD;
+
+    public PlayerHUD HUD => playerHUD;
+
     // Player components
     private PlayerMovement movement;
     private PlayerSlowdown slowdown;
@@ -41,6 +45,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
         movement = player.GetComponent<PlayerMovement>();
+
     }
 
     private void Update()
