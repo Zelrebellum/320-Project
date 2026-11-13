@@ -47075,6 +47075,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 4335015046802814074, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: speedMinimum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335015046802814074, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: wallRunSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335015046802814074, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: maximumHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335015046802814074, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: maxWallRunTime
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: nextLevel
       value: Wrath
