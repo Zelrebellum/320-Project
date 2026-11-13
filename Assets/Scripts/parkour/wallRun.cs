@@ -116,8 +116,7 @@ public class WallRun : MonoBehaviour
     {
         if (!context.performed ||
             wallrunning ||
-            movement.IsCrouching ||
-            movement.Airborne)
+            movement.IsCrouching)
         {
             return;
         }
