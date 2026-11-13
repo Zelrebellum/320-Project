@@ -8427,6 +8427,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1388450155391163097, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+      propertyPath: m_text
+      value: Wrath
+      objectReference: {fileID: 0}
     - target: {fileID: 7137139620788129005, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: m_Name
       value: UIHud
