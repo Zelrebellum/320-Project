@@ -52,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public bool IsCrouching => isCrouching;
     public PlayerHUD UI => playerHUD;
 
-    private float prevTime;
-
 
     private void Start()
     {
@@ -102,19 +100,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = rb.position + velocity;
 
         rb.MovePosition(newPosition);
-
-        if (jumpReducedByEndZone && !airborne)
-        {
-            prevTime += 0.75f * Time.deltaTime;
-            Crouch(Mathf.Lerp(defaultHeight, crouchingHeight, prevTime));
-        }
     }
 
-    private void Crouch(float height)
+    private void Crouch()
     {
-        float heightDifference = defaultHeight - height;
+        float heightDifference = defaultHeight - crouchingHeight;
 
-        playerCollider.height = height;
+        playerCollider.height = crouchingHeight;
 
         playerCollider.center = new Vector3(
             defaultCenter.x,
@@ -125,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 cameraPosition = defaultCameraPosition;
         cameraPosition.y -= heightDifference;
         playerCamera.localPosition = cameraPosition;
+
+        isCrouching = true;
+        UI.ShowCrouch();
     }
 
     private void Stand()
@@ -266,9 +261,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Crouch(crouchingHeight);
-                isCrouching = true;
-                UI.ShowCrouch();
+                Crouch();
                 //Slide();
             }
         }
@@ -277,10 +270,8 @@ public class PlayerMovement : MonoBehaviour
             // Hold to crouch, release to stand.
             if (context.performed && !isCrouching)
             {
-                Crouch(crouchingHeight);
-                isCrouching = true;
-                UI.ShowCrouch();
-                //Slide();
+                Crouch();
+                Slide();
             }
             else if (context.canceled && isCrouching)
             {
