@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using System.IO;
+using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerHUD : MonoBehaviour
 {
@@ -16,6 +19,12 @@ public class PlayerHUD : MonoBehaviour
 
     [Header("Icon Settings")]
     [SerializeField] private float fadeIconTime = 2f;
+
+    [Header("Times File Name")]
+    [SerializeField] private string fileName = "testingData.txt";
+
+    private int playerNumber;
+
 
     private float fadeTimer;
     private float timer;
@@ -116,4 +125,15 @@ public class PlayerHUD : MonoBehaviour
         scale.x = Mathf.Clamp01(progress);
         hudCooldown.transform.localScale = scale;
     }
+
+    public void TrackTimerEnd()
+    {
+        if (!File.Exists(fileName))
+        {
+            File.Create(fileName);
+        }
+        Scene scene = SceneManager.GetActiveScene();
+        File.AppendAllText(fileName, String.Format("{0} {1},", scene.name, timer.ToString()));
+    }
+
 }
