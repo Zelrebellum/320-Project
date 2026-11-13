@@ -23,9 +23,6 @@ public class PlayerHUD : MonoBehaviour
     [Header("Times File Name")]
     [SerializeField] private string fileName = "testingData.txt";
 
-    private int playerNumber;
-
-
     private float fadeTimer;
     private float timer;
     private Image standImage;

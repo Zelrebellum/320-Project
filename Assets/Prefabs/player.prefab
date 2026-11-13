@@ -254,7 +254,7 @@ MonoBehaviour:
   impulseForce: 7
   dashCooldownDuration: 2
   dashFOV: 120
-  FOVfade: 1.5
+  FOVfade: 5
   dashFeedbackUI: {fileID: 0}
 --- !u!114 &4457880705017223605
 MonoBehaviour:
@@ -278,6 +278,7 @@ MonoBehaviour:
   maxSpeedPenalty: 0.9
   swampSpeedPenalty: 0.1
   crouchAccumulationMultiplier: 1.3
+  nextLevel: EndingCredits
   playerManager: {fileID: 0}
 --- !u!114 &2173885828147200511
 MonoBehaviour:

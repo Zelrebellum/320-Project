@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.20000006
@@ -196,6 +200,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -411,6 +423,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -536,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -606,6 +626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -668,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -729,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
@@ -796,6 +828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -857,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -927,6 +967,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1056,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.19999997
@@ -1121,6 +1169,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1232,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1293,6 +1349,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1418,6 +1482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.403683
@@ -1479,6 +1547,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -1550,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.071598
@@ -1600,6 +1676,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
   m_PrefabInstance: {fileID: 191937198}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &200739018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+  m_PrefabInstance: {fileID: 1130714869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92f741711fe153439a6ab092f633ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DashFeedbackUI
 --- !u!1001 &215066181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1674,6 +1761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -1735,6 +1826,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1925,6 +2020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -2035,6 +2134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -2096,6 +2199,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2159,6 +2266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.525414
@@ -2220,6 +2331,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2283,6 +2398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.6
@@ -2344,6 +2463,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2407,6 +2530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -2468,6 +2595,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2592,6 +2723,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2721,6 +2856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -2782,6 +2921,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3078,6 +3221,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3414,6 +3561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -3476,6 +3627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.1
@@ -3537,6 +3692,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -3603,6 +3762,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3872,6 +4035,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4202,6 +4369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -4271,6 +4442,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4396,6 +4571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.1
@@ -4457,6 +4636,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4520,6 +4703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4581,6 +4768,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4727,6 +4918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -4825,6 +5020,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4998,6 +5197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -5068,6 +5271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -5134,6 +5341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.2
@@ -5195,6 +5406,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.z
@@ -5262,6 +5477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.071598
@@ -5323,6 +5542,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -5394,6 +5617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.z
       value: 5.394872
@@ -5460,6 +5687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.6
@@ -5522,6 +5753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1
@@ -5583,6 +5818,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -5654,6 +5893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.525414
@@ -5715,6 +5958,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5905,6 +6152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -5971,6 +6222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -6033,6 +6288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.403683
@@ -6094,6 +6353,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6219,6 +6482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -6280,6 +6547,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -6350,6 +6621,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -6451,6 +6726,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6576,6 +6855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.2
@@ -6637,6 +6920,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6700,6 +6987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.2
@@ -6761,6 +7052,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -6827,6 +7122,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
@@ -6977,6 +7276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.1
@@ -7105,6 +7408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -7175,6 +7482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.2
@@ -7236,6 +7547,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7299,6 +7614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.2
@@ -7360,6 +7679,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -7638,6 +7961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -7818,6 +8145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -7953,6 +8284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -8022,6 +8357,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -8093,6 +8432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -8154,6 +8497,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -8225,6 +8572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -8290,6 +8641,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8431,6 +8786,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Wrath
       objectReference: {fileID: 0}
+    - target: {fileID: 7107099012906889932, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+      propertyPath: dashSource
+      value: 
+      objectReference: {fileID: 2042287273}
     - target: {fileID: 7137139620788129005, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: m_Name
       value: UIHud
@@ -8624,6 +8983,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.z
       value: 5.394872
@@ -8690,6 +9053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -8752,6 +9119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -8813,6 +9184,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8990,6 +9365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -9118,6 +9497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.3
@@ -9179,6 +9562,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -9357,6 +9744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -9489,6 +9880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.071598
@@ -9550,6 +9945,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9695,6 +10094,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9885,6 +10288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.1
@@ -10014,6 +10421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -10084,6 +10495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.525414
@@ -10146,6 +10561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.667692
@@ -10207,6 +10626,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10384,6 +10807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -10512,6 +10939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -10607,6 +11038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -10672,6 +11107,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.z
@@ -10822,6 +11261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.1
@@ -10932,6 +11375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.6
@@ -10994,6 +11441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.20000029
@@ -11055,6 +11506,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -11125,6 +11580,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11221,6 +11680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.19999997
@@ -11287,6 +11750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.1
@@ -11349,6 +11816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.667692
@@ -11410,6 +11881,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11807,6 +12282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11868,6 +12347,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12103,6 +12586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -12164,6 +12651,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12289,6 +12780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.2
@@ -12413,6 +12908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -12478,6 +12977,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12607,6 +13110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -12672,6 +13179,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -12809,6 +13320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.2
@@ -12870,6 +13385,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12933,6 +13452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.2
@@ -12995,6 +13518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.2
@@ -13056,6 +13583,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13202,6 +13733,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.2
@@ -13263,6 +13798,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -13412,6 +13951,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13837,6 +14380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.6
@@ -13899,6 +14446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.20000029
@@ -13960,6 +14511,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.z
@@ -14026,6 +14581,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14301,9 +14860,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1130714872}
     - target: {fileID: 1311157092182668748, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
-      propertyPath: FOVfade
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: dashFeedbackUI
+      value: 
+      objectReference: {fileID: 200739018}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -14467,6 +15026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -14537,6 +15100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.20000006
@@ -14603,6 +15170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.300001
@@ -14664,6 +15235,10 @@ PrefabInstance:
     - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_Name
       value: OpenBooks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14810,6 +15385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.403683
@@ -14871,6 +15450,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14934,6 +15517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.300001
@@ -14996,6 +15583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.300001
@@ -15057,6 +15648,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -15123,6 +15718,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -15316,6 +15915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.261815
@@ -15381,6 +15984,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15682,6 +16289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpenBooks
       objectReference: {fileID: 0}
+    - target: {fileID: 2407818080924826094, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 2566117863492819803, guid: d397ca3c4d63778428d0f41e2977783c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.1
@@ -15870,6 +16481,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16119,6 +16734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.300001
@@ -16230,6 +16849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.525414
@@ -16291,6 +16914,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16416,6 +17043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1
@@ -16477,6 +17108,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalScale.x
@@ -16548,6 +17183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.2
@@ -16609,6 +17248,10 @@ PrefabInstance:
     - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_Name
       value: Table (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550366249734343213, guid: 9768923a64e89af489e089903ebf4144, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 8446246843060688799, guid: 9768923a64e89af489e089903ebf4144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16672,6 +17315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1
@@ -16734,6 +17381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Closed Book
       objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
+      objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.299999
@@ -16795,6 +17446,10 @@ PrefabInstance:
     - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_Name
       value: Closed Book
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007506360062264285, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
+      propertyPath: m_TagString
+      value: Mantle
       objectReference: {fileID: 0}
     - target: {fileID: 5151077361175614560, guid: 36c45e9921c2655408b756f2a045ad2d, type: 3}
       propertyPath: m_LocalPosition.x

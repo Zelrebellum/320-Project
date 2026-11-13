@@ -47070,6 +47070,10 @@ PrefabInstance:
       value: player
       objectReference: {fileID: 0}
     - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: nextLevel
+      value: Wrath
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457880705017223605, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 53575888}

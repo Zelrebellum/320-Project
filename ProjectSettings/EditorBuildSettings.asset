@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Sloth.unity
     guid: 2f3eefcc353298e46aedfdd39c945cb6
   - enabled: 1
+    path: Assets/Scenes/Levels/Wrath.unity
+    guid: 371341f1af95adb49ac5a2f947fa45ab
+  - enabled: 1
     path: Assets/Scenes/UI/Ending/EndingCredits.unity
     guid: f1f55451ddd2fc242aaa79c1392e73f4
   m_configObjects:

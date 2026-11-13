@@ -10,6 +10,7 @@ TagManager:
   - Safe
   - Wallrun
   - Mantle
+  - WallrunMantle
   layers:
   - Default
   - TransparentFX
