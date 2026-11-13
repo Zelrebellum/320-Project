@@ -72,10 +72,12 @@ public class LedgeMantle : MonoBehaviour
             waitTime -= Time.deltaTime;
             return;
         }
-
-        bool hit = Physics.Raycast(
+        Vector3 forward = transform.forward;
+        forward.y += transform.localScale.y * 3f/4f;
+        bool hit = Physics.SphereCast(
             transform.position,
-            transform.forward,
+            2f,
+            transform.forward * 0.5f,
             out hitInfo,
             ledgeDetectionDistance,
             groundLayer
@@ -98,6 +100,7 @@ public class LedgeMantle : MonoBehaviour
 
         if (ledge <= maxLedgeHeight && ledge > minLedgeHeight)
         {
+            Debug.Log("Climbing");
             climbing = true;
         }
     }
@@ -107,8 +110,8 @@ public class LedgeMantle : MonoBehaviour
         Gizmos.color = Color.blue;
 
         Vector3 position = transform.position;
-        position.y += transform.localScale.y;
+        //position.y += transform.localScale.y * 3/4;
 
-        Gizmos.DrawRay(position, transform.forward * ledgeDetectionDistance);
+        Gizmos.DrawSphere(position + (transform.forward * 0.5f), 2f);
     }
 }
