@@ -28,7 +28,7 @@ public class InstantDeath : MonoBehaviour
     /// <param name="collision">The collided object</param>
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == manager.GetComponent<PlayerManager>().player)
+        if (collision.gameObject == manager.GetComponent<PlayerManager>().Player)
         {
             manager.GetComponent<PlayerManager>().Respawn();
         }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 2173885828147200511}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   dashCooldownDuration: 2
   dashFOV: 120
   FOVfade: 5
-  dashFeedbackUI: {fileID: 0}
   cooldownRemaining: 0
+  dashFeedbackUI: {fileID: 0}
 --- !u!114 &6409283290859806129
 MonoBehaviour:
   m_ObjectHideFlags: 0
