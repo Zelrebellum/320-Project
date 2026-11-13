@@ -2682,7 +2682,7 @@ MonoBehaviour:
   title: 
   instructions: 'Press Ctrl to Crouch to go under blockages. '
   triggerOnce: 1
-  closeKey: 17
+  closeKey: 55
 --- !u!65 &142730305
 BoxCollider:
   m_ObjectHideFlags: 0
