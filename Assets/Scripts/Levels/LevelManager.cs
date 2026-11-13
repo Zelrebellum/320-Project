@@ -21,12 +21,15 @@ public class LevelManager : MonoBehaviour
     private SlothManager slothManager;
     private WrathManager wrathManager;
     private SlothDetector  slothDetector;
+    private PlayerHUD playerHUD;
 
     private void Awake()
     {
         slothDetector = gameObject.GetComponent<PlayerManager>().Player.GetComponent<SlothDetector>();
         wrathManager = GetComponent<WrathManager>();
         slothManager = GetComponent<SlothManager>();
+        playerHUD = GetComponent<PlayerManager>()
+            .Player.GetComponent<PlayerMovement>().UI;
         
         if (levelType == LevelType.Sloth && slothOverlay == null)
         {
@@ -103,6 +106,7 @@ public class LevelManager : MonoBehaviour
         }
         
         isTransitioning = true;
+        playerHUD.TrackTimerEnd();
         SceneManager.LoadScene(nextSceneName);
     }
 }
