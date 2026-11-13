@@ -29,11 +29,21 @@ public class Dash : MonoBehaviour
     [Header("Cooldown")]
     private PlayerHUD playerHUD;
     [SerializeField] private float cooldownRemaining;
+    public WrathState CurrentWrathState => wrath.CurrentWrathState; 
+    
+    private PlayerMovement movement;
+    private Rigidbody rBody;
+    private CameraController camControl;
+    private WallRun wall;
+    private WrathManager wrath;
+    private SlothManager slowdown;
+    public bool IsWrathEnabled => wrath.isActiveAndEnabled;
+    
     public float CoolDown
     {
         get
         {
-            if (wrath.CurrentWrathState == WrathState.Active)
+            if (wrath.isActiveAndEnabled && wrath.CurrentWrathState == WrathState.Active)
             {
                 return Mathf.Max(
                     0f,
@@ -49,36 +59,30 @@ public class Dash : MonoBehaviour
     {
         get
         {
-            if(cooldownRemaining <= 0f && wrath.CurrentWrathState != WrathState.Active)
+            if(cooldownRemaining <= 0f && (!wrath.isActiveAndEnabled || wrath.CurrentWrathState != WrathState.Active))
             {
                 return DashState.SafeReady;
             }
-            if (cooldownRemaining <= dashCooldownDuration - wrath.WrathDashCooldown
-                && wrath.CurrentWrathState != WrathState.Recovery)
+            if (wrath.isActiveAndEnabled && cooldownRemaining <= dashCooldownDuration - wrath.WrathDashCooldown
+                                         && wrath.CurrentWrathState != WrathState.Recovery)
             {
                 return DashState.WrathReady;
             }
             return DashState.OnCooldown;
         }
     }
-    
-    public WrathState CurrentWrathState => wrath.CurrentWrathState; 
-    
-    private PlayerMovement movement;
-    private PlayerSlowdown slowdown;
-    private Rigidbody rBody;
-    private CameraController camControl;
-    private WallRun wall;
-    [SerializeField] private WrathManager wrath;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        
         movement = gameObject.GetComponent<PlayerMovement>();
         rBody = gameObject.GetComponent<Rigidbody>();
         camControl = gameObject.GetComponent<CameraController>();
         playerHUD = movement.UI;
-        slowdown = gameObject.GetComponent<PlayerSlowdown>();
+        slowdown = movement.Manager.GetComponent<SlothManager>();
+        wrath = movement.Manager.GetComponent<WrathManager>();
         wall = gameObject.GetComponent<WallRun>();
     }
 
@@ -91,10 +95,12 @@ public class Dash : MonoBehaviour
             dashCooldownDuration
         );
         
-        float effectiveCooldown =
-            wrath.CurrentWrathState == WrathState.Active
-                ? wrath.WrathDashCooldown
-                : dashCooldownDuration;
+        float effectiveCooldown = dashCooldownDuration;
+
+        if (wrath.isActiveAndEnabled && wrath.CurrentWrathState == WrathState.Active)
+        {
+            effectiveCooldown = wrath.WrathDashCooldown;
+        }
         
         if (dashFOVActive &&
             cooldownRemaining <= dashCooldownDuration - 0.7f)
@@ -105,7 +111,9 @@ public class Dash : MonoBehaviour
         
         float progress = 1f - (CoolDown / effectiveCooldown);
 
-        playerHUD.UpdateDashCooldown(Mathf.Clamp01(progress));    }
+        playerHUD.UpdateDashCooldown(Mathf.Clamp01(progress));
+        
+    }
 
     public void FixedUpdate()
     {
@@ -140,24 +148,35 @@ public class Dash : MonoBehaviour
             return;
         }
         
+        //checks if player dashed while on cooldown (only possible when wrath is in effect)
         bool wrathDash = cooldownRemaining > 0f;
+        
+        //if wrath state is active, more powerful dash
         float effectiveDashForce = impulseForce;
-
-        if (wrath.CurrentWrathState == WrathState.Active)
+        if (wrath.isActiveAndEnabled && wrath.CurrentWrathState == WrathState.Active)
         {
             effectiveDashForce *= wrath.DashForceMultiplier;
         }
-        rBody.AddForce(camControl.Camera.transform.forward * effectiveDashForce, ForceMode.Impulse);
-        wrath.NotifyDash();
         
-        if (wrathDash)
+        rBody.AddForce(camControl.Camera.transform.forward * effectiveDashForce, ForceMode.Impulse);
+        
+        //if wrath is active notify wrathmanager of recent dash and add to wrath meter if on wrath cooldown
+        if (wrath.isActiveAndEnabled)
         {
-            wrath.AddWrath(wrath.DashWrathGain);
+            wrath.NotifyDash();
+        
+            if (wrathDash)
+            {
+                wrath.AddWrath(wrath.DashWrathGain);
+            }
         }
         
         dashMomentumTimer = dashMomentumDuration;
-        slowdown.ReduceSlowdown(10.0f);
+        if (slowdown.isActiveAndEnabled)
+        {
+            slowdown.ReduceSlowdown(10.0f);
 
+        }
         cooldownRemaining = dashCooldownDuration;
         dashFOVActive = true;
         camControl.EnableFOV(dashFOV, 75f);

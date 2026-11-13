@@ -51,8 +51,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float crouchingHeight = 1.5f;
 
-    [Header("HUD")]
+    [Header("References")]
     [SerializeField] private PlayerHUD playerHUD;
+    [SerializeField] private GameObject manager;
 
 
     // Runtime state
@@ -76,17 +77,24 @@ public class PlayerMovement : MonoBehaviour
     public bool Airborne => airborne;
     public bool IsCrouching => isCrouching;
     public PlayerHUD UI => playerHUD;
+    public GameObject Manager => manager;
     
     private float wrathSpeedMultiplier = 1f;
     private float wrathJumpMultiplier = 1f;
     
     private void Start()
     {
+        if (manager == null)
+        {
+            Debug.LogError("PlayerMovement: Manager reference is missing!", this);
+            enabled = false;
+            return;
+        }
+        
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         wall = GetComponent<WallRun>();
-        //EDIT BEFORE PUSH
-        //slowdown = GetComponent<SlothManager>();
+        slowdown = manager.GetComponent<SlothManager>();
         ledgeMantle = GetComponent<LedgeMantle>();
         dash = GetComponent<Dash>();
 
@@ -142,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isSprinting)
         {
-            targetSpeed = sprintSpeed * (slowdown != null
+            targetSpeed = sprintSpeed * (slowdown.isActiveAndEnabled
                 ? slowdown.GetSpeedMultiplier()
                 : 1f);
         }

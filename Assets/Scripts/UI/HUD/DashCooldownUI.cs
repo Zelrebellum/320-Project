@@ -100,6 +100,12 @@ public class DashCooldownUI : MonoBehaviour
 
     void UpdateDashColor()
     {
+        if (!dashSource.IsWrathEnabled)
+        {
+            cooldownBar.color = safeCooldownBarColor;
+            return;
+        }
+        
         if (dashSource.CurrentWrathState == WrathState.Active)
         {
             cooldownBar.color = wrathCooldownBarColor;

@@ -74,6 +74,13 @@ public class WrathManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (enemy == null)
+        {
+            Debug.LogError("WrathManager: RisingEnemy reference is missing!", this);
+            enabled = false;
+            return;
+        }
+        
         playerManager = gameObject.GetComponent<PlayerManager>();
         movement = playerManager.Player.GetComponent<PlayerMovement>();
         camControl = playerManager.Player.GetComponent<CameraController>();
@@ -207,6 +214,7 @@ public class WrathManager : MonoBehaviour
 
     public void ResetWrath()
     {
+        enemy.ResetEnemy();
         currentWrath = 0f;
         wrathState = WrathState.Building;
         stateTimer = 0;

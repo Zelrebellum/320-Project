@@ -17,41 +17,63 @@ public class PlayerManager : MonoBehaviour
     [Header("Transitions and UI")]
     [SerializeField] private BlinkTransition blinkTransition;
     [SerializeField] private SlowdownOverlay slowdownOverlay;
-
-    [SerializeField] private RisingEnemy enemy;
     
     // Player components
     private PlayerMovement movement;
-    private PlayerSlowdown slowdown;
+    private SlothManager slowdown;
     private WrathManager wrathManager;
     private WallRun wallRun;
     private Dash dashAbility;
     private PlayerInput playerInput;
     private Rigidbody playerRigidbody;
     private CameraController camControl;
+    private SlothDetector slothDetector;
 
     // Runtime state
     private bool isDead;
 
     public bool IsDead => isDead;
 
-    private void Start()
+    private void Awake()
     {
+        if (player == null || spawn == null ||
+            levelBoundary == null || blinkTransition == null)
+        {
+            Debug.LogError("PlayerManager: One or more required references are missing!", this);
+            enabled = false;
+            return;
+        }
+        
         movement = player.GetComponent<PlayerMovement>();
-        slowdown = player.GetComponent<PlayerSlowdown>();
+        slowdown = GetComponent<SlothManager>();
         wrathManager = gameObject.GetComponent<WrathManager>();
         wallRun = player.GetComponent<WallRun>();
         dashAbility = player.GetComponent<Dash>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidbody = player.GetComponent<Rigidbody>();
         camControl = player.GetComponent<CameraController>();
+        slothDetector = player.GetComponent<SlothDetector>();
+    }
+
+    void Start()
+    {
+        if (slowdown.isActiveAndEnabled && slowdownOverlay == null)
+        {
+            Debug.LogError(
+                "PlayerManager: Sloth is enabled, but SlowdownOverlay is not assigned!",
+                this
+            );
+            enabled = false;
+            return;
+        }
+        
         player.transform.position = spawn.position;
-        playerRigidbody.rotation = spawn.rotation;
+        playerRigidbody.rotation = spawn.rotation;  
     }
 
     private void Update()
     {
-        if (!levelBoundary.bounds.Contains(player.transform.position))
+        if (!isDead && !levelBoundary.bounds.Contains(player.transform.position))
         {
             Respawn();
         }
@@ -75,19 +97,28 @@ public class PlayerManager : MonoBehaviour
         playerInput.DeactivateInput();
 
         // Display maximum slowdown darkness during death.
-        slowdownOverlay.UpdateOverlay(1f);
-        slowdownOverlay.isActive = false;
+        if (slowdown.isActiveAndEnabled)
+        {
+            slowdownOverlay.UpdateOverlay(1f);
+            slowdownOverlay.isActive = false;
+        }
 
         yield return new WaitForSecondsRealtime(1f);
 
         blinkTransition.PlayBlink();
         Respawn();
 
-        slowdownOverlay.UpdateOverlay(0f);
+        if (slowdown.isActiveAndEnabled)
+        {
+            slowdownOverlay.UpdateOverlay(0f);
+        }
 
         yield return new WaitUntil(() => !BlinkTransition.IsPlaying);
 
-        slowdownOverlay.isActive = true;
+        if (slowdown.isActiveAndEnabled)
+        {
+            slowdownOverlay.isActive = true;
+        }
 
         movement.enabled = true;
         playerInput.ActivateInput();
@@ -107,9 +138,16 @@ public class PlayerManager : MonoBehaviour
         playerRigidbody.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
 
-        enemy?.ResetEnemy();
-        slowdown.ResetSlowdown();
-        wrathManager.ResetWrath();
+        if (slowdown.isActiveAndEnabled)
+        {
+            slothDetector.ResetContacts();
+            slowdown.ResetSlowdown();
+        }
+
+        if (wrathManager.isActiveAndEnabled)
+        {
+            wrathManager.ResetWrath();
+        }
         
         camControl.ResetFOV();
     }
