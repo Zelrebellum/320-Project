@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class OnboardingPanel : MonoBehaviour
@@ -8,8 +9,21 @@ public class OnboardingPanel : MonoBehaviour
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text bodyText;
     [SerializeField] private Button continueButton;
+    [Header("Keyboard Settings")]
+    private Key closeKey;
 
     public bool IsConfigured => titleText != null && bodyText != null && continueButton != null;
+
+    // press key to go next
+    private void Update()
+    {
+        Keyboard keyboard = Keyboard.current;
+
+        if (keyboard != null && keyboard[closeKey].wasPressedThisFrame)
+        {
+            Close();
+        }
+    }
 
     /// <summary>
     /// Connect the button locally so this prefab needs no scene button events.
@@ -33,10 +47,11 @@ public class OnboardingPanel : MonoBehaviour
     /// <summary>
     /// Update the shared panel with the current trigger's instructions.
     /// </summary>
-    public void SetContent(string title, string instructions)
+    public void SetContent(string title, string instructions, Key tutorialCloseKey)
     {
         titleText.text = title;
         bodyText.text = instructions;
+        closeKey = tutorialCloseKey;
     }
 
     /// <summary>

@@ -29,6 +29,7 @@ public class WallRun : MonoBehaviour
     // Runtime state
     private bool wallrunning;
     private float timer;
+
     private RaycastHit hitInfo;
     private float currentAngle;
 
@@ -115,7 +116,8 @@ public class WallRun : MonoBehaviour
     {
         if (!context.performed ||
             wallrunning ||
-            movement.IsCrouching)
+            movement.IsCrouching ||
+            movement.Airborne)
         {
             return;
         }
@@ -136,14 +138,17 @@ public class WallRun : MonoBehaviour
             wallJumpLayer
         );
 
-        rightWall = Physics.Raycast(
-            transform.position,
-            right,
-            out hitInfo,
-            wallDetectionDistance,
-            wallJumpLayer
-        );
-
+        if (!leftWall)
+        {
+            rightWall = Physics.Raycast(
+                transform.position,
+                right,
+                out hitInfo,
+                wallDetectionDistance,
+                wallJumpLayer
+            );
+    
+        }
         currentAngle = 15 * (leftWall ? -1 : 1);
 
         if (!leftWall && !rightWall)
@@ -151,6 +156,13 @@ public class WallRun : MonoBehaviour
             return;
         }
         
+        if 
+            (!hitInfo.collider.CompareTag("Wallrun") && 
+            !hitInfo.collider.CompareTag("WallrunMantle"))
+        {
+            return;
+        }
+
         initialHeight = transform.position.y;
         wallrunning = true;
         rBody.useGravity = false;

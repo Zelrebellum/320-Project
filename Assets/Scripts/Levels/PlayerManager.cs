@@ -29,6 +29,8 @@ public class PlayerManager : MonoBehaviour
     private CameraController camControl;
     private SlothDetector slothDetector;
 
+    private CameraController camera;
+
     // Runtime state
     private bool isDead;
 

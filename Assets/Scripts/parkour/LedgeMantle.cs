@@ -101,6 +101,10 @@ public class LedgeMantle : MonoBehaviour
         {
             return;
         }
+        if (!hitInfo.collider.CompareTag("Mantle") && !hitInfo.collider.CompareTag("WallrunMantle"))
+        {
+            return;
+        }
 
         float ledge = Mathf.Abs(
             (hitInfo.collider.bounds.center.y +
@@ -110,6 +114,7 @@ public class LedgeMantle : MonoBehaviour
         
         if (ledge <= maxLedgeHeight && ledge > minLedgeHeight)
         {
+            Debug.Log("Climbing");
             climbing = true;
             rBody.useGravity = false;
             Vector3 velocity = rBody.linearVelocity;
@@ -124,8 +129,8 @@ public class LedgeMantle : MonoBehaviour
         Gizmos.color = Color.blue;
 
         Vector3 position = transform.position;
-        position.y += transform.localScale.y;
+        //position.y += transform.localScale.y * 3/4;
 
-        Gizmos.DrawRay(position, transform.forward * ledgeDetectionDistance);
+        Gizmos.DrawRay(position, transform.forward);
     }
 }

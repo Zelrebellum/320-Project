@@ -72,6 +72,10 @@ public class Dash : MonoBehaviour
         }
     }
 
+    // for dash
+    [Header("Dash Feedback")]
+    [SerializeField] private DashFeedbackUI dashFeedbackUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -136,14 +140,12 @@ public class Dash : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-        {
-            return;
-        }
-        
-        if (DashCooldownState == DashState.OnCooldown
+        if (!context.performed
+            || DashCooldownState == DashState.OnCooldown
             || movement.IsCrouching
-            || wall.Wallrunning)
+            || wall.Wallrunning
+            || PauseMenuManager.IsPaused
+            || BlinkTransition.IsPlaying)
         {
             return;
         }
@@ -180,5 +182,11 @@ public class Dash : MonoBehaviour
         cooldownRemaining = dashCooldownDuration;
         dashFOVActive = true;
         camControl.EnableFOV(dashFOV, 75f);
+
+        // Play the UI effect once when the dash succeeds.
+        if (dashFeedbackUI != null)
+        {
+            dashFeedbackUI.PlayDashEffect();
+        }
     }
 }

@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Show trigger-specific content using this scene's shared panel.
     /// </summary>
-    public bool TryShowOnboarding(string title, string instructions)
+    public bool TryShowOnboarding(string title, string instructions, Key closeKey = Key.Space)
     {
         if (PauseMenuManager.IsPaused || BlinkTransition.IsPlaying)
         {
@@ -113,11 +113,11 @@ public class UIManager : MonoBehaviour
         if (onboardingPanel == null || !onboardingPanel.IsConfigured ||
             pauseMenuManager == null || !onboardingPanel.transform.parent.gameObject.activeInHierarchy)
         {
-            Debug.LogWarning("UIManager: Onboarding panel references are missing or inactive.", this);
+            Debug.LogWarning("UIManager: Onboarding panel references are missing.", this);
             return false;
         }
 
-        onboardingPanel.SetContent(title, instructions);
+        onboardingPanel.SetContent(title, instructions, closeKey);
         pauseMenuManager.OpenOnboarding(onboardingPanel.gameObject);
         return onboardingPanel.gameObject.activeInHierarchy && PauseMenuManager.IsPaused;
     }
