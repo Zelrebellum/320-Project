@@ -15,15 +15,16 @@ public class CameraController : MonoBehaviour
 
     // FOV state
     private float startFOV;
+    private float baseFOV;
     private float currentFOV;
     private float targetFOV;
-    private float fovAcceleration;
+    private float fovTransitionSpeed;
 
     private bool changingFOV;
-    private bool decreaseFOV;
-
-    public Camera Camera => playerCam;
+    
+    public float BaseFOV => baseFOV;
     public float StartFOV => startFOV;
+    public Camera Camera => playerCam;
     public bool FOVStatus => changingFOV;
 
     private void Awake()
@@ -33,6 +34,7 @@ public class CameraController : MonoBehaviour
 
         startFOV = playerCam.fieldOfView;
         currentFOV = startFOV;
+        baseFOV = startFOV;
 
         // get sensitivity from saved
         ChangeSensitivity(PlayerPrefs.GetFloat("MouseSensitivity", 1f));
@@ -46,23 +48,21 @@ public class CameraController : MonoBehaviour
             0f
         );
 
+        if (changingFOV)
+        {
+            currentFOV = Mathf.MoveTowards(
+                currentFOV,
+                targetFOV,
+                fovTransitionSpeed * Time.deltaTime
+            );
+
+            if (currentFOV == targetFOV)
+            {
+                changingFOV = false;
+            }
+        }
+
         playerCam.fieldOfView = currentFOV;
-
-        if (!changingFOV)
-        {
-            return;
-        }
-
-        if ((!decreaseFOV && currentFOV > targetFOV) ||
-            (decreaseFOV && currentFOV < targetFOV))
-        {
-            changingFOV = false;
-            currentFOV = targetFOV;
-            return;
-        }
-
-        currentFOV += fovAcceleration * Time.deltaTime *
-                      (decreaseFOV ? -1f : 1f);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -168,20 +168,27 @@ public class CameraController : MonoBehaviour
         lookSensitivity = new Vector2(sensitivity, sensitivity);
     }
 
-    public void EnableFOV(float target, float acceleration)
+    public void EnableFOV(float target, float speed)
     {
         changingFOV = true;
         targetFOV = target;
 
-        if (targetFOV < currentFOV)
-        {
-            decreaseFOV = true;
-        }
-        else
-        {
-            decreaseFOV = false;
-        }
+        fovTransitionSpeed = speed;
+    }
+    
+    public void SetBaseFOV(float newFOV)
+    {
+        baseFOV = newFOV;
+        EnableFOV(baseFOV, 60f);
+    }
+    
+    public void ResetFOV()
+    {
+        baseFOV = startFOV;
+        currentFOV = startFOV;
+        targetFOV = startFOV;
+        changingFOV = false;
 
-        fovAcceleration = acceleration;
+        playerCam.fieldOfView = startFOV;
     }
 }

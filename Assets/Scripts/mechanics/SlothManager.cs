@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerSlowdown : MonoBehaviour
+public class SlothManager : MonoBehaviour
 {
     [Header("Slowdown Settings")]
     [SerializeField, Range(0f, 100f)]
@@ -35,16 +34,17 @@ public class PlayerSlowdown : MonoBehaviour
     private bool atEndZone = false;
     public bool AtEnd { get { return atEndZone; } }
     
-    [Header("References")]
-    [SerializeField] PlayerManager playerManager;
-    
+    private PlayerManager playerManager;
+    private LevelManager levelManager;
     private Dash dash;
     private PlayerMovement movement;
 
     private void Awake()
     {
-        dash = GetComponent<Dash>();
-        movement = GetComponent<PlayerMovement>();
+        playerManager = GetComponent<PlayerManager>();
+        levelManager = GetComponent<LevelManager>();
+        dash = playerManager.Player.GetComponent<Dash>();
+        movement = playerManager.Player.GetComponent<PlayerMovement>();
         slowdownMeter = onboardingSlowdown;
     }
 
@@ -53,61 +53,21 @@ public class PlayerSlowdown : MonoBehaviour
         UpdateSlowdown();
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void SetSwampState(bool active)
     {
-        if (other.gameObject.CompareTag("Swamp"))
+        if (active && !inSwamp)
         {
-            EnterSwamp();
-        }
+            recoveryTimer = 0f;
+        }  
+        
+        inSwamp = active;
     }
-
-    private void OnCollisionExit(Collision other)
+    
+    public void SetSafeState(bool active)
     {
-        if (other.gameObject.CompareTag("Swamp"))
-        {
-            ExitSwamp();
-        }
+        isSafe = active;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("End"))
-        {
-            SetEndZoneState(true);
-            return;
-        }
-
-        if (other.CompareTag("Safe"))
-        {
-            isSafe = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("End"))
-        {
-            SetEndZoneState(false);
-            return;
-        }
-
-        if (other.CompareTag("Safe"))
-        {
-            isSafe = false;
-        }
-    }
-
-    private void EnterSwamp()
-    {
-        inSwamp = true;
-        recoveryTimer = 0f;
-    }
-
-    private void ExitSwamp()
-    {
-        inSwamp = false;
-    }
-
+    
     public void ReduceSlowdown(float amount)
     {
         if (playerManager.IsDead)
@@ -160,7 +120,7 @@ public class PlayerSlowdown : MonoBehaviour
         {
             if (atEndZone)
             {
-                LevelSceneManager.NextLevel(nextLevel, movement.UI.TrackTimerEnd);
+                levelManager.CompleteLevel();
                 return;
             }
 
@@ -168,7 +128,7 @@ public class PlayerSlowdown : MonoBehaviour
         }
     }
     
-    private void SetEndZoneState(bool active)
+    public void SetEndZoneState(bool active)
     {
         if (atEndZone == active)
         {
@@ -186,9 +146,11 @@ public class PlayerSlowdown : MonoBehaviour
 
     public void ResetSlowdown()
     {
+        SetEndZoneState(false);
         slowdownMeter = 0f;
         recoveryTimer = 0f;
         inSwamp = false;
+        isSafe = false;
     }
 
     public float GetSpeedMultiplier()

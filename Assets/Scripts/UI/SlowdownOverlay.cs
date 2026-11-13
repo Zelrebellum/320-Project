@@ -4,49 +4,39 @@ using UnityEngine.UI;
 
 public class SlowdownOverlay : MonoBehaviour
 {
-    [Header("Overlay References")]
+    [Header("References")]
     [SerializeField] private Image mudImage;
     [SerializeField] private Image handsImage;
     [SerializeField] private Image darknessImage;
+    [SerializeField] private GameObject manager;
 
     [Header("Overlay Settings")]
     [SerializeField] private float startingScale = 1.5f;
     [SerializeField] private float endScale = 1.0f;
 
-    [Header("Player Reference")]
-    [SerializeField] private GameObject player;
+    private SlothManager slothManager;
 
-    private PlayerSlowdown slowdown;
     private Image currentImage;
 
     public bool isActive { get; set; } = true;
 
     private void Start()
     {
-        if (player == null ||
-            mudImage == null ||
-            handsImage == null ||
-            darknessImage == null)
+        if (manager == null)
         {
-            Debug.LogError(
-                "SlowdownOverlay: Required references is missing!",
-                this
-            );
+            Debug.LogError("SlowdownOverlay: Manager reference is missing!", this);
             enabled = false;
             return;
         }
 
-        slowdown = player.GetComponent<PlayerSlowdown>();
-
-        if (slowdown == null)
+        if (mudImage == null || handsImage == null || darknessImage == null)
         {
-            Debug.LogError(
-                "SlowdownOverlay: PlayerSlowdown is missing!",
-                this
-            );
+            Debug.LogError("SlowdownOverlay: Overlay is missing an image reference! (check children of object)", this);
             enabled = false;
             return;
         }
+        
+        slothManager = manager.GetComponent<SlothManager>();
 
         // Hide all overlays when the scene starts.
         SetImageAlpha(mudImage, 0f);
@@ -54,9 +44,9 @@ public class SlowdownOverlay : MonoBehaviour
         SetImageAlpha(darknessImage, 0f);
 
         // Select the overlay appropriate for the current zone.
-        currentImage = slowdown.AtEnd ? handsImage : mudImage;
+        currentImage = slothManager.AtEnd ? handsImage : mudImage;
 
-        UpdateOverlay(slowdown.GetSlowdownPercentage());
+        UpdateOverlay(slothManager.GetSlowdownPercentage());
     }
 
     private void Update()
@@ -67,16 +57,16 @@ public class SlowdownOverlay : MonoBehaviour
         }
 
         // Hands replace mud while the player is in the end zone.
-        if (slowdown.AtEnd && currentImage != handsImage)
+        if (slothManager.AtEnd && currentImage != handsImage)
         {
             SwitchOverlay(handsImage);
         }
-        else if (!slowdown.AtEnd && currentImage != mudImage)
+        else if (!slothManager.AtEnd && currentImage != mudImage)
         {
             SwitchOverlay(mudImage);
         }
 
-        UpdateOverlay(slowdown.GetSlowdownPercentage());
+        UpdateOverlay(slothManager.GetSlowdownPercentage());
     }
 
     public void UpdateOverlay(float slowdown)

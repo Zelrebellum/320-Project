@@ -15,9 +15,32 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
 
 
+    [Header("Movement Acceleration")]
+    [SerializeField] private float groundAcceleration = 25f;
+    [SerializeField] private float groundDeceleration = 40f;
+    [SerializeField] private float groundTurnAcceleration = 35f;
+    [SerializeField] private float airAcceleration = 10f;
+    
+    [Header("Ground Detection")]
+    [SerializeField] private float sphereCastCheckRadius = 0.45f;
+    [Tooltip("Distance the sphere cast travels")]
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [Tooltip("Offset from player capsule bottom and sphere bottom")]
+    [SerializeField] private float groundCheckOffset = 0.15f;
+
+    [SerializeField, Range(0f, 1f)]
+    [Tooltip("Acceptable angle for surface to be counted as ground (THIS IS THE COSX VALUE OF DOT PRODUCT)")]
+    private float minimumGroundNormal = 0.5f;
+    
     [Header("Jumping")]
-    [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float jumpForce = 8.5f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField, Min(1f)]
+    private float risingGravityMultiplier = 1.2f;
+    [SerializeField, Min(1f)]
+    private float fallingGravityMultiplier = 1.6f;
+    private bool wasAirborne;
+    private float previousHorizontalSpeed;
     
     [SerializeField, Range(0f, 1f)]
     private float endZoneJumpMultiplier = 0.5f;
@@ -28,8 +51,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float crouchingHeight = 1.5f;
 
-    [Header("HUD")]
+    [Header("References")]
     [SerializeField] private PlayerHUD playerHUD;
+    [SerializeField] private GameObject manager;
 
 
     // Runtime state
@@ -47,20 +71,33 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider playerCollider;
     private WallRun wall;
-    private PlayerSlowdown slowdown;
+    private Dash dash;
+    private LedgeMantle ledgeMantle;
+    private SlothManager slowdown;
     public bool Airborne => airborne;
     public bool IsCrouching => isCrouching;
     public PlayerHUD UI => playerHUD;
-
+    public GameObject Manager => manager;
+    
+    private float wrathSpeedMultiplier = 1f;
+    private float wrathJumpMultiplier = 1f;
     private float prevTime;
-
 
     private void Start()
     {
+        if (manager == null)
+        {
+            Debug.LogError("PlayerMovement: Manager reference is missing!", this);
+            enabled = false;
+            return;
+        }
+        
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         wall = GetComponent<WallRun>();
-        slowdown = GetComponent<PlayerSlowdown>();
+        slowdown = manager.GetComponent<SlothManager>();
+        ledgeMantle = GetComponent<LedgeMantle>();
+        dash = GetComponent<Dash>();
 
         defaultHeight = playerCollider.height;
         defaultCenter = playerCollider.center;
@@ -74,34 +111,58 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //checks if player is above ground using raycast
-        airborne = !Physics.Raycast(
-            transform.position,
-            -transform.up,
-            out hitInfo,
-            transform.localScale.y + 0.3f,
-            groundLayer
+        Bounds colliderBounds = playerCollider.bounds;
+
+        Vector3 groundCheckOrigin = new Vector3(
+            colliderBounds.center.x,
+            colliderBounds.min.y + sphereCastCheckRadius + groundCheckOffset,
+            colliderBounds.center.z
         );
 
-        //adjusts player speed based on player state
-        if (isSprinting)
+        bool groundHit = Physics.SphereCast(
+            groundCheckOrigin,
+            sphereCastCheckRadius,
+            Vector3.down,
+            out hitInfo,
+            groundCheckDistance,
+            groundLayer,
+            QueryTriggerInteraction.Ignore
+        );
+
+        airborne = !groundHit ||
+                   Vector3.Dot(hitInfo.normal, Vector3.up) < minimumGroundNormal;
+        
+        Vector3 velocity = rb.linearVelocity;
+
+        float horizontalSpeed = new Vector3(
+            velocity.x,
+            0f,
+            velocity.z
+        ).magnitude;
+        
+        previousHorizontalSpeed = horizontalSpeed;
+        wasAirborne = airborne;
+        
+        ApplyJumpGravity();
+
+        if (wall.Wallrunning)
         {
-            targetSpeed = sprintSpeed * slowdown.GetSpeedMultiplier();
+            targetSpeed = wall.WallRunSpeed;
+        }
+        else if (isSprinting)
+        {
+            targetSpeed = sprintSpeed * (slowdown.isActiveAndEnabled
+                ? slowdown.GetSpeedMultiplier()
+                : 1f);
         }
         else
         {
             targetSpeed = walkSpeed;
         }
 
-        Acceleration();
+        targetSpeed *= wrathSpeedMultiplier;
 
-        Vector3 velocity = transform.right * moveDirection.x;
-        velocity += transform.forward * moveDirection.y;
-        velocity *= currentSpeed * Time.fixedDeltaTime;
-
-        Vector3 newPosition = rb.position + velocity;
-
-        rb.MovePosition(newPosition);
+        ApplyMovement();
 
         if (jumpReducedByEndZone && !airborne)
         {
@@ -143,38 +204,88 @@ public class PlayerMovement : MonoBehaviour
         //rb.AddForce(transform.forward * 20.0f, ForceMode.Impulse);
     }
 
-    private void Acceleration()
+    private void ApplyMovement()
     {
-        if (moveDirection != Vector2.zero)
+        if (dash.HasDashMomentum)
         {
-            // are we slower than the speed we can currently go? if we are, go faster
-            if (currentSpeed < targetSpeed)
+            return;
+        }
+        
+        Vector3 inputDirection =
+            transform.right * moveDirection.x +
+            transform.forward * moveDirection.y;
+
+        inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
+
+        Vector3 velocity = rb.linearVelocity;
+
+        Vector3 horizontalVelocity = new Vector3(
+            velocity.x,
+            0f,
+            velocity.z
+        );
+
+        Vector3 desiredVelocity = inputDirection * targetSpeed;
+
+        float accelerationRate;
+
+        if (airborne)
+        {
+            if (moveDirection.sqrMagnitude < 0.01f)
             {
-                currentSpeed += acceleration * Time.deltaTime;
+                accelerationRate = 0f;
             }
-            // are we slower than the top possible speed, but faster than we are supposed to be by a significant amount? if so, slow down
-            else if (currentSpeed < topSpeed &&
-                     currentSpeed > targetSpeed + 0.2f)
-            {
-                currentSpeed -= acceleration * 1.5f * Time.deltaTime;
-            }
-            // if we're way too fast, or within our speed limits, go at the speed we can currently go at.
             else
             {
-                currentSpeed = targetSpeed;
+                accelerationRate = airAcceleration;
             }
+        }
+        else if (moveDirection.sqrMagnitude < 0.01f)
+        {
+            accelerationRate = groundDeceleration;
+        }
+        else if (horizontalVelocity.sqrMagnitude > 0.01f &&
+                 Vector3.Dot(horizontalVelocity, desiredVelocity) < 0f)
+        {
+            accelerationRate = groundTurnAcceleration;
         }
         else
         {
-            if (currentSpeed > 0)
-            {
-                currentSpeed -= (acceleration * 2) * Time.deltaTime;
-            }
-            else
-            {
-                currentSpeed = 0;
-            }
+            accelerationRate = groundAcceleration;
         }
+
+        horizontalVelocity = Vector3.MoveTowards(
+            horizontalVelocity,
+            desiredVelocity,
+            accelerationRate * Time.fixedDeltaTime
+        );
+
+        rb.linearVelocity = new Vector3(
+            horizontalVelocity.x,
+            velocity.y,
+            horizontalVelocity.z
+        );
+
+        currentSpeed = horizontalVelocity.magnitude;
+    }
+    
+    private void ApplyJumpGravity()
+    {
+        if (!airborne || wall.Wallrunning || ledgeMantle.IsMantling)
+        {
+            return;
+        }
+        
+        float verticalVelocity = rb.linearVelocity.y;
+
+        float gravityMultiplier = verticalVelocity > 0f
+            ? risingGravityMultiplier
+            : fallingGravityMultiplier;
+
+        Vector3 additionalGravity =
+            Physics.gravity * (gravityMultiplier - 1f);
+
+        rb.AddForce(additionalGravity, ForceMode.Acceleration);
     }
     
     public void SetEndZoneJump(bool reduced)
@@ -197,6 +308,12 @@ public class PlayerMovement : MonoBehaviour
         jumpReducedByEndZone = reduced;
     }
 
+    public void SetWrathBonuses(float speedMultiplier, float jumpMultiplier)
+    {
+        wrathSpeedMultiplier = speedMultiplier;
+        wrathJumpMultiplier = jumpMultiplier;
+    }
+    
     public void ResetMovement()
     {
         currentSpeed = 0;
@@ -232,7 +349,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        float effectiveJumpForce = jumpForce * wrathJumpMultiplier;
+        rb.AddForce(transform.up * effectiveJumpForce, ForceMode.Impulse);
 
         if (wall.Wallrunning)
         {
@@ -288,7 +406,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
+    
     public float GetCurrentSpeed()
     {
         return currentSpeed;

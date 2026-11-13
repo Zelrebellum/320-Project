@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6279976892252343979}
   - component: {fileID: 4226774371252720669}
   - component: {fileID: 1639505233908690053}
+  - component: {fileID: 6426600540507772770}
+  - component: {fileID: 7995916057039057832}
+  - component: {fileID: 1033188292635389544}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -296,3 +299,73 @@ MonoBehaviour:
   levelBoundary: {fileID: 0}
   blinkTransition: {fileID: 0}
   slowdownOverlay: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &6426600540507772770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077191435195531950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d555557afadd9cfd1aa9836904dcbbc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  levelType: 1
+  nextSceneName: 
+  slothOverlay: {fileID: 0}
+  wrathHUD: {fileID: 0}
+--- !u!114 &7995916057039057832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077191435195531950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7236940d9f92f46b2b2da7d32371e0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WrathManager
+  maxWrath: 100
+  currentWrath: 0
+  wrathDashCooldown: 1
+  dashWrathGain: 15
+  minimumFallDistance: 8
+  wrathPerUnitFell: 2
+  wrathDuration: 10
+  recoveryDuration: 2
+  stateTimer: 0
+  dashRecoveryDelay: 4
+  passiveRecoveryRate: 5
+  speedMultiplier: 1.25
+  dashForceMultiplier: 1.5
+  jumpMultiplier: 1.25
+  wrathFOV: 75
+  enemyDetectionRange: 15
+  closestEnemyRange: 3
+  maxEnemyWrathGain: 20
+  enemy: {fileID: 0}
+--- !u!114 &1033188292635389544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077191435195531950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be54c45c97718a14da415f8926abbbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlothManager
+  onboardingSlowdown: 25
+  slowdownMeter: 0
+  maxSlowdown: 100
+  accumulationRate: 12.5
+  endZoneAccumulationRate: 30
+  recoveryRate: 10
+  recoveryDelay: 3
+  maxSpeedPenalty: 0.8
+  swampSpeedPenalty: 0.1
+  crouchAccumulationMultiplier: 1.25

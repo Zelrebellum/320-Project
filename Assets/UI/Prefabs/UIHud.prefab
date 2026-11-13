@@ -205,9 +205,9 @@ MonoBehaviour:
   mudImage: {fileID: 6900615453441196383}
   handsImage: {fileID: 1547625450753134389}
   darknessImage: {fileID: 6083506664409354857}
+  manager: {fileID: 0}
   startingScale: 1.5
   endScale: 1
-  player: {fileID: 0}
 --- !u!1 &594544501515765557
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +566,157 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4540892239285159115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2277260750178751681}
+  - component: {fileID: 2858644237022389291}
+  - component: {fileID: 7105848586492507434}
+  m_Layer: 5
+  m_Name: WrathMeterBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2277260750178751681
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540892239285159115}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4184100593918241439}
+  m_Father: {fileID: 1132244539916872938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -100, y: 200}
+  m_SizeDelta: {x: 40, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2858644237022389291
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540892239285159115}
+  m_CullTransparentMesh: 1
+--- !u!114 &7105848586492507434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540892239285159115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7045154194262201542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4184100593918241439}
+  - component: {fileID: 3324732170806726509}
+  - component: {fileID: 8311575089748153063}
+  m_Layer: 5
+  m_Name: WrathMeterFill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4184100593918241439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045154194262201542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2277260750178751681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3324732170806726509
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045154194262201542}
+  m_CullTransparentMesh: 1
+--- !u!114 &8311575089748153063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045154194262201542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 1
+  m_FillAmount: 0.5
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7137139620788129005
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +846,7 @@ MonoBehaviour:
   crouchIcon: {fileID: 874887070554046595}
   standIcon: {fileID: 6914234481482130351}
   timerText: {fileID: 1908298404258893791}
+  wrathMeterFill: {fileID: 8311575089748153063}
   fadeIconTime: 2
 --- !u!114 &3778369679366864411
 MonoBehaviour:
@@ -1588,6 +1740,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 649674240741960981, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2807319949699766378}
+    - targetCorrespondingSourceObject: {fileID: 5833084703343318157, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2277260750178751681}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8394376728849480967, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
       insertIndex: -1
@@ -1601,11 +1756,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6008352686127266020, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
   m_PrefabInstance: {fileID: 6865119470018754663}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1132244539916872938 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5833084703343318157, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
+  m_PrefabInstance: {fileID: 6865119470018754663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2385286080500553994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9106261703099588973, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
   m_PrefabInstance: {fileID: 6865119470018754663}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2935062065834978667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8646527198590965004, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
+  m_PrefabInstance: {fileID: 6865119470018754663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004296586918109650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &3115115316442891616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8394376728849480967, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}
@@ -1638,6 +1809,9 @@ MonoBehaviour:
   dashSource: {fileID: 0}
   readyHoldTime: 0.4
   fadeDuration: 0.3
+  cooldownBar: {fileID: 2935062065834978667}
+  onCooldownBarColor: {r: 1, g: 1, b: 1, a: 1}
+  wrathCooldownBarColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!224 &6215484871829132658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 649674240741960981, guid: 1de8566d547c811478102ba6dd8b17da, type: 3}

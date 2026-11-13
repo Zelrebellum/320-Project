@@ -11,9 +11,8 @@ public class PlayerHUD : MonoBehaviour
     [Header("HUD References")]
     [SerializeField] private GameObject hudCooldown;
     [SerializeField] private GameObject crouchIcon;
-
-    [FormerlySerializedAs("postureIcon")]
     [SerializeField] private GameObject standIcon;
+    [SerializeField] private Image wrathMeterFill;
 
     [SerializeField] private TextMeshProUGUI timerText;
 
@@ -122,13 +121,14 @@ public class PlayerHUD : MonoBehaviour
         scale.x = Mathf.Clamp01(progress);
         hudCooldown.transform.localScale = scale;
     }
+    
+    public void UpdateWrathMeter(float percentage)
+    {
+        wrathMeterFill.fillAmount = Mathf.Clamp01(percentage);
+    }
 
     public void TrackTimerEnd()
     {
-        if (!File.Exists(fileName))
-        {
-            File.Create(fileName);
-        }
         Scene scene = SceneManager.GetActiveScene();
         File.AppendAllText(fileName, String.Format("{0} {1},", scene.name, timer.ToString()));
     }
