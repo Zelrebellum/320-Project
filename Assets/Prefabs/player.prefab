@@ -255,6 +255,7 @@ MonoBehaviour:
   dashCooldownDuration: 2
   dashFOV: 120
   FOVfade: 1.5
+  dashFeedbackUI: {fileID: 0}
 --- !u!114 &4457880705017223605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +409,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -439,6 +440,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3639801145595229538}
   - component: {fileID: 3466754604467326019}
+  - component: {fileID: 7128354942862305506}
+  - component: {fileID: 284207269760399232}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -472,7 +475,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: dc56da7a69fb2fa1b8df1754d5a32305, type: 3}
+  m_Resource: {fileID: 8300000, guid: 21237879e890c4cde93595465b110a89, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
@@ -558,3 +561,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7128354942862305506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011303242688790334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49b56b97ee894f1d9ef190d1e295bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeMusic
+  LoopingAudio: {fileID: 8300000, guid: dc56da7a69fb2fa1b8df1754d5a32305, type: 3}
+--- !u!65 &284207269760399232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011303242688790334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

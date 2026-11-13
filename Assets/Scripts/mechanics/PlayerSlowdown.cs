@@ -24,6 +24,8 @@ public class PlayerSlowdown : MonoBehaviour
     private float swampSpeedPenalty = 0.10f;
     [SerializeField, Min(1f)]
     private float crouchAccumulationMultiplier = 1.25f;
+
+    [SerializeField] private string nextLevel = "EndingCredits";
     
     private float recoveryTimer = 0.0f;
 
@@ -157,7 +159,7 @@ public class PlayerSlowdown : MonoBehaviour
         {
             if (atEndZone)
             {
-                SceneManager.LoadScene("EndingCredits");
+                LevelSceneManager.NextLevel(nextLevel, playerManager.HUD.TrackTimerEnd);
                 return;
             }
 

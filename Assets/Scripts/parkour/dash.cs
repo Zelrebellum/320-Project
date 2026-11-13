@@ -29,6 +29,10 @@ public class Dash : MonoBehaviour
 
     private WallRun wall;
 
+    // for dash
+    [Header("Dash Feedback")]
+    [SerializeField] private DashFeedbackUI dashFeedbackUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -74,22 +78,32 @@ public class Dash : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        // if the button's been canceled, or if we're already dashing, or if the cooldown hasn't been hit, do nothing
         if (!context.performed
-         || dashing 
-         || cooldownRemaining > 0.0f 
-         || movement.IsCrouching
-         || wall.Wallrunning
-         )
+            || dashing
+            || cooldownRemaining > 0f
+            || movement.IsCrouching
+            || wall.Wallrunning
+            || PauseMenuManager.IsPaused
+            || BlinkTransition.IsPlaying)
         {
             return;
         }
 
-        rBody.AddForce(camControl.Camera.transform.forward * impulseForce, ForceMode.Impulse);
-        slowdown.ReduceSlowdown(10.0f);
+        rBody.AddForce(
+            camControl.Camera.transform.forward * impulseForce,
+            ForceMode.Impulse
+        );
+
+        slowdown.ReduceSlowdown(10f);
         dashing = true;
 
         cooldownRemaining = dashCooldownDuration;
         camControl.EnableFOV(dashFOV, 75f);
+
+        // Play the UI effect once when the dash succeeds.
+        if (dashFeedbackUI != null)
+        {
+            dashFeedbackUI.PlayDashEffect();
+        }
     }
 }
