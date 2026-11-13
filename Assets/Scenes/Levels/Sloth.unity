@@ -6915,7 +6915,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1033188292635389544, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: nextLevel
-      value: EndingCredits
+      value: Wrath
       objectReference: {fileID: 0}
     - target: {fileID: 1639505233908690053, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: spawn
@@ -7027,7 +7027,7 @@ PrefabInstance:
       objectReference: {fileID: 1283162786}
     - target: {fileID: 6426600540507772770, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: nextSceneName
-      value: EndingCredits
+      value: Wrath
       objectReference: {fileID: 0}
     - target: {fileID: 7995916057039057832, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: m_Enabled

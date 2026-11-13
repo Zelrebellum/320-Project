@@ -9058,6 +9058,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc57cfc15f8a6a7d6ad496fde8d68cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIComponents
+--- !u!114 &1130714873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
+  m_PrefabInstance: {fileID: 1130714869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92f741711fe153439a6ab092f633ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DashFeedbackUI
 --- !u!114 &1130714878 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3778369679366864411, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
@@ -12090,6 +12101,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1033188292635389544, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
+      propertyPath: nextLevel
+      value: EndingCredits
+      objectReference: {fileID: 0}
     - target: {fileID: 1639505233908690053, guid: adad24a04d0236d44809594d08c6aca1, type: 3}
       propertyPath: spawn
       value: 
@@ -15052,6 +15067,10 @@ PrefabInstance:
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 1130714872}
+    - target: {fileID: 1311157092182668748, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: dashFeedbackUI
+      value: 
+      objectReference: {fileID: 1130714873}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

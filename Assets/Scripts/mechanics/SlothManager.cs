@@ -23,9 +23,6 @@ public class SlothManager : MonoBehaviour
     private float swampSpeedPenalty = 0.10f;
     [SerializeField, Min(1f)]
     private float crouchAccumulationMultiplier = 1.25f;
-
-    [Header("Next Level Name")]
-    [SerializeField] private string nextLevel;
     
     private float recoveryTimer = 0.0f;
 

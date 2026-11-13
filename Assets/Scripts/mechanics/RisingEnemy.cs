@@ -13,6 +13,7 @@ public class RisingEnemy : MonoBehaviour
     
     [Header("References")]
     private PlayerManager manager;
+    private LevelManager levelManager;
 
     private Vector3 startingPosition;
     
@@ -22,6 +23,8 @@ public class RisingEnemy : MonoBehaviour
     void Awake()
     {
         manager = FindAnyObjectByType<PlayerManager>();
+        levelManager = FindAnyObjectByType<LevelManager>();
+        
         collider = GetComponent<Collider>();
 
         transform.position = startPos.position;
@@ -54,7 +57,7 @@ public class RisingEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            manager.Die();
+            levelManager.CompleteLevel();
         }
     }
 
