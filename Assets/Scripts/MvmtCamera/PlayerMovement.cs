@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isSprinting = true;
     [SerializeField] private Vector2 moveDirection = Vector2.zero;
 
-
     [Header("Movement Acceleration")]
     [SerializeField] private float groundAcceleration = 25f;
     [SerializeField] private float groundDeceleration = 40f;
