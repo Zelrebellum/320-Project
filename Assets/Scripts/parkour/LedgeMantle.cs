@@ -74,10 +74,9 @@ public class LedgeMantle : MonoBehaviour
         }
         Vector3 forward = transform.forward;
         forward.y += transform.localScale.y * 3f/4f;
-        bool hit = Physics.SphereCast(
+        bool hit = Physics.Raycast(
             transform.position,
-            2f,
-            transform.forward * 0.5f,
+            transform.forward,
             out hitInfo,
             ledgeDetectionDistance,
             groundLayer
@@ -112,6 +111,6 @@ public class LedgeMantle : MonoBehaviour
         Vector3 position = transform.position;
         //position.y += transform.localScale.y * 3/4;
 
-        Gizmos.DrawSphere(position + (transform.forward * 0.5f), 2f);
+        Gizmos.DrawRay(position, transform.forward);
     }
 }

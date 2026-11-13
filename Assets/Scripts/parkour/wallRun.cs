@@ -132,7 +132,8 @@ public class WallRun : MonoBehaviour
         Debug.Log("WallJump input received");
         if (!context.performed ||
             wallrunning ||
-            movement.IsCrouching)
+            movement.IsCrouching ||
+            movement.Airborne)
         {
             return;
         }
