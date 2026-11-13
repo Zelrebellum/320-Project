@@ -10,7 +10,7 @@ public class OnboardingPanel : MonoBehaviour
     [SerializeField] private TMP_Text bodyText;
     [SerializeField] private Button continueButton;
     [Header("Keyboard Settings")]
-    [SerializeField] private Key closeKey = Key.E;
+    private Key closeKey;
 
     public bool IsConfigured => titleText != null && bodyText != null && continueButton != null;
 
@@ -47,10 +47,11 @@ public class OnboardingPanel : MonoBehaviour
     /// <summary>
     /// Update the shared panel with the current trigger's instructions.
     /// </summary>
-    public void SetContent(string title, string instructions)
+    public void SetContent(string title, string instructions, Key tutorialCloseKey)
     {
         titleText.text = title;
         bodyText.text = instructions;
+        closeKey = tutorialCloseKey;
     }
 
     /// <summary>
