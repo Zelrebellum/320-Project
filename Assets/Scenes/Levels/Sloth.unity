@@ -2682,6 +2682,7 @@ MonoBehaviour:
   title: 
   instructions: 'Press Ctrl to Crouch to go under blockages. '
   triggerOnce: 1
+  closeKey: 17
 --- !u!65 &142730305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14462,6 +14463,7 @@ MonoBehaviour:
   title: 
   instructions: 'Press Space to Jump on surfaces low to the ground. '
   triggerOnce: 1
+  closeKey: 1
 --- !u!65 &624001829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21193,6 +21195,7 @@ MonoBehaviour:
   title: ESCAPE FROM THE VINES
   instructions: "The swamp is trying to slow you down. \nPress shift to dash and loosen yourself from the vines. "
   triggerOnce: 1
+  closeKey: 51
 --- !u!65 &957874232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24181,6 +24184,7 @@ MonoBehaviour:
   title: 
   instructions: 'Jump against tall platforms to Mantle and get to a better vantage point. '
   triggerOnce: 1
+  closeKey: 1
 --- !u!65 &1006032669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25644,6 +25648,7 @@ MonoBehaviour:
   title: 
   instructions: Dash to move faster and go across farther distances.
   triggerOnce: 1
+  closeKey: 51
 --- !u!65 &1129260392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36398,6 +36403,7 @@ MonoBehaviour:
   title: 
   instructions: 'Jump next to a wall to run across it. '
   triggerOnce: 1
+  closeKey: 1
 --- !u!65 &1604271758
 BoxCollider:
   m_ObjectHideFlags: 0

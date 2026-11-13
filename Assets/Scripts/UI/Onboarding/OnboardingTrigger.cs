@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BoxCollider))]
 public class OnboardingTrigger : MonoBehaviour
@@ -10,6 +11,7 @@ public class OnboardingTrigger : MonoBehaviour
 
     [Header("Trigger Settings")]
     [SerializeField] private bool triggerOnce = true;
+    [SerializeField] private Key closeKey = Key.Space;
 
     private bool hasTriggered;
 
@@ -60,7 +62,7 @@ public class OnboardingTrigger : MonoBehaviour
             }
 
             // Failed or blocked requests remain available for another entry.
-            if (!manager.TryShowOnboarding(title, instructions))
+            if (!manager.TryShowOnboarding(title, instructions, closeKey))
             {
                 return false;
             }
