@@ -6328,11 +6328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: flashAlpha
-      value: 0.757
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7856904861836912548, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: fadeDuration
-      value: 5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8196383448587007693, guid: 8ca7eb4388fa0378c861ddaa0ec8474e, type: 3}
       propertyPath: player
