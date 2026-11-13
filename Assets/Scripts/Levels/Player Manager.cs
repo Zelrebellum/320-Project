@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody playerRigidbody;
 
+    private CameraController camera;
+
     // Runtime state
     private bool isDead;
 
@@ -41,6 +43,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
         movement = player.GetComponent<PlayerMovement>();
+        camera = player.GetComponent<CameraController>();
     }
 
     private void Update()
@@ -100,6 +103,8 @@ public class PlayerManager : MonoBehaviour
 
         playerRigidbody.position = spawn.position;
         playerRigidbody.rotation = spawn.rotation;
+
+        camera.EnableFOV(camera.StartFOV, 1000f);
 
         slowdown.ResetSlowdown();
     }

@@ -6709,7 +6709,7 @@ Transform:
   m_GameObject: {fileID: 829695129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -96.04, z: 0}
+  m_LocalPosition: {x: 0, y: -95.127, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14863,6 +14863,18 @@ PrefabInstance:
       propertyPath: dashFeedbackUI
       value: 
       objectReference: {fileID: 200739018}
+    - target: {fileID: 1785844216981677752, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: m_Height
+      value: 1.8540726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785844216981677752, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: m_Center.y
+      value: 0.072963715
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785844216981677752, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2017421837556244400, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -14951,14 +14963,13 @@ PrefabInstance:
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1785844216981677752, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2632353901539845077, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2042287286}
+      addedObject: {fileID: 2042287295}
   m_SourcePrefab: {fileID: 100100000, guid: add84e1ef537a916aa22a2b5de77e818, type: 3}
 --- !u!1001 &1766417061
 PrefabInstance:
@@ -15849,7 +15860,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0000030537, y: -594.1, z: 0.0000051745}
-  m_LocalScale: {x: 53.2116, y: 53.2116, z: 53.2116}
+  m_LocalScale: {x: 74.58011, y: 112.975174, z: 71.68098}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -16845,7 +16856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbd2cec6a4ab22c7ada384c8613b20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
---- !u!65 &2042287286
+--- !u!65 &2042287295
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16864,8 +16875,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.76201546, y: 0.2570343, z: 0.8318566}
+  m_Center: {x: -0.013975441, y: -0.88840103, z: -0.014962018}
 --- !u!1001 &2042659018
 PrefabInstance:
   m_ObjectHideFlags: 0
